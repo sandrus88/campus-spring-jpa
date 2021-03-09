@@ -49,6 +49,12 @@ insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 002'
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 003', TO_DATE('01/02/2021', 'DD/MM/YYYY'), 20, 02, 205);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 004', TO_DATE('12/09/2020', 'DD/MM/YYYY'), 30, 03, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 005', TO_DATE('13/12/2020', 'DD/MM/YYYY'), 30, 03, 205);
-insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 006', TO_DATE('22/01/2021', 'DD/MM/YYYY'), 23, 04, 202);
-insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 007', TO_DATE('22/01/2021', 'DD/MM/YYYY'), 22, 04, 202);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 006', TO_DATE('22/01/2021', 'DD/MM/YYYY'), 15, 04, 202);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 007', TO_DATE('22/01/2021', 'DD/MM/YYYY'), 17, 04, 202);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 008', TO_DATE('22/01/2021', 'DD/MM/YYYY'), 28, 04, 202);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 009', TO_DATE('15/11/2020', 'DD/MM/YYYY'), 16, 01, 203);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 010', TO_DATE('15/11/2020', 'DD/MM/YYYY'), 28, 01, 203);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 011', TO_DATE('02/11/2020', 'DD/MM/YYYY'), 25, 05, 202);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 012', TO_DATE('15/11/2020', 'DD/MM/YYYY'), 17, 05, 201);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 013', TO_DATE('03/05/2020', 'DD/MM/YYYY'), 15, 01, 201);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 014', TO_DATE('18/11/2020', 'DD/MM/YYYY'), 14, 01, 205);

@@ -50,3 +50,23 @@
         CONSTRAINT exam_course_fk FOREIGN KEY (COURSE_ID) REFERENCES course(ID)
     );
     
+    create sequence seq_student
+        START WITH 1000
+        INCREMENT BY 1;
+        
+    create sequence seq_course
+        START WITH 1000
+        INCREMENT BY 1;
+        
+    create sequence seq_topic
+        START WITH 1000
+        INCREMENT BY 1;
+        
+    create view details_of_course
+    as
+    select t.name, c.name, c.description, sub.*, s.name
+    from topic t, subscriptions sub
+    inner join student s on sub.student_id = s.id
+    inner join course c on sub.course_id = c.id 
+    inner join course c on t.course_id = c.id;
+    

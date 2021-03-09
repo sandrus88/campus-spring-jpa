@@ -81,7 +81,8 @@ select ex.*, c.name, s.name
 from exams ex
 inner join student s on ex.student_id = s.id
 inner join course c on ex.course_id = c.id
-where upper(c.name) != upper('java');
+where upper(c.name) = upper('java')
+and ex.mark < 18;
 
 --seleziona la colonna name della tabella student2 con i soli campi che hanno il valore del campo surname Xhaxho 
 select name from student
