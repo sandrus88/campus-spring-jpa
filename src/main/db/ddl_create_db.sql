@@ -50,6 +50,15 @@
         CONSTRAINT exam_course_fk FOREIGN KEY (COURSE_ID) REFERENCES course(ID)
     );
     
+    create table address (
+        ID varchar2(100 byte),
+        NAME varchar2(100 byte),
+        STUDENT_ID number UNIQUE,
+        
+        PRIMARY KEY (ID),
+        CONSTRAINT address_student_fk FOREIGN KEY (STUDENT_ID) REFERENCES student(ID)
+    );
+    
     create sequence seq_student
         START WITH 1000
         INCREMENT BY 1;
@@ -61,12 +70,19 @@
     create sequence seq_topic
         START WITH 1000
         INCREMENT BY 1;
+    
         
     create view details_of_course
-    as
-    select t.name, c.name, c.description, sub.*, s.name
-    from topic t, subscriptions sub
-    inner join student s on sub.student_id = s.id
-    inner join course c on sub.course_id = c.id 
-    inner join course c on t.course_id = c.id;
-    
+    as 
+    select *
+    from (select c.name courseName, count(*) nrStudentsSignedUp 
+    from subscriptions sub
+    right join student s on sub.student_id = s.id
+    right join course c on sub.course_id = c.id
+    group by c.name) a 
+    inner join 
+    (select count(*) nrTopics 
+    from topic t
+    right join course c on t.course_id = c.id
+    group by c.name) b
+    on a = b;

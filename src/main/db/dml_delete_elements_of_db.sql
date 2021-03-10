@@ -1,4 +1,5 @@
 
+delete from address;
 delete from exams;
 delete from topic;
 delete from subscriptions;

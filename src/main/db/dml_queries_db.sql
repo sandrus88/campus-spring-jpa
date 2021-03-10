@@ -84,6 +84,19 @@ inner join course c on ex.course_id = c.id
 where upper(c.name) = upper('java')
 and ex.mark < 18;
 
+-- numero di studenti registrati per ogni corso
+select c.name courseName, count(*) nrStudentsSignedUp 
+from subscriptions sub
+right join student s on sub.student_id = s.id
+right join course c on sub.course_id = c.id
+group by c.name;
+
+-- numero di topic per ogni corso corso
+select c.name courseName, count(*) nrTopics 
+from topic t
+right join course c on t.course_id = c.id
+group by c.name;
+
 --seleziona la colonna name della tabella student2 con i soli campi che hanno il valore del campo surname Xhaxho 
 select name from student
 where surname = 'Xhaxho';
