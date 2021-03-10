@@ -97,6 +97,30 @@ from topic t
 right join course c on t.course_id = c.id
 group by c.name;
 
+select * from vw_course_students;
+select * from vw_course_topics;
+
+select * 
+from vw_course_students vwc
+inner join vw_course_topics vwt on vwt.coursename = vwc.coursename;
+
+select vwc.coursename, vwt.nrtopics, vwc.nrStudentsSignedUp 
+from (
+    select c.name courseName, count(*) nrStudentsSignedUp 
+    from subscriptions sub
+        right join student s on sub.student_id = s.id
+        right join course c on sub.course_id = c.id
+    group by c.name
+) vwc 
+inner join (
+    select c.name courseName, count(*) nrTopics 
+    from topic t
+        right join course c 
+        on t.course_id = c.id
+    group by c.name
+) vwt 
+on vwt.coursename = vwc.coursename;
+
 --seleziona la colonna name della tabella student2 con i soli campi che hanno il valore del campo surname Xhaxho 
 select name from student
 where surname = 'Xhaxho';

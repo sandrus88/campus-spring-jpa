@@ -59,8 +59,8 @@ insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 012'
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 013', TO_DATE('03/05/2020', 'DD/MM/YYYY'), 15, 01, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 014', TO_DATE('18/11/2020', 'DD/MM/YYYY'), 14, 01, 205);
 
-insert into address (ID, NAME, STUDENT_ID) values ('Address 001', '' , 01);
-insert into address (ID, NAME, STUDENT_ID) values ('Address 002', 'Via del ponte di mezzo, 42, 50127, Firenze' , 02);
-insert into address (ID, NAME, STUDENT_ID) values ('Address 003', 'Rue du Belgique, 63, 60198, Bruxelles' , 03);
-insert into address (ID, NAME, STUDENT_ID) values ('Address 004', 'Via Ferdinando Paoletti, 7, 50134, Firenze' , 04);
-insert into address (ID, NAME, STUDENT_ID) values ('Address 005', 'Rue du Belgique, 63, 60198, Bruxelles' , 05);
+insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (01, '', '', 50122, 'Firenze', 'FI');
+insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (02, 'Via del ponte di mezzo', 42, 50127, 'Firenze', 'FI');
+insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (03, 'Rue du Belgique', 63, 60198, 'Bruxelles', '');
+insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (04, 'Via Ferdinando Paoletti', 7, 50134, 'Firenze', 'FI');
+insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (05, 'Rue du Belgique', 63, 60198, 'Bruxelles', '');
