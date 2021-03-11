@@ -42,23 +42,39 @@ Quindi ogni lavoratore potra' essere o ad ore o salariato e dunque apparterra' o
 ![One_to_one_relationship](src/main/doc/one_to_one.jpg)
 
 La relazione many to many e' la piu' complessa e si verifica quando piu' records di una tabella ha relazioni con piu' records di un'altra tabella. (viene sempre creata una terza tabella chiamata `ausiliaria`)
+
 Nell'esempio del mio campus, ogni studente potra' seguire piu' corsi, ma ogni corso allo stesso modo potra' essere seguito da piu' studenti. Quindi avremo una tabella con tutti gli studenti,
 e un'altra con tutti i corsi, poi ci sara' una terza tabella dove verranno inserite le key della tabella studente e della tabella corsi, le quali potranno ripetersi.
 
 ![Many_to_many_relationship](src/main/doc/many_to_many.jpg)
 
-JPA
+###JPA
+`JPA` (Java Persistence API) è un framework che utilizza la tecnica dell'`ORM` (Object-Relational Mapping) per poter mettere in relazione oggetti Java con le tabelle di un database. 
 
-JPA (Java Persistence API) è un framework che utilizza la tecnica dell'ORM (Object-Relational Mapping) per poter mettere in relazione 
-oggetti Java con le tabelle di un database. 
-Per mappare e quindi rendere persistenti degli oggetti, JPA utilizza delle annotazioni, che si identificano tramite la @. 
-Per persistere un oggetto, JPA fa uso di @EntityManager, appartenenti al package javax.persistence, e permettono di poter creare, leggere, modificare, eliminare (CRUD), i dati del database. 
-Ogni dato viene mappato in "entity" (@Entity), che rapparesenta la mappatura di ogni singola tabella del database.
-Altre annotazioni per poter creare il database.
-- @Id, specifica che il campo annotato è una primary key.
-- @Column, specifica che questo campo mappa una colonna.
-- @ManyToMany, definisce una relazione n-m.
-- @OneToMany, definisce una relazion 1-m.
-- @OneToOne, definisce una relazion 1-1.
+###Mappatura e persistenza di un oggetto Java
+Per `mappare` e quindi rendere `persistenti` degli oggetti, JPA utilizza delle annotazioni, che si identificano tramite la `@`. 
+Tra i programmi in esecuzione e il database, si trova uno stato intermedio (`cache`), in cui i dati rimangono in "attesa" di essere persistiti prima di propagarsi nel database (`PersistenceContext`).
+Per persistere un oggetto, JPA fa uso di `@EntityManager`, appartenenti al package `javax.persistence`, che sono delle entita' che permettono di poter creare, leggere, modificare, eliminare (`CRUD`) a runtime, i dati del database.
+Ogni dato viene mappato in "entity" (`@Entity`), che rapparesenta la mappatura di ogni singola tabella del database.
 
-Per poter utilizzare JPA, esistono diversi provider e tra i più usati c'è Hibernate, che rappresenta l'implementazione di JPA.
+###Lifecycle di una entity
+1) Quando una nuova entity viene creata nella memoria Java, nulla cambia dal punto di vista degli oggetti persistenti. L’oggetto e' detto in stato `New` o `Transient`.
+
+2) Invocando il metodo `persist()` dell’EnityManager l’oggetto e' reso persistente ed entra nello stato `Managed`.
+
+3) Gli oggetti che sono stati resi persistenti entrano in uno stato denominato `Detached` nel quale le modifiche effettuate non verranno propagate al database. Questo stato puo' essere utile ad esempio nel caso in cui occorra effettuare diverse modifiche sull’oggetto, senza che queste debbano comportare l’aggiornamento della cache e del database.
+
+E' possibile risincronizzare questi oggetti con il database, per far cio' occorre riportarli nello stato Managed tramite il metodo `merge()`.
+
+4) Ultimo stato e' chiamato `Removed`, in cui gli oggetti vengono rimossi dal database ma restano a disposizione nella memoria Java.
+
+###Principali annotazioni
+Altre annotazioni per poter creare il database:
+* `@Id`, specifica che il campo annotato è una primary key.
+* `@Column`, specifica che questo campo mappa una colonna.
+* `@JoinColumn`, specifica un'associazione tra entity.
+* `@ManyToMany`, definisce una relazione n-m.
+* `@OneToMany`, definisce una relazion 1-m.
+* `@OneToOne`, definisce una relazion 1-1.
+
+Per poter utilizzare JPA, esistono diversi provider e tra i più usati c'è `Hibernate`, che rappresenta l'implementazione di JPA.
