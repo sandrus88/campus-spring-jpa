@@ -12,15 +12,15 @@ import javax.persistence.Table;
 public class TopicEntity {
 	
 	@Id
-    @Column(name = "topic_id")
+    @Column(name = "ID")
 	private int id;
-	
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "DESCRIPTION")
 	private String description;
-	private int courseId;
 	
 	@ManyToOne
-	@JoinColumn(name = "course_id")
+	@JoinColumn(name = "ID", insertable = false, updatable = false)
 	private CourseEntity courseEntity;
 	
 	public int getId() {
@@ -40,14 +40,6 @@ public class TopicEntity {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public int getCourseId() {
-		courseId = courseEntity.getId();
-		return courseId;
-	}
-	
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
 	}
 	public CourseEntity getCourseEntity() {
 		return courseEntity;

@@ -14,16 +14,17 @@ import javax.persistence.Table;
 public class CourseEntity {
 	
 	@Id
-    @Column(name = "course_id")
+    @Column(name = "ID")
 	private int id;
-	
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	@OneToMany
 	private List<TopicEntity> topics;
 	
-	@ManyToMany
+	@OneToMany
 	private List<ExamEntity> exams;
 	
 	@ManyToMany

@@ -13,23 +13,26 @@ import javax.persistence.Table;
 public class AddressEntity {
 
 	@Id
-    @Column(name = "student_id")
-	private int studentId;
-	
+	private int id;
+	@Column(name = "STREET")
 	private String street;
+	@Column(name = "BUILDING_NUMBER")
 	private int buildingNumber;
+	@Column(name = "POSTAL_CODE")
 	private int postalCode;
+	@Column(name = "CITY")
 	private String city;
+	@Column(name = "PROVINCE_CODE")
 	private String provinceCode;
 	
 	@OneToOne
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "ID")
     @MapsId
     private StudentEntity studentEntity;
 
 	public int getId() {
-		studentId = studentEntity.getId();
-		return studentId;
+		id = studentEntity.getId();
+		return id;
 	}
 
 	public String getStreet() {

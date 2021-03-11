@@ -14,21 +14,21 @@ import javax.persistence.Table;
 public class ExamEntity {
 	
 	@Id
-    @Column(name = "exam_id")
+    @Column(name = "ID")
 	private int id;
-	
+	@Column(name = "EXAM_DATE")
 	private Date examDate;
+	@Column(name = "MARK")
 	private int mark;
+	@Column(name = "POSTAL_CODE")
 	private int postalCode;
-	private int studentId;
-	private int courseId;
 	
 	@ManyToOne
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "ID", insertable = false, updatable = false)
     private StudentEntity studentEntity;
 
     @ManyToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "ID", insertable = false, updatable = false)
     private CourseEntity courseEntity;
 
 	public int getId() {
@@ -61,16 +61,6 @@ public class ExamEntity {
 
 	public void setPostalCode(int postalCode) {
 		this.postalCode = postalCode;
-	}
-
-	public int getStudentId() {
-		studentId = studentEntity.getId();
-		return studentId;
-	}
-
-	public int getCourseId() {
-		courseId = courseEntity.getId();
-		return courseId;
 	}
 
 	public StudentEntity getStudentEntity() {

@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -17,27 +20,32 @@ import javax.persistence.Table;
 public class StudentEntity {
 	
 	@Id
-    @Column(name = "student_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
 	private int id;
-	
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "SURNAME")
 	private String surname;
+	@Column(name = "JOB_TITLE")
 	private String jobTitle;
+	@Column(name = "PAYMENT_TYPE")
 	private String paymentType;
+	@Column(name = "SEX")
 	private char sex;
 	
 	@OneToOne
     @PrimaryKeyJoinColumn
     private AddressEntity addressEntity;
 	
-	@ManyToMany
+	@OneToMany
 	private List<ExamEntity> exams;
 	
 	@ManyToMany
 	@JoinTable(
 			name = "subscriptions", 
-			joinColumns = {@JoinColumn(name = "student_id")}, 
-			inverseJoinColumns = {@JoinColumn(name = "course_id")}
+			joinColumns = {@JoinColumn(name = "ID", insertable = false, updatable = false)}, 
+			inverseJoinColumns = {@JoinColumn(name = "ID", insertable = false, updatable = false)}
 			)
     private List<CourseEntity> courses;
 
