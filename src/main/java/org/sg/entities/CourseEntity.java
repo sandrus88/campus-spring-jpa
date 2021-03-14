@@ -15,7 +15,7 @@ public class CourseEntity {
 	
 	@Id
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "DESCRIPTION")
@@ -30,10 +30,10 @@ public class CourseEntity {
 	@ManyToMany
 	private List<StudentEntity> students;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -56,5 +56,10 @@ public class CourseEntity {
 	}
 	public List<StudentEntity> getStudents() {
 		return students;
+	}
+	
+	@Override
+	public String toString() {
+		return "Course  [id: " + id + ", name: " + name + ", description: " + description + "]";
 	}
 }

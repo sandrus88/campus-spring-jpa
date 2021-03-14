@@ -22,7 +22,7 @@ public class StudentEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "SURNAME")
@@ -44,16 +44,16 @@ public class StudentEntity {
 	@ManyToMany
 	@JoinTable(
 			name = "subscriptions", 
-			joinColumns = {@JoinColumn(name = "ID", insertable = false, updatable = false)}, 
+			joinColumns = {@JoinColumn(name = "ID")}, 
 			inverseJoinColumns = {@JoinColumn(name = "ID", insertable = false, updatable = false)}
 			)
     private List<CourseEntity> courses;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -107,5 +107,12 @@ public class StudentEntity {
 
 	public List<CourseEntity> getCourses() {
 		return courses;
+	}
+	
+	@Override
+	public String toString() {
+		return "Student  [id: " + id + ", name: " + name + ", surname: " + surname
+				+ ", job title: " + jobTitle + ", paymentType: " + paymentType + ", sex: " + sex
+				+ "]";
 	}
 }

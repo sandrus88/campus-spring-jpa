@@ -15,7 +15,7 @@ public class ExamEntity {
 	
 	@Id
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "EXAM_DATE")
 	private Date examDate;
 	@Column(name = "MARK")
@@ -31,11 +31,11 @@ public class ExamEntity {
     @JoinColumn(name = "ID", insertable = false, updatable = false)
     private CourseEntity courseEntity;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

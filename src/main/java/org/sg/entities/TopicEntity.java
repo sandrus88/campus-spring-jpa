@@ -13,7 +13,7 @@ public class TopicEntity {
 	
 	@Id
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "DESCRIPTION")
@@ -23,10 +23,10 @@ public class TopicEntity {
 	@JoinColumn(name = "ID", insertable = false, updatable = false)
 	private CourseEntity courseEntity;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -43,5 +43,10 @@ public class TopicEntity {
 	}
 	public CourseEntity getCourseEntity() {
 		return courseEntity;
+	}
+	
+	@Override
+	public String toString() {
+		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + "]";
 	}
 }

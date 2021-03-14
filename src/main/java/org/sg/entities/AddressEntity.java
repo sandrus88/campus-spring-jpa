@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class AddressEntity {
 
 	@Id
-	private int id;
+	private Integer id;
 	@Column(name = "STREET")
 	private String street;
 	@Column(name = "BUILDING_NUMBER")
@@ -30,7 +30,7 @@ public class AddressEntity {
     @MapsId
     private StudentEntity studentEntity;
 
-	public int getId() {
+	public Integer getId() {
 		id = studentEntity.getId();
 		return id;
 	}
