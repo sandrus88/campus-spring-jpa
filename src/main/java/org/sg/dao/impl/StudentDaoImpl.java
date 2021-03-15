@@ -13,7 +13,7 @@ public class StudentDaoImpl extends GenericDao implements StudentDao {
 		return studentEntity;
 	}
 
-	public StudentEntity get(int id) {
+	public StudentEntity get(Integer id) {
 		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
 		return studentEntity;
 	}
@@ -25,13 +25,13 @@ public class StudentDaoImpl extends GenericDao implements StudentDao {
 		return studentEntity;
 	}
 
-	public boolean delete(int id) {
+	public boolean delete(Integer id) {
 		entityManager.getTransaction().begin();
 		if (id == 0) {
 			return false;
 		} else {
 			StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-			entityManager.persist(studentEntity);
+			entityManager.remove(studentEntity);
 			entityManager.getTransaction().commit();
 			return true;
 		}

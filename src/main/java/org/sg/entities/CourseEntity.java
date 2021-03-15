@@ -4,36 +4,41 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "course")
+@Table(name = "COURSE")
 public class CourseEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCourse")
+	@SequenceGenerator(name="seqCourse", sequenceName = "SEQ_COURSE", allocationSize = 1)
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@OneToMany
-	private List<TopicEntity> topics;
+//	@OneToMany
+//	private List<TopicEntity> topics;
+//	
+//	@OneToMany
+//	private List<ExamEntity> exams;
+//	
+//	@ManyToMany
+//	private List<StudentEntity> students;
 	
-	@OneToMany
-	private List<ExamEntity> exams;
-	
-	@ManyToMany
-	private List<StudentEntity> students;
-	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -48,15 +53,15 @@ public class CourseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<TopicEntity> getTopics() {
-		return topics;
-	}
-	public List<ExamEntity> getExams() {
-		return exams;
-	}
-	public List<StudentEntity> getStudents() {
-		return students;
-	}
+//	public List<TopicEntity> getTopics() {
+//		return topics;
+//	}
+//	public List<ExamEntity> getExams() {
+//		return exams;
+//	}
+//	public List<StudentEntity> getStudents() {
+//		return students;
+//	}
 	
 	@Override
 	public String toString() {

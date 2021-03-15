@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -17,14 +16,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "student")
+@Table(name = "STUDENT")
 public class StudentEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_student")
-	@SequenceGenerator(name="seq_student")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqStudent")
+	@SequenceGenerator(name="seqStudent", sequenceName = "SEQ_STUDENT", allocationSize = 1)
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "SURNAME")
@@ -36,26 +35,26 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private char sex;
 	
-	@OneToOne
-    @PrimaryKeyJoinColumn
-    private AddressEntity addressEntity;
-	
-	@OneToMany
-	private List<ExamEntity> exams;
-	
-	@ManyToMany
-	@JoinTable(
-			name = "subscriptions", 
-			joinColumns = {@JoinColumn(name = "ID")}, 
-			inverseJoinColumns = {@JoinColumn(name = "ID", insertable = false, updatable = false)}
-			)
-    private List<CourseEntity> courses;
+//	@OneToOne
+//    @PrimaryKeyJoinColumn
+//    private AddressEntity addressEntity;
+//	
+//	@OneToMany
+//	private List<ExamEntity> exams;
+//	
+//	@ManyToMany
+//	@JoIntegerable(
+//			name = "subscriptions", 
+//			joinColumns = {@JoinColumn(name = "STUDENT_ID")}, 
+//			inverseJoinColumns = {@JoinColumn(name = "COURSE_ID")}
+//			)
+//    private List<CourseEntity> courses;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -99,17 +98,17 @@ public class StudentEntity {
 		this.sex = sex;
 	}
 
-	public List<ExamEntity> getExams() {
-		return exams;
-	}
-
-	public AddressEntity getAddressEntity() {
-		return addressEntity;
-	}
-
-	public List<CourseEntity> getCourses() {
-		return courses;
-	}
+//	public List<ExamEntity> getExams() {
+//		return exams;
+//	}
+//
+//	public AddressEntity getAddressEntity() {
+//		return addressEntity;
+//	}
+//
+//	public List<CourseEntity> getCourses() {
+//		return courses;
+//	}
 	
 	@Override
 	public String toString() {

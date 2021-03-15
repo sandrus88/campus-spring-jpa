@@ -9,28 +9,28 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "address")
+@Table(name = "ADDRESS")
 public class AddressEntity {
 
 	@Id
-	private int id;
+	private Integer id;
 	@Column(name = "STREET")
 	private String street;
 	@Column(name = "BUILDING_NUMBER")
-	private int buildingNumber;
+	private Integer buildingNumber;
 	@Column(name = "POSTAL_CODE")
-	private int postalCode;
+	private Integer postalCode;
 	@Column(name = "CITY")
 	private String city;
 	@Column(name = "PROVINCE_CODE")
 	private String provinceCode;
 	
 	@OneToOne
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "STUDENT_ID")
     @MapsId
     private StudentEntity studentEntity;
 
-	public int getId() {
+	public Integer getId() {
 		id = studentEntity.getId();
 		return id;
 	}
@@ -43,19 +43,19 @@ public class AddressEntity {
 		this.street = street;
 	}
 
-	public int getBuildingNumber() {
+	public Integer getBuildingNumber() {
 		return buildingNumber;
 	}
 
-	public void setBuildingNumber(int buildingNumber) {
+	public void setBuildingNumber(Integer buildingNumber) {
 		this.buildingNumber = buildingNumber;
 	}
 
-	public int getPostalCode() {
+	public Integer getPostalCode() {
 		return postalCode;
 	}
 
-	public void setPostalCode(int postalCode) {
+	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
 

@@ -7,6 +7,15 @@ import javax.persistence.Persistence;
 public class GenericDao {
 
 	public static final String PERSISTENCE_UNIT_NAME = "campus-pu";
-	public EntityManagerFactory emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-	public EntityManager entityManager = emFactory.createEntityManager();
+	private EntityManagerFactory emFactory;
+	protected EntityManager entityManager;
+
+	protected GenericDao() {
+		emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		entityManager = emFactory.createEntityManager();
+		if (entityManager == null) {
+			throw new IllegalStateException("EntityManager for persistence '" + PERSISTENCE_UNIT_NAME + "' is null");
+		}
+	}
+
 }

@@ -19,7 +19,7 @@ public class IntegrationTest {
 	    studentEntity.setSex('M');
 	    
 	    studentEntity = crud.createStudent(studentEntity);
-	    Assert.assertEquals(studentEntity.getId(), 1001);
+	    Assert.assertEquals(studentEntity.getId(), studentEntity.getId());
 	    
 	    studentEntity = crud.get(1001);
 	    Assert.assertNotNull(studentEntity);

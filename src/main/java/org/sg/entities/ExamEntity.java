@@ -10,32 +10,32 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "exams")
+@Table(name = "EXAMS")
 public class ExamEntity {
 	
 	@Id
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "EXAM_DATE")
 	private Date examDate;
 	@Column(name = "MARK")
-	private int mark;
+	private Integer mark;
 	@Column(name = "POSTAL_CODE")
-	private int postalCode;
+	private Integer postalCode;
 	
 	@ManyToOne
-    @JoinColumn(name = "ID", insertable = false, updatable = false)
+    @JoinColumn(name = "STUDENT_ID")
     private StudentEntity studentEntity;
 
     @ManyToOne
-    @JoinColumn(name = "ID", insertable = false, updatable = false)
+    @JoinColumn(name = "COURSE_ID")
     private CourseEntity courseEntity;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -47,19 +47,19 @@ public class ExamEntity {
 		this.examDate = examDate;
 	}
 
-	public int getMark() {
+	public Integer getMark() {
 		return mark;
 	}
 
-	public void setMark(int mark) {
+	public void setMark(Integer mark) {
 		this.mark = mark;
 	}
 
-	public int getPostalCode() {
+	public Integer getPostalCode() {
 		return postalCode;
 	}
 
-	public void setPostalCode(int postalCode) {
+	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
 

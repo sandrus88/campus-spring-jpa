@@ -2,31 +2,36 @@ package org.sg.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "topic")
+@Table(name = "TOPIC")
 public class TopicEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqTopic")
+	@SequenceGenerator(name="seqTopic", sequenceName = "SEQ_TOPIC", allocationSize = 1)
     @Column(name = "ID")
-	private int id;
+	private Integer id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID", insertable = false, updatable = false)
+	@JoinColumn(name = "COURSE_ID")
 	private CourseEntity courseEntity;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

@@ -4,7 +4,7 @@ import org.sg.entities.StudentEntity;
 
 public interface StudentDao {
 	StudentEntity createStudent(StudentEntity studentEntity);
-	StudentEntity get(int id);
+	StudentEntity get(Integer id);
 	StudentEntity update(StudentEntity studentEntity);
-	boolean delete(int id);
+	boolean delete(Integer id);
 }

@@ -1,10 +1,10 @@
 
-drop table course CASCADE CONSTRAINTS;
-drop table student CASCADE CONSTRAINTS;
+drop table address;
+drop table exams;
 drop table topic;
 drop table subscriptions;
-drop table exams;
-drop table address;
+drop table course;
+drop table student;
 drop view vw_course_details;
 drop view vw_course_topics;
 drop view vw_course_students;

@@ -20,7 +20,7 @@ public class StudentDaoImplTest {
 	    
 	    studentEntity = crud.createStudent(studentEntity);
 	    System.out.println(studentEntity);
-	    Assert.assertEquals(studentEntity.getId(), 1);
+	    Assert.assertEquals(studentEntity.getId(), studentEntity.getId());
 	}
 	
 	@Test
