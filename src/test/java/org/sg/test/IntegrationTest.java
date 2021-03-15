@@ -19,20 +19,20 @@ public class IntegrationTest {
 	    studentEntity.setSex('M');
 	    
 	    studentEntity = crud.createStudent(studentEntity);
-	    Assert.assertEquals(studentEntity.getId(), 1);
+	    Assert.assertEquals(studentEntity.getId(), 1001);
 	    
-	    studentEntity = crud.get(1);
+	    studentEntity = crud.get(1001);
 	    Assert.assertNotNull(studentEntity);
 	    
 	    studentEntity.setName("Sandro");
 	    studentEntity.setSurname("Gargano");
 	    studentEntity = crud.update(studentEntity);
 	    
-	    studentEntity = crud.get(1);
+	    studentEntity = crud.get(1001);
 	    Assert.assertEquals(studentEntity.getName(), "Sandro");
 	    Assert.assertEquals(studentEntity.getSurname(), "Gargano");
 	    
-	    isRemoved = crud.delete(1);
+	    isRemoved = crud.delete(1001);
 	    Assert.assertNull(studentEntity);	
 	}
 }
