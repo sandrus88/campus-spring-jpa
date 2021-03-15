@@ -1,6 +1,11 @@
 package org.sg.test;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 import org.sg.dao.StudentDao;
 import org.sg.dao.impl.StudentDaoImpl;
@@ -11,58 +16,72 @@ public class StudentDaoImplTest {
 	StudentDao studentDao = new StudentDaoImpl();
 	
 	@Test
-	public void insertStudent() {
+	public void test_insert() {
 	    StudentEntity studentEntity = new StudentEntity();
 	    studentEntity.setName("Manuel");
 	    studentEntity.setSurname("Castro");
 	    studentEntity.setJobTitle("Waiter");
 	    studentEntity.setPaymentType("Confirmed");
 	    studentEntity.setSex('M');
+	    System.out.println("Studente da inserire: " + studentEntity);
 	    
-	    StudentEntity studentEntity2 = new StudentEntity();
-	    studentEntity2.setName("Manuel2");
-	    studentEntity2.setSurname("Castro2");
-	    studentEntity2.setJobTitle("Waiter2");
-	    studentEntity2.setPaymentType("Confirmed2");
-	    studentEntity2.setSex('M');
+	    studentEntity = studentDao.insert(studentEntity);
+	    System.out.println("Studente inserito: " + studentEntity);
+	    assertNotNull(studentEntity.getId()); 
 	    
-	    StudentEntity studentEntity3 = new StudentEntity();
-	    studentEntity3.setName("Manuel3");
-	    studentEntity3.setSurname("Castro3");
-	    studentEntity3.setJobTitle("Waiter3");
-	    studentEntity3.setPaymentType("Confirmed3");
-	    studentEntity3.setSex('M');
-	    
-	    studentEntity = studentDao.createStudent(studentEntity);
-	    studentEntity2 = studentDao.createStudent(studentEntity2);
-	    studentEntity3 = studentDao.createStudent(studentEntity3);
-	    System.out.println(studentEntity);
-	    System.out.println(studentEntity2);
-	    System.out.println(studentEntity3);
-	    
-	    Assert.assertEquals(studentEntity.getId(), studentEntity.getId());
-	    Assert.assertEquals(studentEntity2.getId(), studentEntity2.getId());
-	    Assert.assertEquals(studentEntity3.getId(), studentEntity3.getId());
+	    StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+	    System.out.println("Studente nel db: " + studentEntityDb);
+	    assertNotNull(studentEntityDb);
+	    assertEquals(studentEntityDb.getName(), studentEntity.getName());
+	    assertEquals(studentEntityDb.getSurname(), studentEntity.getSurname());
+	    assertEquals(studentEntityDb.getJobTitle(), studentEntity.getJobTitle());
+	    assertEquals(studentEntityDb.getPaymentType(), studentEntity.getPaymentType());
+	    assertEquals(studentEntityDb.getSex(), studentEntity.getSex());
 	}
 	
 	@Test
-	public void searchStudentById() {
-	    StudentEntity studentEntity = studentDao.get(1);
+	public void test_get() {
+		final Integer studentId = 6;
+	    StudentEntity studentEntity = studentDao.get(studentId);
 	    System.out.println(studentEntity);
-	    Assert.assertEquals(studentEntity.getName(), "Manuel");
-	    StudentEntity studentEntity2 = studentDao.get(2);
-	    System.out.println(studentEntity2);
-	    Assert.assertEquals(studentEntity2.getName(), "Manuel2");
-	    StudentEntity studentEntity3 = studentDao.get(3);
-	    System.out.println(studentEntity3);
-	    Assert.assertEquals(studentEntity3.getName(), "Manuel3");
-	    
+	    assertNotNull(studentEntity);
+	    assertEquals(studentEntity.getName(), "Aida");
+	    assertEquals(studentEntity.getSurname(), "Xhaxho");
+	    assertEquals(studentEntity.getJobTitle(), "Beauty Consultant");
+	    assertEquals(studentEntity.getPaymentType(), "Not confirmed");
+	    assertEquals(studentEntity.getSex(), Character.valueOf('F'));
 	}
 	
 	@Test
-	public void updateStudentFromDatabase() {
-	    StudentEntity studentEntity = studentDao.get(1);
+	public void test_get_withAddress() {
+		final Integer studentId = 3;
+	    StudentEntity studentEntity = studentDao.get(studentId);
 	    System.out.println(studentEntity);
+	    assertNotNull(studentEntity);
+	    assertEquals(studentEntity.getName(), "Aida");
+	    assertEquals(studentEntity.getSurname(), "Xhaxho");
+	    assertEquals(studentEntity.getJobTitle(), "Beauty Consultant");
+	    assertEquals(studentEntity.getPaymentType(), "Not confirmed");
+	    assertEquals(studentEntity.getSex(), Character.valueOf('F'));
+	}
+	
+	@Test
+	public void test_get_notPresent() {
+		final Integer studentId = -1;
+	    StudentEntity studentEntity = studentDao.get(studentId);
+	    System.out.println(studentEntity);
+	    assertNull(studentEntity);
+	}
+	// adattala come gli altri studentisd 6
+	// get student 6, verifico che no sia null
+	// cambia tuttu ic campi 
+	// salva
+	// get dal db 
+	// vrifica che i campi sono quelli cambiati, doppo aver assertato che non sia null
+	@Test
+	public void test_update() {
+	    StudentEntity studentEntity = studentDao.get(1016);
+	    System.out.println("Prima dell'update " + studentEntity);
 	    studentEntity.setName("Sandro");
 	    studentEntity.setSurname("Gargano");
 	    studentEntity.setJobTitle("Waiter");
@@ -70,17 +89,43 @@ public class StudentDaoImplTest {
 	    studentEntity.setSex('M');
 	    
 	    studentEntity = studentDao.update(studentEntity);
-	    System.out.println(studentEntity);
-	    Assert.assertEquals(studentEntity.getSurname(), "Gargano");
+	    System.out.println("Dopo l'update" + studentEntity);
+	    assertEquals(studentEntity.getSurname(), "Gargano");
 	}
 	
 	@Test
-	public void deleteStudentById() {
-	    boolean deleting = studentDao.delete(1);
-	    StudentEntity studentEntity = studentDao.get(1);
-	    System.out.println("Dopo l'eliminazione" + studentEntity);
-	    Assert.assertTrue(deleting);
-	    Assert.assertNull(studentEntity);
+	public void test_delete() {
+		final Integer studentId = 6;
+		
+		StudentEntity studentEntity = studentDao.get(studentId);
+		assertNotNull(studentEntity);
+		
+	    boolean deleting = studentDao.delete(studentId);
+	    studentEntity = studentDao.get(studentId);
+	    System.out.println("Dopo l'eliminazione " + studentEntity);
+	    assertTrue(deleting);
+	    assertNull(studentEntity);    
+	}
+	
+	@Test
+	public void test_delete_notPresent() {
+		final Integer studentId = -1;
+	    boolean deleting = studentDao.delete(studentId);
+	    assertFalse(deleting);   
+	}
+	
+	// how jps-hibernate resolve 1:1 relationship in case of delete
+	@Test
+	public void test_delete_WithAddress() {
+		final Integer studentId = 3;
+		
+		StudentEntity studentEntity = studentDao.get(studentId);
+		assertNotNull(studentEntity);
+		
+	    boolean deleting = studentDao.delete(studentId);
+	    System.out.println("Dopo l'eliminazione " + studentEntity);
+	    assertTrue(deleting);
+	    assertNull(studentEntity);
 	    
 	}
 }

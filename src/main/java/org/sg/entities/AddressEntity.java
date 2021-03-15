@@ -119,4 +119,10 @@ public class AddressEntity {
 		result = result + ((provinceCode == null) ? 0 : provinceCode.hashCode());
 		return result;
 	}
+	
+	@Override
+	public String toString() {
+		return "Address  [id: " + id + ", street: " + street + ", buildingNumber: " + buildingNumber + ", postalCode: " + postalCode
+				+ ", city: " + city + ", provinceCode: " + provinceCode + "]";
+	}
 }

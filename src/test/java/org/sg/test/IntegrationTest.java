@@ -18,7 +18,7 @@ public class IntegrationTest {
 	    studentEntity.setPaymentType("Confirmed");
 	    studentEntity.setSex('M');
 	    
-	    studentEntity = crud.createStudent(studentEntity);
+	    studentEntity = crud.insert(studentEntity);
 	    Assert.assertEquals(studentEntity.getId(), studentEntity.getId());
 	    
 	    studentEntity = crud.get(1001);

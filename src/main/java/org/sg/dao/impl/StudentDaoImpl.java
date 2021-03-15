@@ -6,7 +6,7 @@ import org.sg.entities.StudentEntity;
 
 public class StudentDaoImpl extends GenericDao implements StudentDao {
 
-	public StudentEntity createStudent(StudentEntity studentEntity) {
+	public StudentEntity insert(StudentEntity studentEntity) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(studentEntity);
 		entityManager.getTransaction().commit();
@@ -27,13 +27,9 @@ public class StudentDaoImpl extends GenericDao implements StudentDao {
 
 	public boolean delete(Integer id) {
 		entityManager.getTransaction().begin();
-		if (id == 0) {
-			return false;
-		} else {
-			StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-			entityManager.remove(studentEntity);
-			entityManager.getTransaction().commit();
-			return true;
-		}
+		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
+		entityManager.remove(studentEntity);
+		entityManager.getTransaction().commit();
+		return true;
 	}
 }

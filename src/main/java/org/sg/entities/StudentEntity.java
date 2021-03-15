@@ -35,9 +35,9 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-//	@OneToOne
-//    @PrimaryKeyJoinColumn
-//    private AddressEntity addressEntity;
+	@OneToOne
+    @PrimaryKeyJoinColumn
+    private AddressEntity addressEntity;
 //	
 //	@OneToMany
 //	private List<ExamEntity> exams;
@@ -154,6 +154,6 @@ public class StudentEntity {
 	@Override
 	public String toString() {
 		return "Student  [id: " + id + ", name: " + name + ", surname: " + surname + ", job title: " + jobTitle
-				+ ", paymentType: " + paymentType + ", sex: " + sex + "]";
+				+ ", paymentType: " + paymentType + ", sex: " + sex + ", address: " + addressEntity + "]";
 	}
 }
