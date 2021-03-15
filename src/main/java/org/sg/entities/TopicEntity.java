@@ -13,7 +13,7 @@ public class TopicEntity {
 	
 	@Id
     @Column(name = "ID")
-	private Integer id;
+	private int id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "DESCRIPTION")
@@ -23,10 +23,10 @@ public class TopicEntity {
 	@JoinColumn(name = "ID", insertable = false, updatable = false)
 	private CourseEntity courseEntity;
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

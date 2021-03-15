@@ -1,44 +1,38 @@
 package org.sg.dao.impl;
 
-import javax.persistence.EntityManager;
-
-import org.sg.dao.interfaces.StudentDao;
+import org.sg.dao.GenericDao;
+import org.sg.dao.StudentDao;
 import org.sg.entities.StudentEntity;
-import org.sg.utils.EntityManagerUtil;
 
-public class StudentDaoImpl implements StudentDao {
+public class StudentDaoImpl extends GenericDao implements StudentDao {
 
 	public StudentEntity createStudent(StudentEntity studentEntity) {
-		EntityManager em = EntityManagerUtil.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(studentEntity);
-		em.getTransaction().commit();
+		entityManager.getTransaction().begin();
+		entityManager.persist(studentEntity);
+		entityManager.getTransaction().commit();
 		return studentEntity;
 	}
 
-	public StudentEntity get(Integer id) {
-		EntityManager em = EntityManagerUtil.getEntityManager();
-		StudentEntity studentEntity = em.find(StudentEntity.class, id);
+	public StudentEntity get(int id) {
+		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
 		return studentEntity;
 	}
 
 	public StudentEntity update(StudentEntity studentEntity) {
-		EntityManager em = EntityManagerUtil.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(studentEntity);
-		em.getTransaction().commit();
+		entityManager.getTransaction().begin();
+		entityManager.persist(studentEntity);
+		entityManager.getTransaction().commit();
 		return studentEntity;
 	}
 
-	public boolean delete(Integer id) {
-		EntityManager em = EntityManagerUtil.getEntityManager();
-		em.getTransaction().begin();
-		if (id.equals(null)) {
+	public boolean delete(int id) {
+		entityManager.getTransaction().begin();
+		if (id == 0) {
 			return false;
 		} else {
-			StudentEntity studentEntity = em.find(StudentEntity.class, id);
-			em.remove(studentEntity);
-			em.getTransaction().commit();
+			StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
+			entityManager.persist(studentEntity);
+			entityManager.getTransaction().commit();
 			return true;
 		}
 	}

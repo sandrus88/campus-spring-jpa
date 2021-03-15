@@ -1,10 +1,10 @@
-package org.sg.dao.interfaces;
+package org.sg.dao;
 
 import org.sg.entities.StudentEntity;
 
 public interface StudentDao {
 	StudentEntity createStudent(StudentEntity studentEntity);
-	StudentEntity get(Integer id);
+	StudentEntity get(int id);
 	StudentEntity update(StudentEntity studentEntity);
-	boolean delete(Integer id);
+	boolean delete(int id);
 }

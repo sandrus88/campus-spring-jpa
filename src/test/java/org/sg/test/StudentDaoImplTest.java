@@ -20,14 +20,14 @@ public class StudentDaoImplTest {
 	    
 	    studentEntity = crud.createStudent(studentEntity);
 	    System.out.println(studentEntity);
-	    Assert.assertEquals(studentEntity.getId(), Integer.valueOf(1));
+	    Assert.assertEquals(studentEntity.getId(), 1);
 	}
 	
 	@Test
 	public void searchStudentById() {
 	    StudentDaoImpl crud = new StudentDaoImpl();
 
-	    StudentEntity studentEntity = crud.get(Integer.valueOf(1));
+	    StudentEntity studentEntity = crud.get(1);
 	    System.out.println(studentEntity);
 	    Assert.assertEquals(studentEntity.getName(), "Manuel");
 	}
@@ -36,7 +36,7 @@ public class StudentDaoImplTest {
 	public void updateStudentFromDatabase() {
 	    StudentDaoImpl crud = new StudentDaoImpl();
 
-	    StudentEntity studentEntity = crud.get(Integer.valueOf(1));
+	    StudentEntity studentEntity = crud.get(1);
 	    System.out.println(studentEntity);
 	    studentEntity.setName("Sandro");
 	    studentEntity.setSurname("Gargano");
@@ -53,7 +53,7 @@ public class StudentDaoImplTest {
 	public void deleteStudentById() {
 	    StudentDaoImpl crud = new StudentDaoImpl();
 	    
-	    boolean deleting = crud.delete(Integer.valueOf(1));
+	    boolean deleting = crud.delete(1);
 	    Assert.assertTrue(deleting);
 	}
 }

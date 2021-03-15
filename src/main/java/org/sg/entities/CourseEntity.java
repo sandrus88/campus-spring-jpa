@@ -15,7 +15,7 @@ public class CourseEntity {
 	
 	@Id
     @Column(name = "ID")
-	private Integer id;
+	private int id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "DESCRIPTION")
@@ -30,10 +30,10 @@ public class CourseEntity {
 	@ManyToMany
 	private List<StudentEntity> students;
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

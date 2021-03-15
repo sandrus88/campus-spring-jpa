@@ -22,7 +22,7 @@ public class StudentEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-	private Integer id;
+	private int id;
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "SURNAME")
@@ -49,11 +49,11 @@ public class StudentEntity {
 			)
     private List<CourseEntity> courses;
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
