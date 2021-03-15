@@ -7,11 +7,11 @@ import org.sg.entities.StudentEntity;
 
 public class IntegrationTest {
 	public StudentDaoImpl crud = new StudentDaoImpl();
-	public StudentEntity studentEntity = new StudentEntity();
 	public boolean isRemoved;
 	
 	@Test
 	public void test_CRUD() {
+		StudentEntity studentEntity = new StudentEntity();
 		studentEntity.setName("Manuel");
 	    studentEntity.setSurname("Castro");
 	    studentEntity.setJobTitle("Waiter");

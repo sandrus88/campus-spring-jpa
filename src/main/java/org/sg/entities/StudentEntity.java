@@ -18,11 +18,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "STUDENT")
 public class StudentEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqStudent")
-	@SequenceGenerator(name="seqStudent", sequenceName = "SEQ_STUDENT", allocationSize = 1)
-    @Column(name = "ID")
+	@SequenceGenerator(name = "seqStudent", sequenceName = "SEQ_STUDENT", allocationSize = 1)
+	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "NAME")
 	private String name;
@@ -33,8 +33,8 @@ public class StudentEntity {
 	@Column(name = "PAYMENT_TYPE")
 	private String paymentType;
 	@Column(name = "SEX")
-	private char sex;
-	
+	private Character sex;
+
 //	@OneToOne
 //    @PrimaryKeyJoinColumn
 //    private AddressEntity addressEntity;
@@ -90,11 +90,11 @@ public class StudentEntity {
 		this.paymentType = paymentType;
 	}
 
-	public char getSex() {
+	public Character getSex() {
 		return sex;
 	}
 
-	public void setSex(char sex) {
+	public void setSex(Character sex) {
 		this.sex = sex;
 	}
 
@@ -109,11 +109,51 @@ public class StudentEntity {
 //	public List<CourseEntity> getCourses() {
 //		return courses;
 //	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+		if (!(o instanceof StudentEntity)) {
+			return false;
+		}
+		StudentEntity other = (StudentEntity) o;
+		if (id != other.id) {
+			return false;
+		}
+		if (name != null && !name.equals(other.name)) {
+			return false;
+		}
+		if (surname != null && !surname.equals(other.surname)) {
+			return false;
+		}
+		if (jobTitle != null && !jobTitle.equals(other.jobTitle)) {
+			return false;
+		}
+		if (paymentType != null && !paymentType.equals(other.paymentType)) {
+			return false;
+		}
+		if (sex != null && !sex.equals(other.sex)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = result + ((name == null) ? 0 : name.hashCode());
+		result = result + ((surname == null) ? 0 : surname.hashCode());
+		result = result + ((jobTitle == null) ? 0 : jobTitle.hashCode());
+		result = result + ((paymentType == null) ? 0 : paymentType.hashCode());
+		result = result + ((sex == null) ? 0 : sex.hashCode());
+		return result;
+	}
+
 	@Override
 	public String toString() {
-		return "Student  [id: " + id + ", name: " + name + ", surname: " + surname
-				+ ", job title: " + jobTitle + ", paymentType: " + paymentType + ", sex: " + sex
-				+ "]";
+		return "Student  [id: " + id + ", name: " + name + ", surname: " + surname + ", job title: " + jobTitle
+				+ ", paymentType: " + paymentType + ", sex: " + sex + "]";
 	}
 }

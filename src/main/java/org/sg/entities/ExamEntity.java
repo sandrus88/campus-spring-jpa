@@ -20,8 +20,6 @@ public class ExamEntity {
 	private Date examDate;
 	@Column(name = "MARK")
 	private Integer mark;
-	@Column(name = "POSTAL_CODE")
-	private Integer postalCode;
 	
 	@ManyToOne
     @JoinColumn(name = "STUDENT_ID")
@@ -55,19 +53,40 @@ public class ExamEntity {
 		this.mark = mark;
 	}
 
-	public Integer getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(Integer postalCode) {
-		this.postalCode = postalCode;
-	}
-
 	public StudentEntity getStudentEntity() {
 		return studentEntity;
 	}
 
 	public CourseEntity getCourseEntity() {
 		return courseEntity;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+		if (!(o instanceof ExamEntity)) {
+			return false;
+		}
+		ExamEntity other = (ExamEntity) o;
+		if (id != other.id) {
+			return false;
+		}
+		if (examDate != null && !examDate.equals(other.examDate)) {
+			return false;
+		}
+		if (mark != null && !mark.equals(other.mark)) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = result + ((examDate == null) ? 0 : examDate.hashCode());
+		result = result + ((mark == null) ? 0 : mark.hashCode());
+		return result;
 	}
 }

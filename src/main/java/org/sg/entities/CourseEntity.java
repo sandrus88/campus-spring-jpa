@@ -64,6 +64,35 @@ public class CourseEntity {
 //	}
 	
 	@Override
+	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+		if (!(o instanceof CourseEntity)) {
+			return false;
+		}
+		CourseEntity other = (CourseEntity) o;
+		if (id != other.id) {
+			return false;
+		}
+		if (name != null && !name.equals(other.name)) {
+			return false;
+		}
+		if (description != null && !description.equals(other.description)) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = result + ((name == null) ? 0 : name.hashCode());
+		result = result + ((description == null) ? 0 : description.hashCode());
+		return result;
+	}
+	
+	@Override
 	public String toString() {
 		return "Course  [id: " + id + ", name: " + name + ", description: " + description + "]";
 	}
