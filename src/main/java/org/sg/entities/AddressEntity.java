@@ -2,6 +2,7 @@ package org.sg.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -25,14 +26,16 @@ public class AddressEntity {
 	@Column(name = "PROVINCE_CODE")
 	private String provinceCode;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID")
-    @MapsId
     private StudentEntity studentEntity;
-
+	
 	public Integer getId() {
-		id = studentEntity.getId();
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getStreet() {
@@ -79,6 +82,10 @@ public class AddressEntity {
 		return studentEntity;
 	}
 	
+	public void setStudentEntity(StudentEntity studentEntity) {
+		this.studentEntity = studentEntity;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o == null) {

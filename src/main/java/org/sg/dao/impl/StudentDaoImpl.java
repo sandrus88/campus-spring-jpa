@@ -26,10 +26,13 @@ public class StudentDaoImpl extends GenericDao implements StudentDao {
 	}
 
 	public boolean delete(Integer id) {
-		entityManager.getTransaction().begin();
 		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-		entityManager.remove(studentEntity);
-		entityManager.getTransaction().commit();
-		return true;
+		if (studentEntity != null) {
+			entityManager.getTransaction().begin();
+			entityManager.remove(studentEntity);
+			entityManager.getTransaction().commit();
+			return true;
+		}
+		return false;
 	}
 }

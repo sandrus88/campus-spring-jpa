@@ -2,8 +2,10 @@ package org.sg.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,8 +37,7 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-	@OneToOne
-    @PrimaryKeyJoinColumn
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "studentEntity", cascade = CascadeType.ALL)
     private AddressEntity addressEntity;
 //	
 //	@OneToMany
@@ -101,10 +102,14 @@ public class StudentEntity {
 //	public List<ExamEntity> getExams() {
 //		return exams;
 //	}
-//
-//	public AddressEntity getAddressEntity() {
-//		return addressEntity;
-//	}
+	
+	public AddressEntity getAddressEntity() {
+		return addressEntity;
+	}
+	
+	public void setAddressEntity(AddressEntity addressEntity) {
+		this.addressEntity = addressEntity;
+	}
 //
 //	public List<CourseEntity> getCourses() {
 //		return courses;

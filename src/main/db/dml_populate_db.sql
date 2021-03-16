@@ -4,6 +4,9 @@ insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (02
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (03, 'Ermal', 'Aliraj', 'Web Developer', 'Confirmed', 'M');
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (04, 'Armela', 'Xhaxho', 'Shop Assistant', 'To be confirmed', 'F');
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (05, 'Aida', 'Xhaxho', 'Beauty Consultant', 'Not confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (06, 'Andrea', 'Bonfanti', 'Engineer', 'To be confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (07, 'Francesca', 'Morbillo', 'Lawyer', 'Confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (08, 'Penelope', 'Fatima', 'Project Manager', 'Not confirmed', 'F');
 
 insert into course (ID, NAME, DESCRIPTION) values (201, 'Java', 'Basic concepts and Java fundamentals');
 insert into course (ID, NAME, DESCRIPTION) values (202, 'Java advanced programming', '');
@@ -62,5 +65,3 @@ insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 014'
 insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (01, '', '', 50122, 'Firenze', 'FI');
 insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (02, 'Via del ponte di mezzo', '42', 50127, 'Firenze', 'FI');
 insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (03, 'Rue du Belgique', '63/A', 60198, 'Bruxelles', '');
-insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (04, 'Via Ferdinando Paoletti', '7', 50134, 'Firenze', 'FI');
-insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (05, 'Rue du Belgique', '63/A', 60198, 'Bruxelles', '');
