@@ -12,6 +12,13 @@ public class AddressDaoImpl extends GenericDao implements AddressDao{
 		entityManager.getTransaction().commit();
 		return addressEntity;
 	}
+	
+	public AddressEntity update(AddressEntity addressEntity) {
+		entityManager.getTransaction().begin();
+		entityManager.persist(entityManager.merge(addressEntity));
+		entityManager.getTransaction().commit();
+		return addressEntity;
+	}
 
 	public void delete(AddressEntity addressEntity) {
 		entityManager.getTransaction().begin();

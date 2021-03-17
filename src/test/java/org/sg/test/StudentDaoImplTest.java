@@ -78,6 +78,30 @@ public class StudentDaoImplTest {
 	}
 	
 	@Test
+	public void test_add_address_for_existingStudent() {
+		final Integer studentId = 4;
+		 StudentEntity studentEntity = studentDao.get(studentId);
+		 System.out.println("Studente senza indirizzo: " + studentEntity);
+		 assertNotNull(studentEntity);
+	    
+	    AddressEntity addressEntity = new AddressEntity();
+	    addressEntity.setId(studentEntity.getId());
+	    addressEntity.setStreet("Via del ponte di mezzo");
+	    addressEntity.setBuildingNumber("42");
+	    addressEntity.setPostalCode(50127);
+	    addressEntity.setCity("Firenze");
+	    addressEntity.setProvinceCode("FI");
+	    studentEntity.setAddressEntity(addressEntity);
+	    addressEntity = addressDao.insert(addressEntity);
+	    System.out.println("Indirizzo inserito allo studente: " + addressEntity);
+	    
+	    StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+	    System.out.println("Studente nel db con indirizzo aggiunto: " + studentEntityDb);
+	    assertNotNull(studentEntityDb);
+	    assertEquals(studentEntityDb.getAddressEntity(), studentEntity.getAddressEntity());
+	}
+	
+	@Test
 	public void test_get() {
 		final Integer studentId = 6;
 	    StudentEntity studentEntity = studentDao.get(studentId);
@@ -174,6 +198,30 @@ public class StudentDaoImplTest {
 	    assertEquals(studentEntityDb.getJobTitle(), studentEntity.getJobTitle());
 	    assertEquals(studentEntityDb.getPaymentType(), studentEntity.getPaymentType());
 	    assertEquals(studentEntityDb.getSex(), studentEntity.getSex());
+	    assertEquals(studentEntityDb.getAddressEntity(), studentEntity.getAddressEntity());
+	}
+	
+	@Test
+	public void test_update_address_for_existingStudent() {
+		final Integer studentId = 4;
+	    StudentEntity studentEntity = studentDao.get(studentId);
+	    AddressEntity addressEntity = studentEntity.getAddressEntity();
+	    System.out.println("Indirizzo prima dell'update " + addressEntity);
+	    assertNotNull(studentEntity);
+	    assertNotNull(addressEntity);
+	    
+	    addressEntity.setStreet("Via dello Statuto");
+	    addressEntity.setBuildingNumber("15/F");
+	    addressEntity.setPostalCode(50134);
+	    addressEntity.setCity("Firenze");
+	    addressEntity.setProvinceCode("FI");
+	    
+	    addressEntity = addressDao.update(addressEntity);
+	    System.out.println("Indirizzo dopo l'update" + addressEntity);
+	    
+	    StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+	    System.out.println("Studente nel db con l'indirizzo modificato: " + studentEntityDb);
+	    assertNotNull(studentEntityDb);
 	    assertEquals(studentEntityDb.getAddressEntity(), studentEntity.getAddressEntity());
 	}
 	
