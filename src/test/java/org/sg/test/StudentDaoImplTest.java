@@ -7,7 +7,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.sg.dao.AddressDao;
 import org.sg.dao.StudentDao;
+import org.sg.dao.impl.AddressDaoImpl;
 import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.AddressEntity;
 import org.sg.entities.StudentEntity;
@@ -15,6 +17,7 @@ import org.sg.entities.StudentEntity;
 public class StudentDaoImplTest {
 	
 	StudentDao studentDao = new StudentDaoImpl();
+	AddressDao addressDao = new AddressDaoImpl();
 	
 	@Test
 	public void test_insert() {
@@ -60,9 +63,8 @@ public class StudentDaoImplTest {
 	    addressEntity.setCity("Firenze");
 	    addressEntity.setProvinceCode("FI");
 	    studentEntity.setAddressEntity(addressEntity);
+	    addressEntity = addressDao.insert(addressEntity);
 	    System.out.println("Studente inserito con indirizzo: " + studentEntity);
-	    assertNotNull(studentEntity.getId()); 
-	    assertNotNull(addressEntity.getId());
 	    
 	    StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 	    System.out.println("Studente nel db: " + studentEntityDb);
@@ -143,29 +145,26 @@ public class StudentDaoImplTest {
 	
 	@Test
 	public void test_update_withAddress() {
-		final Integer studentId = 6;
+		final Integer studentId = 3;
 	    StudentEntity studentEntity = studentDao.get(studentId);
 	    AddressEntity addressEntity = studentEntity.getAddressEntity();
 	    System.out.println("Prima dell'update " + studentEntity);
 	    assertNotNull(studentEntity);
 	    assertNotNull(addressEntity);
 	    
-	    studentEntity.setName("Mirella");
-	    studentEntity.setSurname("Gangitano");
-	    studentEntity.setJobTitle("Teacher");
-	    studentEntity.setPaymentType("Not Confirmed");
+	    studentEntity.setName("Stella");
+	    studentEntity.setSurname("Martini");
+	    studentEntity.setJobTitle("Waitress");
+	    studentEntity.setPaymentType("To be confirmed");
 	    studentEntity.setSex('F');
 	    addressEntity.setStreet("Via Panormus");
 	    addressEntity.setBuildingNumber("15/F");
 	    addressEntity.setPostalCode(90100);
 	    addressEntity.setCity("Palermo");
 	    addressEntity.setProvinceCode("PA");
-	    studentEntity.setAddressEntity(addressEntity);
 	    
 	    studentEntity = studentDao.update(studentEntity);
 	    System.out.println("Dopo l'update" + studentEntity);
-	    assertNotNull(studentEntity);
-	    assertNotNull(addressEntity);
 	    
 	    StudentEntity studentEntityDb = studentDao.get(studentId);
 	    System.out.println("Studente nel db: " + studentEntityDb);
@@ -199,17 +198,20 @@ public class StudentDaoImplTest {
 	    assertFalse(deleting);   
 	}
 	
-	// how jps-hibernate resolve 1:1 relationship in case of delete
 	@Test
 	public void test_delete_WithAddress() {
 		final Integer studentId = 3;
 		
 		StudentEntity studentEntity = studentDao.get(studentId);
+		System.out.println("Prima dell'eliminazione " + studentEntity);
 		assertNotNull(studentEntity);
 		
+		addressDao.delete(studentEntity.getAddressEntity());
 	    boolean deleting = studentDao.delete(studentId);
-	    System.out.println("Dopo l'eliminazione " + studentEntity);
 	    assertTrue(deleting);
+	    
+	    studentEntity = studentDao.get(studentId);
+	    System.out.println("Dopo l'eliminazione " + studentEntity);
 	    assertNull(studentEntity);    
 	}
 }

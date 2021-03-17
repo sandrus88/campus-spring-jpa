@@ -37,7 +37,7 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "studentEntity", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "studentEntity")
     private AddressEntity addressEntity;
 //	
 //	@OneToMany

@@ -12,6 +12,7 @@
 			<property name="javax.persistence.jdbc.password" value="user_course" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
+			<!-- <property name="hibernate.show_sql" value="true" /> -->
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
 		</properties>
 	</persistence-unit>

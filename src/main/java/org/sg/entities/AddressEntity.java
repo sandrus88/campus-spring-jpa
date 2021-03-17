@@ -1,5 +1,6 @@
 package org.sg.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 public class AddressEntity {
 
 	@Id
+	@Column(name = "STUDENT_ID")
 	private Integer id;
 	@Column(name = "STREET")
 	private String street;
