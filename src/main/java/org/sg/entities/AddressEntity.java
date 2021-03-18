@@ -15,7 +15,6 @@ import javax.persistence.Table;
 public class AddressEntity {
 
 	@Id
-	@Column(name = "STUDENT_ID")
 	private Integer id;
 	@Column(name = "STREET")
 	private String street;
@@ -30,8 +29,9 @@ public class AddressEntity {
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID")
+	@MapsId
     private StudentEntity studentEntity;
-	
+
 	public Integer getId() {
 		return id;
 	}

@@ -1,5 +1,5 @@
 -- creare uno script dove sono elencati i drop table e create table
- 
+
 create table course (    
     ID number, 
     NAME varchar2(100 byte) not null, 

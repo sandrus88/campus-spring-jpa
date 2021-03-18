@@ -12,8 +12,13 @@
 			<property name="javax.persistence.jdbc.password" value="user_course" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
-			<!-- <property name="hibernate.show_sql" value="true" /> -->
-			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<property name="hibernate.show_sql" value="true" />
+			<!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+			<property name="java.version" value="1.6" />
+			<property name="org.springframework-version" value="3.1.2.RELEASE" />
+			<property name="org.aspectj-version" value="1.7.0" />
+			<property name="org.slf4j-version" value="1.5.10" />
+			<property name="org.hibernate-version" value="3.5.6-Final" />
 		</properties>
 	</persistence-unit>
 </persistence>

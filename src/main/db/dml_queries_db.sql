@@ -1,10 +1,11 @@
 --seleziona tutte le colonne della tabella 
 select * from topic;
 select * from student;
+select * from address;
 select * from course;
 select * from subscriptions;
 select * from exams;
-
+select SEQ_STUDENT.nextval from dual;
 
 -- tutti i topics del corso 201
 select * from topic t where course_id = 201;
