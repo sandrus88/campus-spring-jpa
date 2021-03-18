@@ -212,11 +212,11 @@ public class StudentDaoImplTest {
 		assertNotNull(addressEntity);
 		logger.info("Indirizzo prima dell'update " + addressEntity);
 
-		addressEntity.setStreet("Via dello Statuto");
-		addressEntity.setNr("15/F");
-		addressEntity.setPostalCode(50134);
-		addressEntity.setCity("Firenze");
-		addressEntity.setProvinceCode("FI");
+		addressEntity.setStreet("UpdatedStreet");
+		addressEntity.setNr("UpdatedNr");
+		addressEntity.setPostalCode(0000);
+		addressEntity.setCity("UpdatedCity");
+		addressEntity.setProvinceCode("UC");
 
 		studentEntity = studentDao.update(studentEntity);
 		logger.info("Indirizzo dopo l'update" + addressEntity);
@@ -259,7 +259,7 @@ public class StudentDaoImplTest {
 		assertNotNull(studentEntity);
 		assertNotNull(studentEntity.getAddressEntity());
 		logger.info("Prima dell'eliminazione " + studentEntity);
-		
+	
 		boolean deleting = studentDao.delete(studentId);
 		assertTrue(deleting);
 
@@ -274,15 +274,15 @@ public class StudentDaoImplTest {
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
 		assertNotNull(studentEntity.getAddressEntity());
-		
-		AddressEntity addressEntity = studentEntity.getAddressEntity();
-		logger.info("Indirizzo prima dell'eliminazione " + addressEntity);
+		logger.info("Indirizzo prima dell'eliminazione " + studentEntity.getAddressEntity());
 		
 //		addressDao.delete(addressEntity);
-		studentEntity.setAddressEntity(null);
+		studentEntity.setAddressEntity(new AddressEntity());
 		studentDao.update(studentEntity);
-		AddressEntity addressEntityDb = studentEntity.getAddressEntity();
-		assertNull(addressEntityDb);
-		logger.info("Indirizzo dopo l'eliminazione " + addressEntityDb);
+		
+		StudentEntity db = studentDao.get(studentEntity.getId());
+		assertNotNull(db);
+		assertNull(db.getAddressEntity());
+		logger.info("Indirizzo dopo l'eliminazione " + db.getAddressEntity());
 	}
 }

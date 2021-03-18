@@ -1,3 +1,4 @@
+
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (01, 'Sandro', 'Gargano', 'Waiter', 'Confirmed', 'M');
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (02, 'Mario', 'Rossi', '', 'Confirmed', 'M');
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (03, 'Ermal', 'Aliraj', 'Web Developer', 'Confirmed', 'M');
@@ -28,7 +29,7 @@ insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) v
 insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (07, 'Street7', 'nr7', 7, 'city7', 'p7');
 insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (08, 'Street8', 'nr8', 8, 'city8', 'p8');
 insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (09, 'Street9', 'nr9', 9, 'city9', 'p9');
-insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (10, 'Street10', 'nr10', 10, 'city10', 'p10');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (10, 'Street10', 'nr10', 10, 'city10', '10');
 
 insert into course (ID, NAME, DESCRIPTION) values (201, 'Java', 'Basic concepts and Java fundamentals');
 insert into course (ID, NAME, DESCRIPTION) values (202, 'Java advanced programming', '');
