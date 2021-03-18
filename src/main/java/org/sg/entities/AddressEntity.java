@@ -18,8 +18,8 @@ public class AddressEntity {
 	private Integer id;
 	@Column(name = "STREET")
 	private String street;
-	@Column(name = "BUILDING_NUMBER")
-	private String buildingNumber;
+	@Column(name = "NR")
+	private String nr;
 	@Column(name = "POSTAL_CODE")
 	private Integer postalCode;
 	@Column(name = "CITY")
@@ -48,12 +48,12 @@ public class AddressEntity {
 		this.street = street;
 	}
 
-	public String getBuildingNumber() {
-		return buildingNumber;
+	public String getNr() {
+		return nr;
 	}
 
-	public void setBuildingNumber(String buildingNumber) {
-		this.buildingNumber = buildingNumber;
+	public void setNr(String nr) {
+		this.nr = nr;
 	}
 
 	public Integer getPostalCode() {
@@ -103,7 +103,7 @@ public class AddressEntity {
 		if (street != null && !street.equals(other.street)) {
 			return false;
 		}
-		if (buildingNumber != null && !buildingNumber.equals(other.buildingNumber)) {
+		if (nr != null && !nr.equals(other.nr)) {
 			return false;
 		}
 		if (postalCode != null && !postalCode.equals(other.postalCode)) {
@@ -122,7 +122,7 @@ public class AddressEntity {
 	public int hashCode() {
 		int result = id;
 		result = result + ((street == null) ? 0 : street.hashCode());
-		result = result + ((buildingNumber == null) ? 0 : buildingNumber.hashCode());
+		result = result + ((nr == null) ? 0 : nr.hashCode());
 		result = result + ((postalCode == null) ? 0 : postalCode.hashCode());
 		result = result + ((city == null) ? 0 : city.hashCode());
 		result = result + ((provinceCode == null) ? 0 : provinceCode.hashCode());
@@ -131,7 +131,7 @@ public class AddressEntity {
 	
 	@Override
 	public String toString() {
-		return "Address  [id: " + id + ", street: " + street + ", buildingNumber: " + buildingNumber + ", postalCode: " + postalCode
+		return "Address  [id: " + id + ", street: " + street + ", buildingNumber: " + nr + ", postalCode: " + postalCode
 				+ ", city: " + city + ", provinceCode: " + provinceCode + "]";
 	}
 }

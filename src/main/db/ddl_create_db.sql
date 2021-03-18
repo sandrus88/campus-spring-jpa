@@ -53,7 +53,7 @@ create table exams (
 create table address (
     STUDENT_ID number,
     STREET varchar2(100 byte),
-    BUILDING_NUMBER varchar2(100 byte),
+    NR varchar2(100 byte),
     POSTAL_CODE number,
     CITY varchar2(100 byte),
     PROVINCE_CODE varchar2(2 byte),

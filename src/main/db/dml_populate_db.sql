@@ -1,12 +1,34 @@
-
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (01, 'Mario', 'Rossi', '', 'Confirmed', 'M');
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (02, 'Sandro', 'Gargano', 'Waiter', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (01, 'Sandro', 'Gargano', 'Waiter', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (02, 'Mario', 'Rossi', '', 'Confirmed', 'M');
 insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (03, 'Ermal', 'Aliraj', 'Web Developer', 'Confirmed', 'M');
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (04, 'Armela', 'Xhaxho', 'Shop Assistant', 'To be confirmed', 'F');
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (05, 'Aida', 'Xhaxho', 'Beauty Consultant', 'Not confirmed', 'F');
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (06, 'Andrea', 'Bonfanti', 'Engineer', 'To be confirmed', 'M');
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (07, 'Francesca', 'Morbillo', 'Lawyer', 'Confirmed', 'F');
-insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (08, 'Penelope', 'Fatima', 'Project Manager', 'Not confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (04, 'Student4', 'Surname4', 'Job4', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (05, 'Student5', 'Surname5', 'Job5', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (06, 'Student6', 'Surname6', 'Job6', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (07, 'Student7', 'Surname7', 'Job7', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (08, 'Student8', 'Surname8', 'Job8', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (09, 'Student9', 'Surname9', 'Job9', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (10, 'Student10', 'Surname10', 'Job10', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (21, 'Armela', 'Xhaxho', 'Shop Assistant', 'To be confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (22, 'Aida', 'Xhaxho', 'Beauty Consultant', 'Not confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (23, 'Andrea', 'Bonfanti', 'Engineer', 'To be confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (24, 'Francesca', 'Morbillo', 'Lawyer', 'Confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (25, 'Penelope', 'Fatima', 'Project Manager', 'Not confirmed', 'F');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (26, 'Student26', 'Surname26', 'Job26', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (27, 'Student27', 'Surname27', 'Job27', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (28, 'Student28', 'Surname28', 'Job28', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (29, 'Student29', 'Surname29', 'Job29', 'Confirmed', 'M');
+insert into student (ID, NAME, SURNAME, JOB_TITLE, PAYMENT_TYPE, SEX) values (30, 'Student30', 'Surname30', 'Job30', 'Confirmed', 'M');
+
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (01, '', '', 50122, 'Firenze', 'FI');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (02, 'Via del ponte di mezzo', '42', 50127, 'Firenze', 'FI');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (03, 'Rue du Belgique', '63/A', 60198, 'Bruxelles', '');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (04, 'Street4', 'nr4', 4, 'city4', 'p4');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (05, 'Street5', 'nr5', 5, 'city5', 'p5');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (06, 'Street6', 'nr6', 6, 'city6', 'p6');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (07, 'Street7', 'nr7', 7, 'city7', 'p7');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (08, 'Street8', 'nr8', 8, 'city8', 'p8');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (09, 'Street9', 'nr9', 9, 'city9', 'p9');
+insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (10, 'Street10', 'nr10', 10, 'city10', 'p10');
 
 insert into course (ID, NAME, DESCRIPTION) values (201, 'Java', 'Basic concepts and Java fundamentals');
 insert into course (ID, NAME, DESCRIPTION) values (202, 'Java advanced programming', '');
@@ -61,7 +83,3 @@ insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 011'
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 012', TO_DATE('15/11/2020', 'DD/MM/YYYY'), 17, 05, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 013', TO_DATE('03/05/2020', 'DD/MM/YYYY'), 15, 01, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 014', TO_DATE('18/11/2020', 'DD/MM/YYYY'), 14, 01, 205);
-
-insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (01, '', '', 50122, 'Firenze', 'FI');
-insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (02, 'Via del ponte di mezzo', '42', 50127, 'Firenze', 'FI');
-insert into address (STUDENT_ID, STREET, BUILDING_NUMBER, POSTAL_CODE, CITY, PROVINCE_CODE) values (03, 'Rue du Belgique', '63/A', 60198, 'Bruxelles', '');
