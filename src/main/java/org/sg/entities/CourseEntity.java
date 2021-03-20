@@ -2,12 +2,13 @@ package org.sg.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,9 +30,9 @@ public class CourseEntity {
 //	@OneToMany
 //	private List<TopicEntity> topics;
 //	
-//	@OneToMany
-//	private List<ExamEntity> exams;
-//	
+	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ExamEntity> exams;
+	
 //	@ManyToMany
 //	private List<StudentEntity> students;
 	
@@ -56,9 +57,14 @@ public class CourseEntity {
 //	public List<TopicEntity> getTopics() {
 //		return topics;
 //	}
-//	public List<ExamEntity> getExams() {
-//		return exams;
-//	}
+	
+	public void setExams(List<ExamEntity> exams) {
+		this.exams = exams;
+	}
+	
+	public List<ExamEntity> getExams() {
+		return exams;
+	}
 //	public List<StudentEntity> getStudents() {
 //		return students;
 //	}

@@ -84,3 +84,4 @@ insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 011'
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 012', TO_DATE('15/11/2020', 'DD/MM/YYYY'), 17, 05, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 013', TO_DATE('03/05/2020', 'DD/MM/YYYY'), 15, 01, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 014', TO_DATE('18/11/2020', 'DD/MM/YYYY'), 14, 01, 205);
+insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values ('Exm 015', TO_DATE('07/02/2021', 'DD/MM/YYYY'), 13, 02, 203);

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,25 +16,25 @@ public class ExamEntity {
 	
 	@Id
     @Column(name = "ID")
-	private Integer id;
+	private String id;
 	@Column(name = "EXAM_DATE")
 	private Date examDate;
 	@Column(name = "MARK")
 	private Integer mark;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID")
     private StudentEntity studentEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COURSE_ID")
     private CourseEntity courseEntity;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -52,9 +53,17 @@ public class ExamEntity {
 	public void setMark(Integer mark) {
 		this.mark = mark;
 	}
-
+	
+	public void setStudentEntity(StudentEntity studentEntity) {
+		this.studentEntity = studentEntity;
+	}
+	
 	public StudentEntity getStudentEntity() {
 		return studentEntity;
+	}
+
+	public void setCourseEntity(CourseEntity courseEntity) {
+		this.courseEntity = courseEntity;
 	}
 
 	public CourseEntity getCourseEntity() {
@@ -82,11 +91,16 @@ public class ExamEntity {
 		return true;
 	}
 	
+//	@Override
+//	public int hashCode() {
+//		String result = id;
+//		result = result + ((examDate == null) ? 0 : examDate.hashCode());
+//		result = result + ((mark == null) ? 0 : mark.hashCode());
+//		return result;
+//	}
+	
 	@Override
-	public int hashCode() {
-		int result = id;
-		result = result + ((examDate == null) ? 0 : examDate.hashCode());
-		result = result + ((mark == null) ? 0 : mark.hashCode());
-		return result;
+	public String toString() {
+		return "Exam  [id: " + id + ", date of exam: " + examDate + ", mark: " + mark + ", id student: " + studentEntity.getId() + ", id course: " + courseEntity.getId() + "]";
 	}
 }

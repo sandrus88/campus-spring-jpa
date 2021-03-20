@@ -9,11 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -37,11 +34,11 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-	@OneToOne(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true)
     private AddressEntity addressEntity;
-//	
-//	@OneToMany
-//	private List<ExamEntity> exams;
+	
+	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ExamEntity> exams;
 //	
 //	@ManyToMany
 //	@JoIntegerable(
@@ -99,10 +96,14 @@ public class StudentEntity {
 		this.sex = sex;
 	}
 
-//	public List<ExamEntity> getExams() {
-//		return exams;
-//	}
+	public List<ExamEntity> getExams() {
+		return exams;
+	}
 	
+	public void setExams(List<ExamEntity> exams) {
+		this.exams = exams;
+	}
+
 	public AddressEntity getAddressEntity() {
 		return addressEntity;
 	}
