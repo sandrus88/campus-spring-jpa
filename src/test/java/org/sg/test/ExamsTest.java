@@ -2,6 +2,8 @@ package org.sg.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +30,7 @@ public class ExamsTest {
 
 	@Test
 	public void test_get_exams_fromStudent() {
-		final Integer studentId = 1;
+		final Integer studentId = 3;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		logger.info(studentEntity);
 		assertNotNull(studentEntity);
@@ -126,5 +128,60 @@ public class ExamsTest {
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		assertNotNull(studentEntityDb);
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
+	}
+	
+	@Test
+	public void test_update_exam() {
+		final Integer studentId = 2;
+		StudentEntity studentEntity = studentDao.get(studentId);
+		assertNotNull(studentEntity);
+		logger.info(studentEntity);
+		
+		List<ExamEntity> examsList = studentEntity.getExams();
+		logger.info("Esami dello studente: " + examsList);
+		ExamEntity exam = examsList.get(3);
+		
+		exam.setMark(14);
+		
+		studentDao.update(studentEntity);
+		logger.info("Voto dell'esame aggiornato: " + exam.getMark());
+
+		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		assertNotNull(studentEntityDb);
+		assertEquals(studentEntityDb.getExams().get(3).getMark(), studentEntity.getExams().get(3).getMark());
+	}
+	
+	@Test
+	public void test_delete_exam() {
+		final Integer studentId = 3;
+		StudentEntity studentEntity = studentDao.get(studentId);
+		assertNotNull(studentEntity);
+		assertNotNull(studentEntity.getExams());
+		logger.info("Lista degli esami dello studente: " + studentEntity.getExams());
+		
+		studentEntity.getExams().remove(0); 
+		studentDao.update(studentEntity);
+
+		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		assertNotNull(studentEntityDb);
+		assertEquals(studentEntityDb.getExams().get(0).getId(), "Exm 004");
+	}
+	
+	@Test
+	public void test_delete_student_withExams() {
+		final Integer studentId = 4;
+		StudentEntity studentEntity = studentDao.get(studentId);
+		assertNotNull(studentEntity);
+		assertNotNull(studentEntity.getExams());
+		logger.info("Lista degli esami dello studente: " + studentEntity.getExams());
+		
+//		studentEntity.setAddressEntity(null);
+//		studentDao.update(studentEntity);
+		
+		boolean deleting = studentDao.delete(studentId);
+		assertTrue(deleting);
+
+		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		assertNull(studentEntityDb);
 	}
 }

@@ -37,7 +37,7 @@ public class StudentEntity {
 	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true)
     private AddressEntity addressEntity;
 	
-	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
 //	
 //	@ManyToMany
