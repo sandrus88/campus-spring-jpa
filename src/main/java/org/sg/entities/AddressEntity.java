@@ -114,6 +114,9 @@ public class AddressEntity {
 		if (provinceCode != null && !provinceCode.equals(other.provinceCode)) {
 			return false;
 		}
+		if (studentEntity != null && !studentEntity.equals(other.studentEntity)) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -125,6 +128,7 @@ public class AddressEntity {
 		result = result + ((postalCode == null) ? 0 : postalCode.hashCode());
 		result = result + ((city == null) ? 0 : city.hashCode());
 		result = result + ((provinceCode == null) ? 0 : provinceCode.hashCode());
+		result = result + ((studentEntity == null) ? 0 : studentEntity.hashCode());
 		return result;
 	}
 	

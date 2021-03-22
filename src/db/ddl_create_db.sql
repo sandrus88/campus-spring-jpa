@@ -39,7 +39,7 @@ create table subscriptions (
 );
     
 create table exams (
-    ID varchar2(100 byte),
+    ID number,
     EXAM_DATE date,
     MARK number,
     STUDENT_ID number,
@@ -71,6 +71,10 @@ create sequence seq_course
     INCREMENT BY 1;
         
 create sequence seq_topic
+    START WITH 1000
+    INCREMENT BY 1;
+    
+create sequence seq_exam
     START WITH 1000
     INCREMENT BY 1;
     

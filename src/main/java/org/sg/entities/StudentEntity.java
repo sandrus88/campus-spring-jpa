@@ -101,7 +101,8 @@ public class StudentEntity {
 	}
 	
 	public void setExams(List<ExamEntity> exams) {
-		this.exams = exams;
+		this.exams.clear();
+		this.exams.addAll(exams);
 	}
 
 	public AddressEntity getAddressEntity() {
@@ -143,6 +144,12 @@ public class StudentEntity {
 		if (sex != null && !sex.equals(other.sex)) {
 			return false;
 		}
+		if (exams != null && !exams.equals(other.exams)) {
+			return false;
+		}
+		if (addressEntity != null && !addressEntity.equals(other.addressEntity)) {
+			return false;
+		}
 		return true;
 	}
 
@@ -154,6 +161,8 @@ public class StudentEntity {
 		result = result + ((jobTitle == null) ? 0 : jobTitle.hashCode());
 		result = result + ((paymentType == null) ? 0 : paymentType.hashCode());
 		result = result + ((sex == null) ? 0 : sex.hashCode());
+		result = result + ((exams == null) ? 0 : exams.hashCode());
+		result = result + ((addressEntity == null) ? 0 : addressEntity.hashCode());
 		return result;
 	}
 

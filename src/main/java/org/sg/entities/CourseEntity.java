@@ -87,6 +87,9 @@ public class CourseEntity {
 		if (description != null && !description.equals(other.description)) {
 			return false;
 		}
+		if (exams != null && !exams.equals(other.exams)) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -95,6 +98,7 @@ public class CourseEntity {
 		int result = id;
 		result = result + ((name == null) ? 0 : name.hashCode());
 		result = result + ((description == null) ? 0 : description.hashCode());
+		result = result + ((exams == null) ? 0 : exams.hashCode());
 		return result;
 	}
 	

@@ -1,5 +1,6 @@
 package org.sg.test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -30,37 +31,30 @@ public class ExamsTest {
 
 	@Test
 	public void test_get_exams_fromStudent() {
-		final Integer studentId = 3;
+		final Integer studentId = 1;
 		StudentEntity studentEntity = studentDao.get(studentId);
-		logger.info(studentEntity);
 		assertNotNull(studentEntity);
+		assertNotNull(studentEntity.getExams());
+		logger.info("Esami dello studente con id: " + studentEntity.getId() + " sono: " + studentEntity.getExams());
 
-		List<ExamEntity> exams = studentEntity.getExams();
-		logger.info(exams);
-		assertNotNull(exams);
-
-		assertEquals(exams.get(0).getId(), "Exm 009");
-		assertEquals(exams.get(1).getId(), "Exm 010");
-		assertEquals(exams.get(2).getId(), "Exm 013");
-		assertEquals(exams.get(3).getId(), "Exm 014");
+		assertEquals(studentEntity.getExams().get(0).getId(), Integer.valueOf(409));
+		assertEquals(studentEntity.getExams().get(1).getId(), Integer.valueOf(410));
+		assertEquals(studentEntity.getExams().get(2).getId(), Integer.valueOf(413));
+		assertEquals(studentEntity.getExams().get(3).getId(), Integer.valueOf(414));
 	}
 
 	@Test
 	public void test_get_exams_fromCourse() {
 		final Integer courseId = 201;
 		CourseEntity courseEntity = courseDao.get(courseId);
-		logger.info(courseEntity);
 		assertNotNull(courseEntity);
+		assertNotNull(courseEntity.getExams());
+		logger.info("Esami dello studente con id: " + courseEntity.getId() + " sono: " + courseEntity.getExams());
 
-		List<ExamEntity> exams = courseEntity.getExams();
-		logger.info(exams);
-		assertNotNull(exams);
-
-		assertEquals(exams.get(0).getId(), "Exm 001");
-		assertEquals(exams.get(1).getId(), "Exm 002");
-		assertEquals(exams.get(2).getId(), "Exm 004");
-		assertEquals(exams.get(3).getId(), "Exm 012");
-		assertEquals(exams.get(4).getId(), "Exm 013");
+		assertEquals(courseEntity.getExams().get(0).getId(), Integer.valueOf(402));
+		assertEquals(courseEntity.getExams().get(1).getId(), Integer.valueOf(401));
+		assertEquals(courseEntity.getExams().get(2).getId(), Integer.valueOf(412));
+		assertEquals(courseEntity.getExams().get(3).getId(), Integer.valueOf(413));
 	}
 	
 	@Test
@@ -82,7 +76,6 @@ public class ExamsTest {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = sdf.parse("14/12/2021");
 		
-		exam.setId("Exm Added For New Course");
 		exam.setExamDate(date);
 		exam.setMark(18);
 		exam.setCourseEntity(newCourse);
@@ -101,7 +94,7 @@ public class ExamsTest {
 	@Test
 	public void test_insert_exam_toStudent_forExistingCourse() throws ParseException {
 		final Integer studentId = 7;
-		final Integer courseId = 201;
+		final Integer courseId = 206;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
 		logger.info(studentEntity);
@@ -113,7 +106,6 @@ public class ExamsTest {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = sdf.parse("29/11/2020");
 		
-		exam.setId("Exm Added For Existing Course");
 		exam.setExamDate(date);
 		exam.setMark(22);
 		exam.setCourseEntity(courseEntity);
@@ -139,7 +131,7 @@ public class ExamsTest {
 		
 		List<ExamEntity> examsList = studentEntity.getExams();
 		logger.info("Esami dello studente: " + examsList);
-		ExamEntity exam = examsList.get(3);
+		ExamEntity exam = examsList.get(0);
 		
 		exam.setMark(14);
 		
@@ -148,35 +140,50 @@ public class ExamsTest {
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		assertNotNull(studentEntityDb);
-		assertEquals(studentEntityDb.getExams().get(3).getMark(), studentEntity.getExams().get(3).getMark());
+		assertEquals(studentEntityDb.getExams().get(0).getMark(), studentEntity.getExams().get(0).getMark());
 	}
 	
 	@Test
-	public void test_delete_exam() {
+	public void test_delete_only_one_exam() {
 		final Integer studentId = 3;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
 		assertNotNull(studentEntity.getExams());
-		logger.info("Lista degli esami dello studente: " + studentEntity.getExams());
+		logger.info("Esami dello studente con id: " + studentEntity.getId() + " sono: " + studentEntity.getExams());
 		
 		studentEntity.getExams().remove(0); 
 		studentDao.update(studentEntity);
+		assertNotNull(studentEntity.getExams());
+		logger.info("Esami dopo l'eliminazione sono: " + studentEntity.getExams());
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		assertNotNull(studentEntityDb);
-		assertEquals(studentEntityDb.getExams().get(0).getId(), "Exm 004");
+		assertEquals(studentEntityDb.getExams().get(0).getId(), Integer.valueOf(405));
 	}
 	
 	@Test
-	public void test_delete_student_withExams() {
+	public void test_delete_all_exams() {
 		final Integer studentId = 4;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
 		assertNotNull(studentEntity.getExams());
-		logger.info("Lista degli esami dello studente: " + studentEntity.getExams());
+		logger.info("Esami dello studente con id: " + studentEntity.getId() + " sono: " + studentEntity.getExams());
 		
-//		studentEntity.setAddressEntity(null);
-//		studentDao.update(studentEntity);
+		studentEntity.getExams().clear();
+		studentDao.update(studentEntity);
+
+		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		assertNotNull(studentEntityDb);
+		assertTrue(studentEntityDb.getExams().isEmpty());
+	}
+	
+	@Test
+	public void test_delete_student_withExams() {
+		final Integer studentId = 5;
+		StudentEntity studentEntity = studentDao.get(studentId);
+		assertNotNull(studentEntity);
+		assertNotNull(studentEntity.getExams());
+		logger.info("Esami dello studente con id: " + studentEntity.getId() + " sono: " + studentEntity.getExams());
 		
 		boolean deleting = studentDao.delete(studentId);
 		assertTrue(deleting);
