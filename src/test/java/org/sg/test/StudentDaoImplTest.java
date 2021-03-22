@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.sg.test.util.EntityUtils.createStudentWithAddress;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -49,22 +50,7 @@ public class StudentDaoImplTest {
 
 	@Test
 	public void test_insert_withAddress() {
-		StudentEntity studentEntity = new StudentEntity();
-		studentEntity.setName("Name_withAddress");
-		studentEntity.setSurname("Surname_withAddress");
-		studentEntity.setJobTitle("Job_withAddress");
-		studentEntity.setPaymentType("Confirmed");
-		studentEntity.setSex('M');
-		
-		AddressEntity addressEntity = new AddressEntity();
-		addressEntity.setStreet("Via del pentimento");
-		addressEntity.setNr("30");
-		addressEntity.setPostalCode(50122);
-		addressEntity.setCity("Firenze");
-		addressEntity.setProvinceCode("FI");
-		addressEntity.setStudentEntity(studentEntity);
-		
-		studentEntity.setAddressEntity(addressEntity);
+		StudentEntity studentEntity = createStudentWithAddress();
 		logger.info("Studente da inserire: " + studentEntity);
 		
 		studentEntity = studentDao.insert(studentEntity);
@@ -100,8 +86,7 @@ public class StudentDaoImplTest {
 		final Integer studentId = 1;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
-		AddressEntity addressEntity = studentEntity.getAddressEntity();
-		assertNotNull(addressEntity);
+		assertNotNull(studentEntity.getAddressEntity());
 		logger.info(studentEntity);
 
 		assertEquals(studentEntity.getName(), "Sandro");
@@ -109,7 +94,7 @@ public class StudentDaoImplTest {
 		assertEquals(studentEntity.getJobTitle(), "Waiter");
 		assertEquals(studentEntity.getPaymentType(), "Confirmed");
 		assertEquals(studentEntity.getSex(), Character.valueOf('M'));
-		assertEquals(addressEntity.getId(), studentEntity.getId());
+		assertEquals(studentEntity.getAddressEntity().getId(), studentEntity.getId());
 	}
 
 	@Test
@@ -180,8 +165,7 @@ public class StudentDaoImplTest {
 		final Integer studentId = 2;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
-		AddressEntity addressEntity = studentEntity.getAddressEntity();
-		assertNotNull(addressEntity);
+		assertNotNull(studentEntity.getAddressEntity());
 		logger.info("Prima dell'update " + studentEntity);
 
 		studentEntity.setName("NameUpdated");
@@ -208,18 +192,17 @@ public class StudentDaoImplTest {
 		final Integer studentId = 3;
 		StudentEntity studentEntity = studentDao.get(studentId);
 		assertNotNull(studentEntity);
-		AddressEntity addressEntity = studentEntity.getAddressEntity();
-		assertNotNull(addressEntity);
-		logger.info("Indirizzo prima dell'update " + addressEntity);
+		assertNotNull(studentEntity.getAddressEntity());
+		logger.info("Indirizzo prima dell'update " + studentEntity.getAddressEntity());
 
-		addressEntity.setStreet("UpdatedStreet");
-		addressEntity.setNr("UpdatedNr");
-		addressEntity.setPostalCode(0000);
-		addressEntity.setCity("UpdatedCity");
-		addressEntity.setProvinceCode("UC");
+		studentEntity.getAddressEntity().setStreet("UpdatedStreet");
+		studentEntity.getAddressEntity().setNr("UpdatedNr");
+		studentEntity.getAddressEntity().setPostalCode(0000);
+		studentEntity.getAddressEntity().setCity("UpdatedCity");
+		studentEntity.getAddressEntity().setProvinceCode("UC");
 
 		studentEntity = studentDao.update(studentEntity);
-		logger.info("Indirizzo dopo l'update" + addressEntity);
+		logger.info("Indirizzo dopo l'update" + studentEntity.getAddressEntity());
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		logger.info("Studente nel db con l'indirizzo modificato: " + studentEntityDb);
@@ -276,8 +259,8 @@ public class StudentDaoImplTest {
 		assertNotNull(studentEntity.getAddressEntity());
 		logger.info("Indirizzo prima dell'eliminazione " + studentEntity.getAddressEntity());
 		
-//		addressDao.delete(addressEntity);
-		studentEntity.setAddressEntity(new AddressEntity());
+		studentEntity.getAddressEntity().setStudentEntity(null);
+		studentEntity.setAddressEntity(null);
 		studentDao.update(studentEntity);
 		
 		StudentEntity db = studentDao.get(studentEntity.getId());

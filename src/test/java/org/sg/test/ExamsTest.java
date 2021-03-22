@@ -1,6 +1,5 @@
 package org.sg.test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -37,10 +36,10 @@ public class ExamsTest {
 		assertNotNull(studentEntity.getExams());
 		logger.info("Esami dello studente con id: " + studentEntity.getId() + " sono: " + studentEntity.getExams());
 
-		assertEquals(studentEntity.getExams().get(0).getId(), Integer.valueOf(409));
-		assertEquals(studentEntity.getExams().get(1).getId(), Integer.valueOf(410));
-		assertEquals(studentEntity.getExams().get(2).getId(), Integer.valueOf(413));
-		assertEquals(studentEntity.getExams().get(3).getId(), Integer.valueOf(414));
+		assertEquals(studentEntity.getExams().get(0).getId(), Integer.valueOf(9));
+		assertEquals(studentEntity.getExams().get(1).getId(), Integer.valueOf(10));
+		assertEquals(studentEntity.getExams().get(2).getId(), Integer.valueOf(13));
+		assertEquals(studentEntity.getExams().get(3).getId(), Integer.valueOf(14));
 	}
 
 	@Test
@@ -51,10 +50,11 @@ public class ExamsTest {
 		assertNotNull(courseEntity.getExams());
 		logger.info("Esami dello studente con id: " + courseEntity.getId() + " sono: " + courseEntity.getExams());
 
-		assertEquals(courseEntity.getExams().get(0).getId(), Integer.valueOf(402));
-		assertEquals(courseEntity.getExams().get(1).getId(), Integer.valueOf(401));
-		assertEquals(courseEntity.getExams().get(2).getId(), Integer.valueOf(412));
-		assertEquals(courseEntity.getExams().get(3).getId(), Integer.valueOf(413));
+		assertEquals(courseEntity.getExams().get(0).getId(), Integer.valueOf(1));
+		assertEquals(courseEntity.getExams().get(1).getId(), Integer.valueOf(2));
+		assertEquals(courseEntity.getExams().get(2).getId(), Integer.valueOf(4));
+		assertEquals(courseEntity.getExams().get(3).getId(), Integer.valueOf(12));
+		assertEquals(courseEntity.getExams().get(4).getId(), Integer.valueOf(13));
 	}
 	
 	@Test
@@ -136,7 +136,7 @@ public class ExamsTest {
 		exam.setMark(14);
 		
 		studentDao.update(studentEntity);
-		logger.info("Voto dell'esame aggiornato: " + exam.getMark());
+		logger.info("Voto dell'esame aggiornato: " + exam.getMark() + ", " + exam);
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		assertNotNull(studentEntityDb);
@@ -158,7 +158,7 @@ public class ExamsTest {
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		assertNotNull(studentEntityDb);
-		assertEquals(studentEntityDb.getExams().get(0).getId(), Integer.valueOf(405));
+		assertEquals(studentEntityDb.getExams().get(0).getId(), Integer.valueOf(5));
 	}
 	
 	@Test
@@ -171,6 +171,7 @@ public class ExamsTest {
 		
 		studentEntity.getExams().clear();
 		studentDao.update(studentEntity);
+		logger.info("Esami dopo l'eliminazione sono: " + studentEntity.getExams());
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		assertNotNull(studentEntityDb);
@@ -185,10 +186,11 @@ public class ExamsTest {
 		assertNotNull(studentEntity.getExams());
 		logger.info("Esami dello studente con id: " + studentEntity.getId() + " sono: " + studentEntity.getExams());
 		
-		boolean deleting = studentDao.delete(studentId);
+		boolean deleting = studentDao.delete(studentEntity.getId());
 		assertTrue(deleting);
 
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		logger.info("Studente dopo l'eliminazione " + studentEntityDb);
 		assertNull(studentEntityDb);
 	}
 }

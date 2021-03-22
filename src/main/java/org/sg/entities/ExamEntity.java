@@ -2,7 +2,6 @@ package org.sg.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +19,7 @@ public class ExamEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqExam")
-	@SequenceGenerator(name="seqExam", sequenceName = "SEQ_EXAM", allocationSize = 1)
+	@SequenceGenerator(name="seqExam", sequenceName = "SEQ_EXAM", initialValue = 200, allocationSize = 1)
     @Column(name = "ID")
 	private Integer id;
 	@Column(name = "EXAM_DATE")
