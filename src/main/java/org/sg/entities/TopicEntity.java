@@ -16,7 +16,7 @@ public class TopicEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqTopic")
-	@SequenceGenerator(name = "seqTopic", sequenceName = "SEQ_TOPIC", allocationSize = 1)
+	@SequenceGenerator(name = "seqTopic", sequenceName = "SEQ_TOPIC", initialValue = 200, allocationSize = 1)
 	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "NAME")

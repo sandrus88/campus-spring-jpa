@@ -10,10 +10,11 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<oracle.jdbc.version>21.1</oracle.jdbc.version>
-		<hibernate.version>5.4.24.Final</hibernate.version>
+		<h2.jdbc.version>1.4.200</h2.jdbc.version>
+		<hibernate.version>5.4.30.Final</hibernate.version>
 		<hibernate.persistence.version>1.0.2.Final</hibernate.persistence.version>
 		<junit.version>4.13.2</junit.version>
-		<org.slf4j-version>1.5.10</org.slf4j-version>
+		<org.slf4j-version>1.7.30</org.slf4j-version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
 
@@ -60,6 +61,11 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>${oracle.jdbc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.jdbc.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
