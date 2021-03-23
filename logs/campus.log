@@ -92,3 +92,23 @@
 2021-03-23 00:24:55,234 [INFO] [main] [org.sg.test.StudentDaoImplTest] .test_update_address_for_existingStudent(208) | Studente nel db con l'indirizzo modificato: Student  [id: 3, name: Ermal, surname: Aliraj, job title: Web Developer, paymentType: Confirmed, sex: M, address: Address  [id: 3, street: UpdatedStreet, buildingNumber: UpdatedNr, postalCode: 0, city: UpdatedCity, provinceCode: UC, studentId: 3]]
 2021-03-23 00:24:55,632 [INFO] [main] [org.sg.test.StudentDaoImplTest] .test_delete_WithAddress(244) | Prima dell'eliminazione Student  [id: 4, name: Student4, surname: Surname4, job title: Job4, paymentType: Confirmed, sex: M, address: Address  [id: 4, street: Street4, buildingNumber: nr4, postalCode: 4, city: city4, provinceCode: p4, studentId: 4]]
 2021-03-23 00:24:55,675 [INFO] [main] [org.sg.test.StudentDaoImplTest] .test_delete_WithAddress(250) | Dopo l'eliminazione null
+2021-03-23 13:39:56,907 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:41:38,619 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:44:30,916 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:45:20,769 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:45:50,817 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:48:27,353 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:49:26,245 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:50:43,823 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:50:49,321 [INFO] [main] [org.sg.test.ExamsTest] .test_insert_exam_toStudent_forNewCourse(65) | Student  [id: 6, name: Student6, surname: Surname6, job title: Job6, paymentType: Confirmed, sex: M, address: Address  [id: 6, street: Street6, buildingNumber: nr6, postalCode: 6, city: city6, provinceCode: p6, studentId: 6]]
+2021-03-23 13:50:49,393 [INFO] [main] [org.sg.test.ExamsTest] .test_insert_exam_toStudent_forNewCourse(71) | Nuovo corso inserito Course  [id: 200, name: New Course, description: Description of new course]
+2021-03-23 13:50:49,634 [INFO] [main] [org.sg.test.ExamsTest] .test_insert_exam_toStudent_forNewCourse(87) | Esami inseriti allo studente: Exam  [id: 200, date of exam: Tue Dec 14 00:00:00 CET 2021, mark: 18, id student: 6, id course: 200]
+2021-03-23 13:51:39,747 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:53:35,221 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:56:42,235 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:58:11,339 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 13:58:16,638 [INFO] [main] [org.sg.test.ExamsTest] .test_insert_exam_toStudent_forExistingCourse(100) | Student  [id: 7, name: Student7, surname: Surname7, job title: Job7, paymentType: Confirmed, sex: M, address: Address  [id: 7, street: Street7, buildingNumber: nr7, postalCode: 7, city: city7, provinceCode: p7, studentId: 7]]
+2021-03-23 13:58:16,641 [INFO] [main] [org.sg.test.ExamsTest] .test_insert_exam_toStudent_forExistingCourse(103) | Course  [id: 206, name: XML, description: XMLSchema e parsing con Java]
+2021-03-23 13:58:16,783 [INFO] [main] [org.sg.test.ExamsTest] .test_insert_exam_toStudent_forExistingCourse(118) | Esami inseriti allo studente: Exam  [id: 200, date of exam: Sun Nov 29 00:00:00 CET 2020, mark: 22, id student: 7, id course: 206]
+2021-03-23 14:00:34,579 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 14:02:13,076 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider

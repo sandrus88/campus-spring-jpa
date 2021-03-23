@@ -70,7 +70,6 @@ public class EntityUtils {
 	}
 	
 	public static ExamEntity createExam(StudentEntity studentEntity, CourseEntity courseEntity) throws ParseException{
-		List<ExamEntity> examsList = new ArrayList<>();
 		ExamEntity examEntity = new ExamEntity();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = sdf.parse("01/01/2021");
@@ -79,8 +78,6 @@ public class EntityUtils {
 		examEntity.setMark(18);
 		examEntity.setCourseEntity(courseEntity);
 		examEntity.setStudentEntity(studentEntity);
-		examsList.add(examEntity);
-		studentEntity.setExams(examsList);
 		return examEntity;
 	}
 	

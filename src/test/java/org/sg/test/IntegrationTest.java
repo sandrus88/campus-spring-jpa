@@ -13,11 +13,15 @@ import static org.sg.test.util.EntityUtils.updateExam;
 import static org.sg.test.util.EntityUtils.updateStudent;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.dao.impl.StudentDaoImpl;
+import org.sg.entities.AddressEntity;
 import org.sg.entities.CourseEntity;
+import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
 
 public class IntegrationTest {
@@ -57,10 +61,10 @@ public class IntegrationTest {
 		assertNotNull(studentEntity.getId());
 
 		// 2. insert an address for the student
-		createAddress();
-		assertNotNull(studentEntity.getAddressEntity());
-		studentEntity.getAddressEntity().setStudentEntity(studentEntity);
-		studentEntity.setAddressEntity(studentEntity.getAddressEntity());
+		AddressEntity addressEntity = createAddress();
+		assertNotNull(addressEntity);
+		addressEntity.setStudentEntity(studentEntity);
+		studentEntity.setAddressEntity(addressEntity);
 		crud.update(studentEntity);
 
 		// 3. Get and check if the student and the address has correctly been fetched
@@ -122,7 +126,11 @@ public class IntegrationTest {
 		assertNotNull(courseEntity.getId());
 		
 		// 3. insert an exam for the student
-		createExam(studentEntity, courseEntity);
+		List<ExamEntity> examsList = new ArrayList<>();
+		ExamEntity examEntity = createExam(studentEntity, courseEntity);
+		assertNotNull(examEntity);
+		examsList.add(examEntity);
+		studentEntity.setExams(examsList);
 		crud.update(studentEntity);
 		
 		// 4. Get and check if the student and the exam has correctly been fetched
@@ -133,13 +141,13 @@ public class IntegrationTest {
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
 		
 		// 5. Update the exam, and Get to check if updated correctly
-		updateExam(studentEntity.getExams().get(0));
+		updateExam(examEntity);
 		crud.update(studentEntity);
 		studentEntityDb = crud.get(studentEntity.getId());
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
 		
 		// 6. Delete the exam, and Get to check if is deleted correctly
-		studentEntity.getExams().remove(0); 
+		studentEntity.getExams().remove(examEntity); 
 		crud.update(studentEntity);
 		studentEntityDb = crud.get(studentEntity.getId());
 		assertTrue(studentEntityDb.getExams().isEmpty());
