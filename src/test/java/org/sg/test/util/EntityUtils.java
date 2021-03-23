@@ -1,6 +1,14 @@
 package org.sg.test.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.sg.entities.AddressEntity;
+import org.sg.entities.CourseEntity;
+import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
 
 public class EntityUtils {
@@ -15,8 +23,7 @@ public class EntityUtils {
 		return studentEntity;
 	}
 
-	public static StudentEntity updateStudent() {
-		StudentEntity studentEntity = new StudentEntity();
+	public static StudentEntity updateStudent(StudentEntity studentEntity) {
 		studentEntity.setName("updatedName");
 		studentEntity.setSurname("updatedSurname");
 		studentEntity.setJobTitle("updatedJJobTitle");
@@ -53,13 +60,35 @@ public class EntityUtils {
 		return addressEntity;
 	}
 	
-	public static AddressEntity updateAddress() {
-		AddressEntity addressEntity = new AddressEntity();
+	public static AddressEntity updateAddress(AddressEntity addressEntity) {
 		addressEntity.setStreet("updatedStreet");
 		addressEntity.setNr("updatedNumber");
 		addressEntity.setPostalCode(99999);
 		addressEntity.setCity("updatedCity");
 		addressEntity.setProvinceCode("UA");
 		return addressEntity;
+	}
+	
+	public static ExamEntity createExam(StudentEntity studentEntity, CourseEntity courseEntity) throws ParseException{
+		List<ExamEntity> examsList = new ArrayList<>();
+		ExamEntity examEntity = new ExamEntity();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = sdf.parse("01/01/2021");
+		
+		examEntity.setExamDate(date);
+		examEntity.setMark(18);
+		examEntity.setCourseEntity(courseEntity);
+		examEntity.setStudentEntity(studentEntity);
+		examsList.add(examEntity);
+		studentEntity.setExams(examsList);
+		return examEntity;
+	}
+	
+	public static ExamEntity updateExam(ExamEntity examEntity) throws ParseException{
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = sdf.parse("31/12/2021");
+		examEntity.setExamDate(date);
+		examEntity.setMark(30);
+		return examEntity;
 	}
 }
