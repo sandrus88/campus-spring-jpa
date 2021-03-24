@@ -62,10 +62,11 @@ public class EntityUtils {
 		return courseEntity;
 	}
 	
-	public static TopicEntity createTopic() {
+	public static TopicEntity createTopic(CourseEntity courseEntity) {
 		TopicEntity topicEntity = new TopicEntity();
 		topicEntity.setName("newTopic");
 		topicEntity.setDescription("descriptionOfNewTopic");
+		topicEntity.setCourseEntity(courseEntity);
 		return topicEntity;
 	}
 	

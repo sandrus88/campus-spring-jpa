@@ -125,7 +125,7 @@ public class ExamDaoTest {
 		
 		//When
 		StudentEntity studentEntity = studentDao.get(studentId);
-		studentEntity.removeExamById(examId); 
+		studentEntity.removeExamById(examId);
 		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		

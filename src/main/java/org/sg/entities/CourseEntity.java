@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,8 +34,8 @@ public class CourseEntity {
 	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ExamEntity> exams;
 	
-//	@ManyToMany
-//	private List<StudentEntity> students;
+	@ManyToMany(mappedBy = "courses")
+	private List<StudentEntity> students;
 	
 	public void addTopic(TopicEntity topic) {
 		topics.add(topic);
@@ -94,9 +95,14 @@ public class CourseEntity {
 	public List<ExamEntity> getExams() {
 		return exams;
 	}
-//	public List<StudentEntity> getStudents() {
-//		return students;
-//	}
+	
+	public void setStudents(List<StudentEntity> students) {
+		this.students = students;
+	}
+
+	public List<StudentEntity> getStudents() {
+		return students;
+	}
 	
 	@Override
 	public boolean equals(Object o) {
@@ -119,6 +125,12 @@ public class CourseEntity {
 		if (exams != null && !exams.equals(other.exams)) {
 			return false;
 		}
+		if (topics != null && !topics.equals(other.topics)) {
+			return false;
+		}
+		if (students != null && !students.equals(other.students)) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -128,6 +140,8 @@ public class CourseEntity {
 		result = result + ((name == null) ? 0 : name.hashCode());
 		result = result + ((description == null) ? 0 : description.hashCode());
 		result = result + ((exams == null) ? 0 : exams.hashCode());
+		result = result + ((topics == null) ? 0 : topics.hashCode());
+		result = result + ((students == null) ? 0 : students.hashCode());
 		return result;
 	}
 	

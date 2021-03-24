@@ -9,10 +9,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "STUDENT")
@@ -39,14 +42,20 @@ public class StudentEntity {
 
 	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
-//	
-//	@ManyToMany
-//	@JoIntegerable(
-//			name = "subscriptions", 
-//			joinColumns = {@JoinColumn(name = "STUDENT_ID")}, 
-//			inverseJoinColumns = {@JoinColumn(name = "COURSE_ID")}
-//			)
-//    private List<CourseEntity> courses;
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "SUBSCRIPTIONS", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+	private List<CourseEntity> courses;
+
+	public void addCourse(CourseEntity course) {
+		courses.add(course);
+		course.getStudents().add(this);
+	}
+
+	public void removeCourse(CourseEntity course) {
+		courses.remove(course);
+		course.getStudents().remove(this);
+	}
 
 	public void addExam(ExamEntity exam) {
 		exams.add(exam);
@@ -120,8 +129,6 @@ public class StudentEntity {
 	}
 
 	public void setExams(List<ExamEntity> exams) {
-//		this.exams.clear();
-//		this.exams.addAll(exams);
 		this.exams = exams;
 	}
 
@@ -132,10 +139,14 @@ public class StudentEntity {
 	public void setAddressEntity(AddressEntity addressEntity) {
 		this.addressEntity = addressEntity;
 	}
-//
-//	public List<CourseEntity> getCourses() {
-//		return courses;
-//	}
+	
+	public void setCourses(List<CourseEntity> courses) {
+		this.courses = courses;
+	}
+
+	public List<CourseEntity> getCourses() {
+		return courses;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -170,6 +181,9 @@ public class StudentEntity {
 		if (addressEntity != null && !addressEntity.equals(other.addressEntity)) {
 			return false;
 		}
+		if (courses != null && !courses.equals(other.courses)) {
+			return false;
+		}
 		return true;
 	}
 
@@ -183,6 +197,7 @@ public class StudentEntity {
 		result = result + ((sex == null) ? 0 : sex.hashCode());
 		result = result + ((exams == null) ? 0 : exams.hashCode());
 		result = result + ((addressEntity == null) ? 0 : addressEntity.hashCode());
+		result = result + ((courses == null) ? 0 : courses.hashCode());
 		return result;
 	}
 

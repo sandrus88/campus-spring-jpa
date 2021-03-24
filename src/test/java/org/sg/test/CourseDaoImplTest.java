@@ -10,6 +10,9 @@ import static org.sg.test.util.EntityUtils.createTopic;
 import static org.sg.test.util.EntityUtils.updateCourse;
 import static org.sg.test.util.EntityUtils.updateTopic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -85,15 +88,17 @@ public class CourseDaoImplTest {
 	public void test_insert_withTopics() {
 		// Given
 		CourseEntity courseEntity = createCourse();
-		TopicEntity topicEntity = createTopic();
+		TopicEntity topicEntity = createTopic(courseEntity);
 
 		// When
-		courseEntity.getTopics().add(topicEntity);
-		topicEntity.setCourseEntity(courseEntity);
+		List<TopicEntity> topicsList = new ArrayList<TopicEntity>();
+		courseEntity.setTopics(topicsList);
+		courseEntity.addTopic(topicEntity);
 		courseDao.insert(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
 
 		// Then
+		assertNotNull(courseEntity.getTopicById(topicEntity.getId()));
 		assertEquals(courseEntityDb.getName(), courseEntity.getName());
 		assertEquals(courseEntityDb.getDescription(), courseEntity.getDescription());
 		assertEquals(courseEntityDb.getTopics(), courseEntity.getTopics());
@@ -118,12 +123,11 @@ public class CourseDaoImplTest {
 	public void test_add_topic_for_existingCourse() {
 		//Given
 		final Integer courseId = 208;
-		final TopicEntity topicEntity = createTopic();
 		
 		//When
 		CourseEntity courseEntity = courseDao.get(courseId);
+		TopicEntity topicEntity = createTopic(courseEntity);
 		courseEntity.addTopic(topicEntity);
-		topicEntity.setCourseEntity(courseEntity);
 		courseDao.update(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
 		
@@ -151,11 +155,12 @@ public class CourseDaoImplTest {
 	public void test_update_topic_for_existingCourse() {
 		//Given
 		final Integer courseId = 203;
-		final Integer topicId = 309;
+		final Integer topicId = 310;
 		
 		//When
 		CourseEntity courseEntity = courseDao.get(courseId);
-		TopicEntity topicEntity = updateTopic(courseEntity.getTopicById(topicId));
+		TopicEntity topicEntity	= courseEntity.getTopicById(topicId);
+		topicEntity = updateTopic(topicEntity);
 		courseDao.update(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
 		

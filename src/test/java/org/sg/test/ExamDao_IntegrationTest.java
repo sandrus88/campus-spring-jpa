@@ -2,13 +2,15 @@ package org.sg.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
+import static org.sg.test.util.EntityUtils.createCourse;
 import static org.sg.test.util.EntityUtils.createExam;
 import static org.sg.test.util.EntityUtils.createStudent;
 import static org.sg.test.util.EntityUtils.updateExam;
-import static org.sg.test.util.EntityUtils.createCourse;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.sg.dao.impl.CourseDaoImpl;
@@ -36,7 +38,9 @@ public class ExamDao_IntegrationTest {
 		// 3. insert an exam for the student
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		assertNotNull(examEntity);
-		studentEntity.getExams().add(examEntity);
+		List<ExamEntity> examsList = new ArrayList<ExamEntity>();
+		studentEntity.setExams(examsList);
+		studentEntity.addExam(examEntity);
 		crud.update(studentEntity);
 		
 		// 4. Get and check if the student and the exam has correctly been fetched
@@ -56,6 +60,6 @@ public class ExamDao_IntegrationTest {
 		studentEntity.removeExamById(examEntity.getId()); 
 		crud.update(studentEntity);
 		studentEntityDb = crud.get(studentEntity.getId());
-		assertTrue(studentEntityDb.getExams().isEmpty());
+		assertNull(studentEntityDb.getExamById(examEntity.getId()));
 	}
 }

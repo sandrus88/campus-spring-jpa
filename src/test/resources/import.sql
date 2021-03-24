@@ -78,3 +78,11 @@ insert into topic (ID, NAME, DESCRIPTION, COURSE_ID) values (319, 'Greedy Algori
 insert into topic (ID, NAME, DESCRIPTION, COURSE_ID) values (320, 'Binary Searching', '', null);
 insert into topic (ID, NAME, DESCRIPTION, COURSE_ID) values (321, 'Multithreading', '', null);
 insert into topic (ID, NAME, DESCRIPTION, COURSE_ID) values (322, 'Programmazione di stringa', '', null);
+
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (01, 201);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (02, 201);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (03, 201);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (02, 207);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (03, 207);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (04, 207);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (05, 207);
