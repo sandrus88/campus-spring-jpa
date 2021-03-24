@@ -34,7 +34,7 @@ public class ExamEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COURSE_ID")
     private CourseEntity courseEntity;
-
+    
 	public Integer getId() {
 		return id;
 	}

@@ -10,6 +10,7 @@ import org.sg.entities.AddressEntity;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
+import org.sg.entities.TopicEntity;
 
 public class EntityUtils {
 
@@ -48,6 +49,32 @@ public class EntityUtils {
 		addressEntity.setStudentEntity(studentEntity);
 		studentEntity.setAddressEntity(addressEntity);
 		return studentEntity;
+	}
+	
+	public static CourseEntity createCourse() {
+		CourseEntity courseEntity = new CourseEntity();
+		courseEntity.setName("newCourse");
+		courseEntity.setDescription("descriptionOfNewCourse");
+		return courseEntity;
+	}
+	
+	public static CourseEntity updateCourse(CourseEntity courseEntity) {
+		courseEntity.setName("updatedCourse");
+		courseEntity.setDescription("descriptionOfUpdatedCourse");
+		return courseEntity;
+	}
+	
+	public static TopicEntity createTopic() {
+		TopicEntity topicEntity = new TopicEntity();
+		topicEntity.setName("newTopic");
+		topicEntity.setDescription("descriptionOfNewTopic");
+		return topicEntity;
+	}
+	
+	public static TopicEntity updateTopic(TopicEntity topicEntity) {
+		topicEntity.setName("updatedTopic");
+		topicEntity.setDescription("descriptionOfUpdatedTopic");
+		return topicEntity;
 	}
 
 	public static AddressEntity createAddress() {

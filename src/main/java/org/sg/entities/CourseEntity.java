@@ -27,9 +27,9 @@ public class CourseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-//	@OneToMany
-//	private List<TopicEntity> topics;
-//	
+	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<TopicEntity> topics;
+	
 	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ExamEntity> exams;
 	

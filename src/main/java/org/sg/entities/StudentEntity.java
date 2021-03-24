@@ -35,8 +35,8 @@ public class StudentEntity {
 	private Character sex;
 
 	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true)
-    private AddressEntity addressEntity;
-	
+	private AddressEntity addressEntity;
+
 	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
 //	
@@ -47,6 +47,25 @@ public class StudentEntity {
 //			inverseJoinColumns = {@JoinColumn(name = "COURSE_ID")}
 //			)
 //    private List<CourseEntity> courses;
+
+	public void addExam(ExamEntity exam) {
+		exams.add(exam);
+	}
+
+	public ExamEntity getExamById(Integer examId) {
+		ExamEntity examEntity = null;
+		for (ExamEntity exam : exams) {
+			if (examId == exam.getId()) {
+				examEntity = exam;
+			}
+		}
+		return examEntity;
+	}
+
+	public void removeExamById(Integer examId) {
+		ExamEntity examEntity = getExamById(examId);
+		exams.remove(examEntity);
+	}
 
 	public Integer getId() {
 		return id;
@@ -99,16 +118,17 @@ public class StudentEntity {
 	public List<ExamEntity> getExams() {
 		return exams;
 	}
-	
+
 	public void setExams(List<ExamEntity> exams) {
-		this.exams.clear();
-		this.exams.addAll(exams);
+//		this.exams.clear();
+//		this.exams.addAll(exams);
+		this.exams = exams;
 	}
 
 	public AddressEntity getAddressEntity() {
 		return addressEntity;
 	}
-	
+
 	public void setAddressEntity(AddressEntity addressEntity) {
 		this.addressEntity = addressEntity;
 	}
