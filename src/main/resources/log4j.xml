@@ -23,11 +23,15 @@
 	<!--trace -> debug -> info-> warn.->error ->fatal -->
 
 	<logger name="org.hibernate.SQL">
-		<level value="TRACE" />
+		<level value="WARN" />
 	</logger>
 	<logger name="org.hibernate">
 		<level value="WARN" />
 	</logger>
+	<logger name="org.hibernate.orm.connections.pooling">
+		<level value="ERROR" />
+	</logger>
+
 
 	<root>
 		<level value="DEBUG" />

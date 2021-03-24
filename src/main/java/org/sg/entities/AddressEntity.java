@@ -1,6 +1,5 @@
 package org.sg.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -132,6 +131,6 @@ public class AddressEntity {
 	@Override
 	public String toString() {
 		return "Address  [id: " + id + ", street: " + street + ", buildingNumber: " + nr + ", postalCode: " + postalCode
-				+ ", city: " + city + ", provinceCode: " + provinceCode + "studentId: " + (studentEntity != null ? studentEntity.getId() : "null") + "]";
+				+ ", city: " + city + ", provinceCode: " + provinceCode + ", studentId: " + (studentEntity != null ? studentEntity.getId() : "null") + "]";
 	}
 }

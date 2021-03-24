@@ -2,6 +2,7 @@ package org.sg.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class TopicEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqTopic")
-	@SequenceGenerator(name = "seqTopic", sequenceName = "SEQ_TOPIC", allocationSize = 1)
+	@SequenceGenerator(name = "seqTopic", sequenceName = "SEQ_TOPIC", initialValue = 200, allocationSize = 1)
 	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "NAME")
@@ -24,7 +25,7 @@ public class TopicEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COURSE_ID")
 	private CourseEntity courseEntity;
 
@@ -50,6 +51,10 @@ public class TopicEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setCourseEntity(CourseEntity courseEntity) {
+		this.courseEntity = courseEntity;
 	}
 
 	public CourseEntity getCourseEntity() {
@@ -87,6 +92,6 @@ public class TopicEntity {
 
 	@Override
 	public String toString() {
-		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + "]";
+		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + ", id course: " + courseEntity.getId() + "]";
 	}
 }

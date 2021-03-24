@@ -18,9 +18,9 @@ La forma basica dei database e' quella `flat-file`, dove tutti gli elementi logi
 Ad esempio in un contesto di un database di ordini di un prodotto, puo' verificarsi che un utente acquisti diversi prodotti in uno stesso ordine.
 Quindi per ogni singolo ordine verranno ripetuti, tante volte quanti prodotti verranno messi nello stesso, i dati dell'utente. Ecco perche' non e' tanto utilizzato questo tipo di implementazione.
 
-La forma più usata per implementare database e' quella dei `database relazionali`, creati per evitare ridondanze nella tabelle. Ogni entita' logica verra' rappresentata in differenti tabelle.
+La forma piï¿½ usata per implementare database e' quella dei `database relazionali`, creati per evitare ridondanze nella tabelle. Ogni entita' logica verra' rappresentata in differenti tabelle.
 Nell'esempio degli ordini ci sara' una tabella per gli ordini e un'altra per i prodotti.
-Si chiamano database relazionali perchè si creeranno delle `relazioni` tra le varie tabelle.
+Si chiamano database relazionali perchï¿½ si creeranno delle `relazioni` tra le varie tabelle.
 
 ###Tipi di relazioni
 Le relazioni possono essere di tre tipi:
@@ -49,7 +49,7 @@ e un'altra con tutti i corsi, poi ci sara' una terza tabella dove verranno inser
 ![Many_to_many_relationship](src/main/doc/many_to_many.jpg)
 
 ###JPA
-`JPA` (Java Persistence API) è un framework che utilizza la tecnica dell'`ORM` (Object-Relational Mapping) per poter mettere in relazione oggetti Java con le tabelle di un database. 
+`JPA` (Java Persistence API) ï¿½ un framework che utilizza la tecnica dell'`ORM` (Object-Relational Mapping) per poter mettere in relazione oggetti Java con le tabelle di un database. 
 
 ###Mappatura e persistenza di un oggetto Java
 Per `mappare` e quindi rendere `persistenti` degli oggetti, JPA utilizza delle annotazioni, che si identificano tramite la `@`. 
@@ -58,11 +58,11 @@ Per persistere un oggetto, JPA fa uso di `@EntityManager`, appartenenti al packa
 Ogni dato viene mappato in "entity" (`@Entity`), che rapparesenta la mappatura di ogni singola tabella del database.
 
 ###Lifecycle di una entity
-1) Quando una nuova entity viene creata nella memoria Java, nulla cambia dal punto di vista degli oggetti persistenti. L’oggetto e' detto in stato `New` o `Transient`.
+1) Quando una nuova entity viene creata nella memoria Java, nulla cambia dal punto di vista degli oggetti persistenti. Lï¿½oggetto e' detto in stato `New` o `Transient`.
 
-2) Invocando il metodo `persist()` dell’EnityManager l’oggetto e' reso persistente ed entra nello stato `Managed`.
+2) Invocando il metodo `persist()` dellï¿½EnityManager lï¿½oggetto e' reso persistente ed entra nello stato `Managed`.
 
-3) Gli oggetti che sono stati resi persistenti entrano in uno stato denominato `Detached` nel quale le modifiche effettuate non verranno propagate al database. Questo stato puo' essere utile ad esempio nel caso in cui occorra effettuare diverse modifiche sull’oggetto, senza che queste debbano comportare l’aggiornamento della cache e del database.
+3) Gli oggetti che sono stati resi persistenti entrano in uno stato denominato `Detached` nel quale le modifiche effettuate non verranno propagate al database. Questo stato puo' essere utile ad esempio nel caso in cui occorra effettuare diverse modifiche sullï¿½oggetto, senza che queste debbano comportare lï¿½aggiornamento della cache e del database.
 
 E' possibile risincronizzare questi oggetti con il database, per far cio' occorre riportarli nello stato Managed tramite il metodo `merge()`.
 
@@ -70,11 +70,15 @@ E' possibile risincronizzare questi oggetti con il database, per far cio' occorr
 
 ###Principali annotazioni
 Altre annotazioni per poter creare il database:
-* `@Id`, specifica che il campo annotato è una primary key.
+* `@Id`, specifica che il campo annotato ï¿½ una primary key.
 * `@Column`, specifica che questo campo mappa una colonna.
 * `@JoinColumn`, specifica un'associazione tra entity.
 * `@ManyToMany`, definisce una relazione n-m.
 * `@OneToMany`, definisce una relazion 1-m.
 * `@OneToOne`, definisce una relazion 1-1.
 
-Per poter utilizzare JPA, esistono diversi provider e tra i più usati c'è `Hibernate`, che rappresenta l'implementazione di JPA.
+Per poter utilizzare JPA, esistono diversi provider e tra i piï¿½ usati c'ï¿½ `Hibernate`, che rappresenta l'implementazione di JPA.
+
+
+# See
+[H2 Database] https://www.h2database.com/html/grammar.html
