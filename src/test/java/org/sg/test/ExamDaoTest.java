@@ -130,7 +130,6 @@ public class ExamDaoTest {
 		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
 		
 		//Then
-		logger.info(studentEntityDb.getExams());
 		assertNull(studentEntityDb.getExamById(examId));
 	}
 	

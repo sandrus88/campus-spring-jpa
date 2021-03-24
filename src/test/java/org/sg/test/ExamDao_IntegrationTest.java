@@ -36,7 +36,7 @@ public class ExamDao_IntegrationTest {
 		// 3. insert an exam for the student
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		assertNotNull(examEntity);
-		studentEntity.addExam(examEntity);
+		studentEntity.getExams().add(examEntity);
 		crud.update(studentEntity);
 		
 		// 4. Get and check if the student and the exam has correctly been fetched

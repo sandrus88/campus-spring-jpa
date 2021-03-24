@@ -77,6 +77,7 @@ public class CourseDaoImpl_IntegrationTest {
 		TopicEntity topicEntity = createTopic();
 		topicEntity = crudTopic.insert(topicEntity);
 		courseEntity.addTopic(topicEntity);
+		topicEntity.setCourseEntity(courseEntity);
 		crud.update(courseEntity);
 		assertNotNull(courseEntity.getId());
 		assertNotNull(topicEntity.getId());

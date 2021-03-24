@@ -2,9 +2,7 @@ package org.sg.test.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.sg.entities.AddressEntity;
 import org.sg.entities.CourseEntity;
