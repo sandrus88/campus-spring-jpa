@@ -36,27 +36,56 @@ public class CourseEntity {
 //	@ManyToMany
 //	private List<StudentEntity> students;
 	
+	public void addTopic(TopicEntity topic) {
+		topics.add(topic);
+	}
+
+	public TopicEntity getTopicById(Integer topicId) {
+		TopicEntity topicEntity = null;
+		for (TopicEntity topic : topics) {
+			if (topicId == topic.getId()) {
+				topicEntity = topic;
+			}
+		}
+		return topicEntity;
+	}
+
+	public void removeTopicById(Integer topicId) {
+		TopicEntity topicEntity = getTopicById(topicId);
+		topics.remove(topicEntity);
+	}
+	
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
-//	public List<TopicEntity> getTopics() {
-//		return topics;
-//	}
+	
+	public void setTopics(List<TopicEntity> topics) {
+		this.topics = topics;
+	}
+	
+	public List<TopicEntity> getTopics() {
+		return topics;
+	}
 	
 	public void setExams(List<ExamEntity> exams) {
 		this.exams = exams;

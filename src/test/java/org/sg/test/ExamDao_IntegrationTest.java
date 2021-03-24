@@ -6,10 +6,9 @@ import static org.junit.Assert.assertTrue;
 import static org.sg.test.util.EntityUtils.createExam;
 import static org.sg.test.util.EntityUtils.createStudent;
 import static org.sg.test.util.EntityUtils.updateExam;
+import static org.sg.test.util.EntityUtils.createCourse;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 import org.sg.dao.impl.CourseDaoImpl;
@@ -30,18 +29,14 @@ public class ExamDao_IntegrationTest {
 		assertNotNull(studentEntity.getId());
 		
 		// 2. insert a new course
-		CourseEntity courseEntity = new CourseEntity();
-		courseEntity.setName("newCourse");
-		courseEntity.setDescription("descriptionOfNewCourse");
+		CourseEntity courseEntity = createCourse();
 		courseEntity = crudCourse.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 		
 		// 3. insert an exam for the student
-		List<ExamEntity> examsList = new ArrayList<>();
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		assertNotNull(examEntity);
-		examsList.add(examEntity);
-		studentEntity.setExams(examsList);
+		studentEntity.addExam(examEntity);
 		crud.update(studentEntity);
 		
 		// 4. Get and check if the student and the exam has correctly been fetched
@@ -58,7 +53,7 @@ public class ExamDao_IntegrationTest {
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
 		
 		// 6. Delete the exam, and Get to check if is deleted correctly
-		studentEntity.getExams().remove(examEntity); 
+		studentEntity.removeExamById(examEntity.getId()); 
 		crud.update(studentEntity);
 		studentEntityDb = crud.get(studentEntity.getId());
 		assertTrue(studentEntityDb.getExams().isEmpty());

@@ -67,3 +67,20 @@
 2021-03-24 01:37:30,623 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(134) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
 2021-03-24 01:39:33,479 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
 2021-03-24 01:54:33,211 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:12:06,765 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:15:42,271 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:21:48,929 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:22:57,093 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:39:38,986 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:41:02,896 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:43:29,047 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 11:44:54,144 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:02:44,303 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:21:04,140 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:24:25,321 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:27:09,867 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:29:38,452 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:31:05,145 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:31:10,583 [INFO] [main] [org.sg.test.StudentDaoImplTest] .test_get_withTopics(47) | []
+2021-03-24 13:32:57,644 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-24 13:44:24,259 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider

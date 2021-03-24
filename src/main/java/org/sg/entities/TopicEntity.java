@@ -79,6 +79,9 @@ public class TopicEntity {
 		if (description != null && !description.equals(other.description)) {
 			return false;
 		}
+		if (courseEntity != null && !courseEntity.equals(other.courseEntity)) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -87,6 +90,7 @@ public class TopicEntity {
 		int result = id;
 		result = result + ((name == null) ? 0 : name.hashCode());
 		result = result + ((description == null) ? 0 : description.hashCode());
+		result = result + ((courseEntity == null) ? 0 : courseEntity.hashCode());
 		return result;
 	}
 

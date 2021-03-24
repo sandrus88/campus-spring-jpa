@@ -32,12 +32,12 @@ insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) v
 insert into address (STUDENT_ID, STREET, NR, POSTAL_CODE, CITY, PROVINCE_CODE) values (10, 'Street10', 'nr10', 10, 'city10', '10');
 
 insert into course (ID, NAME, DESCRIPTION) values (201, 'Java', 'Basic concepts and Java fundamentals');
-insert into course (ID, NAME, DESCRIPTION) values (202, 'Java advanced programming', '');
+insert into course (ID, NAME, DESCRIPTION) values (202, 'Java advanced programming', null);
 insert into course (ID, NAME, DESCRIPTION) values (203, 'Operating Systems', 'This course will introduce you to modern operating systems');
-insert into course (ID, NAME, DESCRIPTION) values (204, 'Computer Network', '');
+insert into course (ID, NAME, DESCRIPTION) values (204, 'Computer Network', null);
 insert into course (ID, NAME, DESCRIPTION) values (205, 'Javascript', 'Concetti base di Javascript');
 insert into course (ID, NAME, DESCRIPTION) values (206, 'XML', 'XMLSchema e parsing con Java');
-insert into course (ID, NAME, DESCRIPTION) values (207, 'Data Structures and Algorithms', '');
+insert into course (ID, NAME, DESCRIPTION) values (207, 'Data Structures and Algorithms', null);
 
 insert into topic (ID, NAME, DESCRIPTION, COURSE_ID) values (301, 'Objects Oriented Paradigm', 'OOPS concepts (Data Abstraction, Encapsulation, Inheritance, Polymorphism)', 201);
 insert into topic (ID, NAME, DESCRIPTION, COURSE_ID) values (302, 'Basic Java constructs like loops and data types', '', 201);

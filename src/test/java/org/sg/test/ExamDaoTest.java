@@ -37,7 +37,6 @@ public class ExamDaoTest {
 		StudentEntity studentEntity = studentDao.get(studentId);
 		
 		//Then
-		logger.info(studentEntity.getExams());
 		assertNotNull(studentEntity);
 		assertNotNull(studentEntity.getExams());
 		assertEquals(studentEntity.getExams().get(0).getId(), Integer.valueOf(9));
