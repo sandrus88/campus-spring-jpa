@@ -48,18 +48,19 @@ public class StudentDaoImplTest {
 	public void test_get_withAddress() {
 		//Given
 		final Integer studentId = 1;
+		final Integer addressId = 1;
 		
 		//When
 		StudentEntity studentEntity = studentDao.get(studentId);
 		
 		//Then
-		assertNotNull(studentEntity.getAddressEntity());
 		assertEquals(studentEntity.getName(), "Sandro");
 		assertEquals(studentEntity.getSurname(), "Gargano");
 		assertEquals(studentEntity.getJobTitle(), "Waiter");
 		assertEquals(studentEntity.getPaymentType(), "Confirmed");
 		assertEquals(studentEntity.getSex(), Character.valueOf('M'));
-		assertEquals(studentEntity.getAddressEntity().getId(), studentEntity.getId());
+		assertNotNull(studentEntity.getAddressEntity());
+		assertEquals(studentEntity.getAddressEntity().getId(), addressId);
 	}
 
 	@Test
@@ -157,11 +158,7 @@ public class StudentDaoImplTest {
 		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
-		assertEquals(studentEntityDb.getName(), studentEntity.getName());
-		assertEquals(studentEntityDb.getSurname(), studentEntity.getSurname());
-		assertEquals(studentEntityDb.getJobTitle(), studentEntity.getJobTitle());
-		assertEquals(studentEntityDb.getPaymentType(), studentEntity.getPaymentType());
-		assertEquals(studentEntityDb.getSex(), studentEntity.getSex());
+		assertEquals(studentEntityDb, studentEntity);
 	}
 
 	@Test

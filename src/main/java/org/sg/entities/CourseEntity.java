@@ -1,5 +1,6 @@
 package org.sg.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,6 +37,18 @@ public class CourseEntity {
 	
 	@ManyToMany(mappedBy = "courses")
 	private List<StudentEntity> students;
+	
+	public CourseEntity(){
+		students = new ArrayList<>();
+	}
+	
+	public void addStudent(StudentEntity studentEntity) {
+		students.add(studentEntity);
+	}
+	
+	public void removeStudent(StudentEntity studentEntity) {
+		students.remove(studentEntity);
+	}
 	
 	public void addTopic(TopicEntity topic) {
 		topics.add(topic);

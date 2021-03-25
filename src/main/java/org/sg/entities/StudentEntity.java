@@ -1,21 +1,11 @@
 package org.sg.entities;
 
-import java.util.List;
+import com.sun.org.apache.xpath.internal.operations.Equals;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.JoinColumn;
+import javax.annotation.PostConstruct;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "STUDENT")
@@ -44,17 +34,21 @@ public class StudentEntity {
 	private List<ExamEntity> exams;
 
 	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(name = "SUBSCRIPTIONS", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+	@JoinTable(name = "SUBSCRIPTIONS",
+			joinColumns = @JoinColumn(name = "STUDENT_ID"),
+			inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
 	private List<CourseEntity> courses;
-
+	
+	public StudentEntity(){
+		courses = new ArrayList<>();
+	}
+	
 	public void addCourse(CourseEntity course) {
 		courses.add(course);
-		course.getStudents().add(this);
 	}
 
 	public void removeCourse(CourseEntity course) {
 		courses.remove(course);
-		course.getStudents().remove(this);
 	}
 
 	public void addExam(ExamEntity exam) {
@@ -175,15 +169,15 @@ public class StudentEntity {
 		if (sex != null && !sex.equals(other.sex)) {
 			return false;
 		}
-		if (exams != null && !exams.equals(other.exams)) {
-			return false;
-		}
-		if (addressEntity != null && !addressEntity.equals(other.addressEntity)) {
-			return false;
-		}
-		if (courses != null && !courses.equals(other.courses)) {
-			return false;
-		}
+//		if (addressEntity != null && !addressEntity.equals(other.addressEntity)) {
+//			return false;
+//		}
+//		if (exams != null && !exams.equals(other.exams)) {
+//			return false;
+//		}
+//		if (courses != null && !courses.equals(other.courses)) {
+//			return false;
+//		}
 		return true;
 	}
 
@@ -195,9 +189,9 @@ public class StudentEntity {
 		result = result + ((jobTitle == null) ? 0 : jobTitle.hashCode());
 		result = result + ((paymentType == null) ? 0 : paymentType.hashCode());
 		result = result + ((sex == null) ? 0 : sex.hashCode());
-		result = result + ((exams == null) ? 0 : exams.hashCode());
-		result = result + ((addressEntity == null) ? 0 : addressEntity.hashCode());
-		result = result + ((courses == null) ? 0 : courses.hashCode());
+//		result = result + ((exams == null) ? 0 : exams.hashCode());
+//		result = result + ((addressEntity == null) ? 0 : addressEntity.hashCode());
+//		result = result + ((courses == null) ? 0 : courses.hashCode());
 		return result;
 	}
 
