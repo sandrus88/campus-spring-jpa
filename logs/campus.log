@@ -1,6 +1,5 @@
 2021-03-25 00:03:00,599 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
 2021-03-25 00:04:04,582 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-25 00:04:10,073 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete(130) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: null, id course: null], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
 2021-03-25 00:05:24,834 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
 2021-03-25 00:07:12,871 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
 2021-03-25 00:08:41,329 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
