@@ -32,3 +32,4 @@
 2021-03-25 12:03:10,666 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
 2021-03-25 12:04:15,827 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
 2021-03-25 12:05:27,499 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-25 12:14:39,917 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
