@@ -43,7 +43,7 @@ public class StudentEntity {
 	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "SUBSCRIPTIONS", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
 	private List<CourseEntity> courses;
 
