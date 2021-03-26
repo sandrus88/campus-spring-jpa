@@ -13,15 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.sg.dao.impl.CourseDaoImpl;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
+import org.sg.service.ExamService;
+import org.sg.service.impl.ExamServiceImpl;
 
 public class ExamDao_IntegrationTest {
-	public StudentDaoImpl crud = new StudentDaoImpl();
-	public CourseDaoImpl crudCourse = new CourseDaoImpl();
+	private ExamService crud = new ExamServiceImpl();
 	
 	@Test
 	public void test_CRUD_exam() throws ParseException {
@@ -32,7 +31,7 @@ public class ExamDao_IntegrationTest {
 		
 		// 2. insert a new course
 		CourseEntity courseEntity = createCourse();
-		courseEntity = crudCourse.insert(courseEntity);
+		courseEntity = crud.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 		
 		// 3. insert an exam for the student
@@ -44,7 +43,7 @@ public class ExamDao_IntegrationTest {
 		crud.update(studentEntity);
 		
 		// 4. Get and check if the student and the exam has correctly been fetched
-		StudentEntity studentEntityDb = crud.get(studentEntity.getId());
+		StudentEntity studentEntityDb = crud.getStudent(studentEntity.getId());
 		assertNotNull(studentEntityDb);
 		assertNotNull(studentEntityDb.getExams());
 		assertEquals(studentEntityDb, studentEntity);
@@ -53,13 +52,13 @@ public class ExamDao_IntegrationTest {
 		// 5. Update the exam, and Get to check if updated correctly
 		updateExam(examEntity);
 		crud.update(studentEntity);
-		studentEntityDb = crud.get(studentEntity.getId());
+		studentEntityDb = crud.getStudent(studentEntity.getId());
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
 		
 		// 6. Delete the exam, and Get to check if is deleted correctly
 		studentEntity.removeExamById(examEntity.getId()); 
 		crud.update(studentEntity);
-		studentEntityDb = crud.get(studentEntity.getId());
+		studentEntityDb = crud.getStudent(studentEntity.getId());
 		assertNull(studentEntityDb.getExamById(examEntity.getId()));
 	}
 }

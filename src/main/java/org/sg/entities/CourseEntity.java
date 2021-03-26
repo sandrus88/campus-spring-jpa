@@ -40,6 +40,8 @@ public class CourseEntity {
 	
 	public CourseEntity(){
 		students = new ArrayList<>();
+		exams = new ArrayList<>();
+		topics = new ArrayList<>();
 	}
 	
 	public void addStudent(StudentEntity studentEntity) {
@@ -135,15 +137,15 @@ public class CourseEntity {
 		if (description != null && !description.equals(other.description)) {
 			return false;
 		}
-		if (exams != null && !exams.equals(other.exams)) {
-			return false;
-		}
-		if (topics != null && !topics.equals(other.topics)) {
-			return false;
-		}
-		if (students != null && !students.equals(other.students)) {
-			return false;
-		}
+//		if (exams != null && !exams.equals(other.exams)) {
+//			return false;
+//		}
+//		if (topics != null && !topics.equals(other.topics)) {
+//			return false;
+//		}
+//		if (students != null && !students.equals(other.students)) {
+//			return false;
+//		}
 		return true;
 	}
 	
@@ -152,9 +154,9 @@ public class CourseEntity {
 		int result = id;
 		result = result + ((name == null) ? 0 : name.hashCode());
 		result = result + ((description == null) ? 0 : description.hashCode());
-		result = result + ((exams == null) ? 0 : exams.hashCode());
-		result = result + ((topics == null) ? 0 : topics.hashCode());
-		result = result + ((students == null) ? 0 : students.hashCode());
+//		result = result + ((exams == null) ? 0 : exams.hashCode());
+//		result = result + ((topics == null) ? 0 : topics.hashCode());
+//		result = result + ((students == null) ? 0 : students.hashCode());
 		return result;
 	}
 	

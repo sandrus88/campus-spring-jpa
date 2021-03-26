@@ -2,27 +2,21 @@ package org.sg.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-import static org.sg.test.util.EntityUtils.createCourse;
-import static org.sg.test.util.EntityUtils.createStudent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.sg.dao.CourseDao;
-import org.sg.dao.StudentDao;
-import org.sg.dao.impl.CourseDaoImpl;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.StudentEntity;
+import org.sg.service.CourseService;
+import org.sg.service.StudentService;
+import org.sg.service.impl.CourseServiceImpl;
+import org.sg.service.impl.StudentServiceImpl;
 
 public class SubscriptionsTest {
-	private static Logger logger = LogManager.getLogger(ExamDaoTest.class);
-	private StudentDao studentDao = new StudentDaoImpl();
-	private CourseDao courseDao = new CourseDaoImpl();
+	private static Logger logger = LogManager.getLogger(SubscriptionsTest.class);
+	private StudentService studentDao = new StudentServiceImpl();
+	private CourseService courseDao = new CourseServiceImpl();
 
 	@Test
 	public void test_getCourses_fromStudent() {
@@ -30,7 +24,7 @@ public class SubscriptionsTest {
 		final Integer studentId = 2;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 
 		// Then
 		assertNotNull(studentEntity);
@@ -55,135 +49,250 @@ public class SubscriptionsTest {
 		assertEquals(courseEntity.getStudents().get(0).getId(), Integer.valueOf(4));
 		assertEquals(courseEntity.getStudents().get(1).getId(), Integer.valueOf(5));
 	}
-	
+
 	@Test
 	public void add_courseForStudent_checkStudentIntegrity() {
 		// Given
 		final Integer studentId = 7;
 		final Integer courseId = 205;
-		
+
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.addCourse(courseEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
-		
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
+
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
 		assertEquals(1, studentEntityDb.getCourses().size());
 		assertNotNull(studentEntityDb.getCourses().get(0));
 		assertEquals(courseEntity, studentEntityDb.getCourses().get(0));
 	}
-	
+
 	@Test
 	public void add_courseForStudent_checkCourseIntegrity() {
 		// Given
 		final Integer studentId = 7;
 		final Integer courseId = 205;
-		
+
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.addCourse(courseEntity);
 		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
-		
+
 		// Then
 		assertNotNull(courseEntityDb.getStudents());
 		assertEquals(1, courseEntityDb.getStudents().size());
 		assertNotNull(courseEntityDb.getStudents().get(0));
 		assertEquals(studentEntity, courseEntityDb.getStudents().get(0));
 	}
-	
+
 	@Test
 	public void add_2CoursesForStudent_checkStudentIntegrity() {
 		// Given
 		final Integer studentId = 6;
 		final Integer courseOneId = 203;
 		final Integer courseTwoId = 204;
-		
+
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseOneId);
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.addCourse(courseEntity);
 		studentEntity.addCourse(course2Entity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
-		
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
+
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
 		assertEquals(2, studentEntityDb.getCourses().size());
 		assertEquals(courseEntity, studentEntityDb.getCourses().get(0));
 		assertEquals(course2Entity, studentEntityDb.getCourses().get(1));
 	}
-	
+
 	@Test
 	public void add_2CoursesForStudent_checkCoursesIntegrity() {
 		// Given
 		final Integer studentId = 6;
 		final Integer courseOneId = 203;
 		final Integer courseTwoId = 204;
-		
+
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseOneId);
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.addCourse(courseEntity);
 		studentEntity.addCourse(course2Entity);
 		studentDao.update(studentEntity);
-		
+
 		CourseEntity courseEntityDb = courseDao.get(courseTwoId);
-		
+
 		// Then
 		assertNotNull(courseEntityDb.getStudents());
 		assertEquals(1, courseEntityDb.getStudents().size());
 		assertEquals(studentEntity, courseEntityDb.getStudents().get(0));
 	}
-	
+
 	@Test
 	public void add_studentForCourse_checkStudentIntegrity() {
-		fail("to be implemented");
+		// Given
+		final Integer studentId = 8;
+		final Integer courseId = 206;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.addStudent(studentEntity);
+		courseDao.update(courseEntity);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
+
+		// Then
+		assertNotNull(studentEntityDb.getCourses());
+		assertEquals(1, studentEntityDb.getCourses().size());
+		assertNotNull(studentEntityDb.getCourses().get(0));
+		assertEquals(courseEntity, studentEntityDb.getCourses().get(0));
 	}
-	
+
 	@Test
 	public void add_studentForCourse_checkCourseIntegrity() {
-		fail("to be implemented");
+		// Given
+		final Integer studentId = 8;
+		final Integer courseId = 206;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.addStudent(studentEntity);
+		courseDao.update(courseEntity);
+		CourseEntity courseEntityDb = courseDao.get(courseId);
+
+		// Then
+		assertNotNull(courseEntityDb.getStudents());
+		assertEquals(1, courseEntityDb.getStudents().size());
+		assertNotNull(courseEntityDb.getStudents().get(0));
+		assertEquals(studentEntity, courseEntityDb.getStudents().get(0));
 	}
-	
+
 	@Test
 	public void add_2StudentForCourse_checkStudentIntegrity() {
-		fail("to be implemented");
+		// Given
+		final Integer studentOneId = 9;
+		final Integer studentTwoId = 10;
+		final Integer courseId = 208;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		StudentEntity student2Entity = studentDao.getStudent(studentTwoId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.addStudent(studentEntity);
+		courseEntity.addStudent(student2Entity);
+		courseDao.update(courseEntity);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentOneId);
+
+		// Then
+		assertNotNull(studentEntityDb.getCourses());
+		assertEquals(1, studentEntityDb.getCourses().size());
+		assertEquals(studentEntity, studentEntityDb.getCourses().get(0));
 	}
-	
+
 	@Test
 	public void add_2StudentForCourse_checkCourseIntegrity() {
-		fail("to be implemented");
+		// Given
+		final Integer studentOneId = 9;
+		final Integer studentTwoId = 10;
+		final Integer courseId = 208;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		StudentEntity student2Entity = studentDao.getStudent(studentTwoId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.addStudent(studentEntity);
+		courseEntity.addStudent(student2Entity);
+		courseDao.update(courseEntity);
+		CourseEntity courseEntityDb = courseDao.get(courseId);
+
+		// Then
+		assertNotNull(courseEntityDb.getStudents());
+		assertEquals(2, courseEntityDb.getStudents().size());
+		assertEquals(studentEntity, courseEntityDb.getStudents().get(0));
+		assertEquals(student2Entity, courseEntityDb.getStudents().get(1));
 	}
-	
+
 	@Test
 	public void delete_studentFromCourse_checkStudentIntegrity() {
-		fail("to be implemented");
-		//lista corsi sara 0
+		// Given
+		final Integer studentId = 21;
+		final Integer courseId = 209;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.removeStudent(studentEntity);
+		courseDao.update(courseEntity);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
+		
+		//Then
+		assertEquals(0, studentEntityDb.getCourses().size());
 	}
-	
+
 	@Test
 	public void delete_studentFromCourse_checkCourseIntegrity() {
-		fail("to be implemented");
-		//lista studenti  sara 0
+		// Given
+		final Integer studentId = 21;
+		final Integer courseId = 209;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.removeStudent(studentEntity);
+		courseDao.update(courseEntity);
+		CourseEntity courseEntityDb = courseDao.get(courseId);
+		
+		//Then
+		assertEquals(0, courseEntityDb.getStudents().size());
 	}
+
 	@Test
-	public void delete_studentForCourse_when2StudentsPresent_checkStudentIntegrity() {
-		fail("to be implemented");
-		//lista corsi studente 1 e' 0
-		//lista corsi studente 2 e' 1
+	public void delete_studentFromCourse_when2StudentsPresent_checkStudentIntegrity() {
+		// Given
+		final Integer studentOneId = 22;
+		final Integer studentTwoId = 23;
+		final Integer courseId = 210;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.removeStudent(studentEntity);
+		courseDao.update(courseEntity);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentOneId);
+		StudentEntity student2EntityDb = studentDao.getStudent(studentTwoId);
+		
+		//Then
+		assertEquals(0, studentEntityDb.getCourses().size());
+		assertEquals(1, student2EntityDb.getCourses().size());
 	}
-	
+
 	@Test
-	public void delete_studentForCourse_when2StudentsPresent_checkCourseIntegrity() {
-		fail("to be implemented");
-		//lista studenti sara 1
+	public void delete_studentFromCourse_when2StudentsPresent_checkCourseIntegrity() {
+		// Given
+		final Integer studentOneId = 22;
+		final Integer studentTwoId = 23;
+		final Integer courseId = 210;
+
+		// When
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		StudentEntity student2Entity = studentDao.getStudent(studentTwoId);
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.removeStudent(student2Entity);
+		courseDao.update(courseEntity);
+		CourseEntity courseEntityDb = courseDao.get(courseId);
+		
+		//Then
+		assertEquals(1, courseEntityDb.getStudents().size());
+		assertEquals(studentEntity, courseEntityDb.getStudents().get(0));
 	}
-	
+
 }

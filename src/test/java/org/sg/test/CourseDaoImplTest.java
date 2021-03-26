@@ -16,15 +16,15 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.sg.dao.CourseDao;
-import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
+import org.sg.service.CourseService;
+import org.sg.service.impl.CourseServiceImpl;
 
 public class CourseDaoImplTest {
 
-	public static Logger logger = LogManager.getLogger(StudentDaoImplTest.class);
-	CourseDao courseDao = new CourseDaoImpl();
+	private static Logger logger = LogManager.getLogger(StudentDaoImplTest.class);
+	private CourseService courseDao = new CourseServiceImpl();
 
 	@Test
 	public void test_get_withoutTopics() {
@@ -79,9 +79,8 @@ public class CourseDaoImplTest {
 		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
 
 		// Then
-		assertEquals(courseEntityDb.getName(), courseEntity.getName());
-		assertEquals(courseEntityDb.getDescription(), courseEntity.getDescription());
-		assertNull(courseEntityDb.getTopics());
+		assertEquals(courseEntityDb, courseEntity);
+		assertTrue(courseEntityDb.getTopics().isEmpty());
 	}
 
 	@Test
@@ -99,8 +98,7 @@ public class CourseDaoImplTest {
 
 		// Then
 		assertNotNull(courseEntity.getTopicById(topicEntity.getId()));
-		assertEquals(courseEntityDb.getName(), courseEntity.getName());
-		assertEquals(courseEntityDb.getDescription(), courseEntity.getDescription());
+		assertEquals(courseEntityDb, courseEntity);
 		assertEquals(courseEntityDb.getTopics(), courseEntity.getTopics());
 	}
 	
@@ -112,11 +110,10 @@ public class CourseDaoImplTest {
 		//When
 		CourseEntity courseEntity = updateCourse(courseDao.get(courseId));
 		courseDao.insert(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		CourseEntity courseEntityDb = courseDao.get(courseId);
 		
 		//Then
-		assertEquals(courseEntityDb.getName(), courseEntity.getName());
-		assertEquals(courseEntityDb.getDescription(), courseEntity.getDescription());
+		assertEquals(courseEntityDb, courseEntity);
 	}
 	
 	@Test
@@ -129,7 +126,7 @@ public class CourseDaoImplTest {
 		TopicEntity topicEntity = createTopic(courseEntity);
 		courseEntity.addTopic(topicEntity);
 		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		CourseEntity courseEntityDb = courseDao.get(courseId);
 		
 		//Then
 		assertNotNull(courseEntityDb.getTopicById(topicEntity.getId()));
@@ -144,11 +141,10 @@ public class CourseDaoImplTest {
 		//When
 		CourseEntity courseEntity = updateCourse(courseDao.get(courseId));
 		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		CourseEntity courseEntityDb = courseDao.get(courseId);
 		
 		//Then
-		assertEquals(courseEntityDb.getName(), courseEntity.getName());
-		assertEquals(courseEntityDb.getDescription(), courseEntity.getDescription());
+		assertEquals(courseEntityDb, courseEntity);
 	}
 
 	@Test
@@ -162,7 +158,7 @@ public class CourseDaoImplTest {
 		TopicEntity topicEntity	= courseEntity.getTopicById(topicId);
 		topicEntity = updateTopic(topicEntity);
 		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		CourseEntity courseEntityDb = courseDao.get(courseId);
 		
 		//Then
 		assertEquals(courseEntityDb.getTopicById(topicId), topicEntity);
@@ -218,7 +214,7 @@ public class CourseDaoImplTest {
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeTopicById(topicId);
 		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
 		assertNull(courseEntityDb.getTopicById(topicId));

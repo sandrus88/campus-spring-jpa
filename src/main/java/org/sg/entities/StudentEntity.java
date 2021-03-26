@@ -41,6 +41,7 @@ public class StudentEntity {
 	
 	public StudentEntity(){
 		courses = new ArrayList<>();
+		exams = new ArrayList<>();
 	}
 	
 	public void addCourse(CourseEntity course) {
@@ -67,6 +68,10 @@ public class StudentEntity {
 
 	public void removeExamById(Integer examId) {
 		ExamEntity examEntity = getExamById(examId);
+		exams.remove(examEntity);
+	}
+	
+	public void removeExam(ExamEntity examEntity) {
 		exams.remove(examEntity);
 	}
 

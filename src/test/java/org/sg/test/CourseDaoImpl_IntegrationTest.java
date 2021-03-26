@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
+import org.sg.service.CourseService;
+import org.sg.service.impl.CourseServiceImpl;
 
 public class CourseDaoImpl_IntegrationTest {
-	public CourseDaoImpl crud = new CourseDaoImpl();
+	private CourseService crud = new CourseServiceImpl();
 
 	@Test
 	public void test_CRUD_course() {

@@ -70,8 +70,11 @@ insert into subscriptions (STUDENT_ID, COURSE_ID) values (02, 201);
 insert into subscriptions (STUDENT_ID, COURSE_ID) values (03, 201);
 insert into subscriptions (STUDENT_ID, COURSE_ID) values (02, 207);
 insert into subscriptions (STUDENT_ID, COURSE_ID) values (03, 207);
-insert into subscriptions (STUDENT_ID, COURSE_ID) values (04, 207);
-insert into subscriptions (STUDENT_ID, COURSE_ID) values (05, 207);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (04, 202);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (05, 202);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (21, 209);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (22, 210);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (23, 210);
 
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values (401, TO_DATE('14/10/2020', 'DD/MM/YYYY'), 25, 02, 201);
 insert into exams (ID, EXAM_DATE, MARK, STUDENT_ID, COURSE_ID) values (402, TO_DATE('17/12/2020', 'DD/MM/YYYY'), 24, 02, 201);

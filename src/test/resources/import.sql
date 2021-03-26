@@ -86,3 +86,6 @@ insert into subscriptions (STUDENT_ID, COURSE_ID) values (02, 207);
 insert into subscriptions (STUDENT_ID, COURSE_ID) values (03, 207);
 insert into subscriptions (STUDENT_ID, COURSE_ID) values (04, 202);
 insert into subscriptions (STUDENT_ID, COURSE_ID) values (05, 202);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (21, 209);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (22, 210);
+insert into subscriptions (STUDENT_ID, COURSE_ID) values (23, 210);
