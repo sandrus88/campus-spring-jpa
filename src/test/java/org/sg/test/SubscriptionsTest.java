@@ -103,6 +103,7 @@ public class SubscriptionsTest {
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.addCourse(courseEntity);
 		studentEntity.addCourse(course2Entity);
+		courseDao.update(courseEntity);
 		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
@@ -126,8 +127,8 @@ public class SubscriptionsTest {
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.addCourse(courseEntity);
 		studentEntity.addCourse(course2Entity);
+		courseDao.update(courseEntity);
 		studentDao.update(studentEntity);
-
 		CourseEntity courseEntityDb = courseDao.get(courseTwoId);
 
 		// Then
@@ -146,7 +147,9 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
+		studentEntity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
@@ -166,7 +169,9 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
+		studentEntity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
@@ -189,13 +194,16 @@ public class SubscriptionsTest {
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
 		courseEntity.addStudent(student2Entity);
+		studentEntity.addCourse(courseEntity);
+		student2Entity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.getStudent(studentOneId);
 
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
 		assertEquals(1, studentEntityDb.getCourses().size());
-		assertEquals(studentEntity, studentEntityDb.getCourses().get(0));
+		assertEquals(courseEntity, studentEntityDb.getCourses().get(0));
 	}
 
 	@Test
@@ -211,7 +219,10 @@ public class SubscriptionsTest {
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
 		courseEntity.addStudent(student2Entity);
+		studentEntity.addCourse(courseEntity);
+		student2Entity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
@@ -231,7 +242,9 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(studentEntity);
+//		studentEntity.removeCourse(courseEntity);
 		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 		
 		//Then
