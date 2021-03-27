@@ -1,75 +1,56 @@
 package org.sg.service.impl;
 
-import org.sg.dao.GenericDao;
+import org.sg.dao.CourseDao;
+import org.sg.dao.StudentDao;
+import org.sg.dao.impl.CourseDaoImpl;
+import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.ExamService;
 
-public class ExamServiceImpl extends GenericDao implements ExamService{
+public class ExamServiceImpl implements ExamService{
+	
+	private StudentDao studentDao;
+	private CourseDao courseDao;
+		
+		public ExamServiceImpl() {
+			studentDao = new StudentDaoImpl();
+			courseDao = new CourseDaoImpl();
+		}
 
 	public StudentEntity insert(StudentEntity studentEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(studentEntity);
-		entityManager.getTransaction().commit();
-		return studentEntity;
+		return studentDao.insert(studentEntity);
 	}
 
 	public StudentEntity getStudent(Integer id) {
-		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-		return studentEntity;
+		return studentDao.get(id);
 	}
 
 	public StudentEntity update(StudentEntity studentEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(studentEntity);
-		entityManager.getTransaction().commit();
-		return studentEntity;
+		return studentDao.update(studentEntity);
 	}
 
 	public boolean deleteStudent(Integer id) {
-		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-		if (studentEntity != null) {
-			entityManager.getTransaction().begin();
-			entityManager.remove(studentEntity);
-			entityManager.getTransaction().commit();
-			return true;
-		}
-		return false;
+		return studentDao.delete(id);
 	}
 
 	@Override
 	public CourseEntity insert(CourseEntity courseEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(courseEntity);
-		entityManager.getTransaction().commit();
-		return courseEntity;
+		return courseDao.insert(courseEntity);
 	}
 
 	@Override
 	public CourseEntity get(Integer id) {
-		CourseEntity courseEntity = entityManager.find(CourseEntity.class, id);
-		return courseEntity;
+		return courseDao.get(id);
 	}
 
 	@Override
 	public CourseEntity update(CourseEntity courseEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(courseEntity);
-		entityManager.getTransaction().commit();
-		return courseEntity;
+		return courseDao.update(courseEntity);
 	}
 
 	@Override
 	public boolean delete(Integer id) {
-		CourseEntity courseEntity = entityManager.find(CourseEntity.class, id);
-		if (courseEntity != null) {
-			entityManager.getTransaction().begin();
-			entityManager.remove(courseEntity);
-			entityManager.getTransaction().commit();
-			return true;
-		}
-		return false;
+		return courseDao.delete(id);
 	}
-
-
 }

@@ -1,66 +1,52 @@
-2021-03-26 10:21:33,470 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:22:23,116 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:22:53,781 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:23:08,810 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:24:07,141 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:24:40,031 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:24:57,088 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:25:21,240 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:27:20,153 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:28:19,192 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:28:39,845 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:29:28,148 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:29:56,923 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:30:49,765 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:32:09,076 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:32:40,362 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:33:06,924 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:33:21,460 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:33:47,626 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:34:03,749 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:35:06,942 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:35:51,317 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:36:27,219 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:37:40,071 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:38:07,101 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:38:33,780 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:39:10,963 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:39:42,641 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:40:16,920 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:43:34,410 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:45:00,845 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:46:30,221 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:48:20,143 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:50:58,154 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:51:32,846 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:52:09,191 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:53:34,534 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:54:49,924 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:57:12,761 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 10:59:24,089 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:00:25,999 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:01:28,731 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:02:28,202 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:03:13,760 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:04:18,843 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:06:09,557 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:07:46,242 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:08:44,555 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:10:50,958 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:12:41,693 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:14:33,210 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:15:58,452 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:16:41,708 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:18:39,435 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:19:07,184 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:19:40,652 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:20:09,579 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:20:45,762 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:21:17,787 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:22:19,692 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:25:11,534 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:26:34,684 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:30:07,504 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:30:33,314 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:32:15,380 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-26 11:32:47,013 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:18:41,476 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:30:53,831 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:31:39,225 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:31:56,785 [WARN] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(137) | SQL Error: 50000, SQLState: HY000
+2021-03-27 00:31:56,790 [ERROR] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(142) | General error: "java.lang.StackOverflowError"; SQL statement:
+runscript from 'classpath:ddl_create_db_h2.sql' [50000-200]
+2021-03-27 00:43:37,529 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:46:03,565 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:48:43,887 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 00:57:44,430 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:08:14,586 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:10:28,329 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:10:54,182 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:11:12,238 [WARN] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(137) | SQL Error: 50000, SQLState: HY000
+2021-03-27 01:11:12,258 [ERROR] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(142) | General error: "java.lang.StackOverflowError"; SQL statement:
+runscript from 'classpath:ddl_create_db_h2.sql' [50000-200]
+2021-03-27 01:19:09,308 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:25:02,520 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:29:03,548 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:30:02,254 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:31:25,408 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:34:14,222 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:35:24,744 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:36:37,516 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:38:13,502 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:39:07,529 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:40:56,861 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:44:40,894 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:45:20,771 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:45:27,556 [WARN] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(137) | SQL Error: 23503, SQLState: 23503
+2021-03-27 01:45:27,557 [ERROR] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(142) | Referential integrity constraint violation: "FKQYFQ6EKNB34GRAQQBTSDELKBG: PUBLIC.SUBSCRIPTIONS FOREIGN KEY(COURSE_ID) REFERENCES PUBLIC.COURSE(ID) (209)"; SQL statement:
+delete from COURSE where ID=? [23503-200]
+2021-03-27 01:46:55,744 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:48:09,442 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:48:16,400 [WARN] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(137) | SQL Error: 23503, SQLState: 23503
+2021-03-27 01:48:16,401 [ERROR] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(142) | Referential integrity constraint violation: "FKQYFQ6EKNB34GRAQQBTSDELKBG: PUBLIC.SUBSCRIPTIONS FOREIGN KEY(COURSE_ID) REFERENCES PUBLIC.COURSE(ID) (209)"; SQL statement:
+delete from COURSE where ID=? [23503-200]
+2021-03-27 01:48:44,213 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:49:19,238 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:49:26,292 [WARN] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(137) | SQL Error: 23503, SQLState: 23503
+2021-03-27 01:49:26,293 [ERROR] [main] [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] .logExceptions(142) | Referential integrity constraint violation: "FKQYFQ6EKNB34GRAQQBTSDELKBG: PUBLIC.SUBSCRIPTIONS FOREIGN KEY(COURSE_ID) REFERENCES PUBLIC.COURSE(ID) (209)"; SQL statement:
+delete from COURSE where ID=? [23503-200]
+2021-03-27 01:50:23,228 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:50:53,451 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:52:07,692 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:53:01,975 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:54:04,603 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:54:56,729 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:55:37,562 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:56:46,915 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:58:51,663 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-27 01:59:32,057 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider

@@ -13,19 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.sg.dao.CourseDao;
+import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
-import org.sg.service.CourseService;
-import org.sg.service.impl.CourseServiceImpl;
 
 public class CourseDaoImpl_IntegrationTest {
-	private CourseService crud = new CourseServiceImpl();
+	private CourseDao crud = new CourseDaoImpl();
 
 	@Test
 	public void test_CRUD_course() {
 		// 1. insert a new course
 		CourseEntity courseEntity = createCourse();
-		courseEntity = crud.insert(courseEntity);
+		crud.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 
 		// 2. get the course from DB
@@ -34,7 +34,7 @@ public class CourseDaoImpl_IntegrationTest {
 		assertEquals(courseEntityDb, courseEntity);
 
 		// 3. Update the course in DB, and Get to check if updated correctly
-		courseEntity = updateCourse(courseEntity);
+		updateCourse(courseEntity);
 		crud.update(courseEntity);
 		courseEntityDb = crud.get(courseEntity.getId());
 		assertEquals(courseEntityDb, courseEntity);
@@ -50,14 +50,11 @@ public class CourseDaoImpl_IntegrationTest {
 	public void test_CRUD_topic() {
 		// 1. insert a new course
 		CourseEntity courseEntity = createCourse();
-		courseEntity = crud.insert(courseEntity);
+		crud.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 		
 		// 2. insert a new topic
 		TopicEntity topicEntity = createTopic(courseEntity);
-		List<TopicEntity> topicsList = new ArrayList<TopicEntity>();
-		courseEntity.setTopics(topicsList);
-		courseEntity.addTopic(topicEntity);
 		crud.update(courseEntity);
 		assertNotNull(topicEntity.getId());
 		
@@ -68,7 +65,7 @@ public class CourseDaoImpl_IntegrationTest {
 		assertEquals(topicEntityDb, topicEntity);
 
 		// 4. Update the topic in DB, and Get to check if updated correctly
-		topicEntity = updateTopic(topicEntity);
+		updateTopic(topicEntity);
 		crud.update(courseEntity);
 		topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
 		assertEquals(topicEntityDb, topicEntity);
@@ -84,12 +81,8 @@ public class CourseDaoImpl_IntegrationTest {
 	public void test_CRUD_courseWithTopics() {
 		// 1. insert a new course with topics
 		CourseEntity courseEntity = createCourse();
-		courseEntity = crud.insert(courseEntity);
 		TopicEntity topicEntity = createTopic(courseEntity);
-		List<TopicEntity> topicsList = new ArrayList<TopicEntity>();
-		courseEntity.setTopics(topicsList);
-		courseEntity.addTopic(topicEntity);
-		crud.update(courseEntity);
+		crud.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 		assertNotNull(topicEntity.getId());
 		assertNotNull(courseEntity.getTopics());

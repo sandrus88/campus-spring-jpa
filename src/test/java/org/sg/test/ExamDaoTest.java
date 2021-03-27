@@ -14,16 +14,18 @@ import java.text.ParseException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.sg.dao.CourseDao;
+import org.sg.dao.StudentDao;
+import org.sg.dao.impl.CourseDaoImpl;
+import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
-import org.sg.service.ExamService;
-import org.sg.service.impl.ExamServiceImpl;
 
 public class ExamDaoTest {
-
 	private static Logger logger = LogManager.getLogger(ExamDaoTest.class);
-	private ExamService examDao = new ExamServiceImpl();
+	private CourseDao courseDao = new CourseDaoImpl();
+	private StudentDao studentDao = new StudentDaoImpl();
 	
 
 	@Test
@@ -32,7 +34,7 @@ public class ExamDaoTest {
 		final Integer studentId = 1;
 		
 		//When
-		StudentEntity studentEntity = examDao.getStudent(studentId);
+		StudentEntity studentEntity = studentDao.get(studentId);
 		
 		//Then
 		assertNotNull(studentEntity);
@@ -49,7 +51,7 @@ public class ExamDaoTest {
 		final Integer courseId = 201;
 		
 		//When
-		CourseEntity courseEntity = examDao.get(courseId);;
+		CourseEntity courseEntity = courseDao.get(courseId);;
 		
 		//Then
 		assertNotNull(courseEntity);
@@ -67,13 +69,13 @@ public class ExamDaoTest {
 		final Integer studentId = 6;
 		
 		//When
-		StudentEntity studentEntity = examDao.getStudent(studentId);
+		StudentEntity studentEntity = studentDao.get(studentId);
 		CourseEntity courseEntity = createCourse();
-		examDao.insert(courseEntity);
+		courseDao.insert(courseEntity);
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		studentEntity.addExam(examEntity);
-		examDao.update(studentEntity);
-		StudentEntity studentEntityDb = examDao.getStudent(studentId);
+		studentDao.update(studentEntity);
+		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
 		assertNotNull(studentEntityDb);
@@ -87,12 +89,12 @@ public class ExamDaoTest {
 		final Integer courseId = 206;
 		
 		//When
-		StudentEntity studentEntity = examDao.getStudent(studentId);
-		CourseEntity courseEntity = examDao.get(courseId);;
+		StudentEntity studentEntity = studentDao.get(studentId);
+		CourseEntity courseEntity = courseDao.get(courseId);;
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		studentEntity.addExam(examEntity);
-		examDao.update(studentEntity);
-		StudentEntity studentEntityDb = examDao.getStudent(studentId);
+		studentDao.update(studentEntity);
+		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
@@ -105,11 +107,11 @@ public class ExamDaoTest {
 		final Integer examId = 2;
 		
 		//When
-		StudentEntity studentEntity = examDao.getStudent(studentId);
+		StudentEntity studentEntity = studentDao.get(studentId);
 		ExamEntity examEntity = studentEntity.getExamById(examId);
-		examEntity = updateExam(examEntity);
-		examDao.update(studentEntity);
-		StudentEntity studentEntityDb = examDao.getStudent(studentId);
+		updateExam(examEntity);
+		studentDao.update(studentEntity);
+		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
 		assertNotEquals(studentEntityDb.getExamById(examId), studentEntity.getExamById(examId));
@@ -122,10 +124,10 @@ public class ExamDaoTest {
 		final Integer examId = 4;
 		
 		//When
-		StudentEntity studentEntity = examDao.getStudent(studentId);
+		StudentEntity studentEntity = studentDao.get(studentId);
 		studentEntity.removeExamById(examId);
-		examDao.update(studentEntity);
-		StudentEntity studentEntityDb = examDao.getStudent(studentId);
+		studentDao.update(studentEntity);
+		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
 		assertNull(studentEntityDb.getExamById(examId));
@@ -137,14 +139,14 @@ public class ExamDaoTest {
 		final Integer studentId = 4;
 		
 		//When
-		StudentEntity studentEntity = examDao.getStudent(studentId);
+		StudentEntity studentEntity = studentDao.get(studentId);
 		studentEntity.getExams().clear();
-		examDao.update(studentEntity);
-		StudentEntity studentEntityDb = examDao.getStudent(studentId);
+		studentDao.update(studentEntity);
+		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
 		assertNotNull(studentEntityDb);
-		assertTrue(studentEntityDb.getExams().isEmpty());
+		assertEquals(0, studentEntityDb.getExams().size());
 	}
 	
 	@Test
@@ -153,8 +155,8 @@ public class ExamDaoTest {
 		final Integer studentId = 5;
 		
 		//When
-		boolean deleting = examDao.deleteStudent(studentId);
-		StudentEntity studentEntityDb = examDao.getStudent(studentId);
+		boolean deleting = studentDao.delete(studentId);
+		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
 		assertTrue(deleting);

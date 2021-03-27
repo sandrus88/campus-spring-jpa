@@ -1,67 +1,56 @@
 package org.sg.service.impl;
 
-import org.sg.dao.GenericDao;
+import org.sg.dao.AddressDao;
+import org.sg.dao.StudentDao;
+import org.sg.dao.impl.AddressDaoImpl;
+import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.AddressEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.StudentService;
 
-public class StudentServiceImpl extends GenericDao implements StudentService{
+public class StudentServiceImpl implements StudentService{
+	
+private StudentDao studentDao;
+private AddressDao addressDao;
+	
+	public StudentServiceImpl() {
+		studentDao = new StudentDaoImpl();
+		addressDao = new AddressDaoImpl();
+	}
 
 	public StudentEntity insert(StudentEntity studentEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(studentEntity);
-		entityManager.getTransaction().commit();
-		return studentEntity;
+		return studentDao.insert(studentEntity);
 	}
 
 	public StudentEntity getStudent(Integer id) {
-		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-		return studentEntity;
+		return studentDao.get(id);
 	}
 
 	public StudentEntity update(StudentEntity studentEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(studentEntity);
-		entityManager.getTransaction().commit();
-		return studentEntity;
+		return studentDao.update(studentEntity);
 	}
 
 	public boolean deleteStudent(Integer id) {
-		StudentEntity studentEntity = entityManager.find(StudentEntity.class, id);
-		if (studentEntity != null) {
-			entityManager.getTransaction().begin();
-			entityManager.remove(studentEntity);
-			entityManager.getTransaction().commit();
-			return true;
-		}
-		return false;
+		return studentDao.delete(id);
 	}
 
 	@Override
 	public AddressEntity insert(AddressEntity addressEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(addressEntity);
-		entityManager.getTransaction().commit();
-		return addressEntity;
+		return addressDao.insert(addressEntity);
 	}
 
 	@Override
 	public AddressEntity get(AddressEntity addressEntity) {
-		return addressEntity;
+		return addressDao.get(addressEntity);
 	}
 
 	@Override
 	public AddressEntity update(AddressEntity addressEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(addressEntity);
-		entityManager.getTransaction().commit();
-		return addressEntity;
+		return addressDao.update(addressEntity);
 	}
 	
 	public void delete(AddressEntity addressEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.remove(entityManager.merge(addressEntity));
-		entityManager.getTransaction().commit();
+		addressDao.delete(addressEntity);
 	}
 
 }

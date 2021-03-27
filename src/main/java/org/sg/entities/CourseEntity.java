@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -35,7 +37,11 @@ public class CourseEntity {
 	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ExamEntity> exams;
 	
-	@ManyToMany(mappedBy = "courses")
+//	@ManyToMany(mappedBy = "courses")
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "SUBSCRIPTIONS",
+			joinColumns = @JoinColumn(name = "COURSE_ID"),
+			inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
 	private List<StudentEntity> students;
 	
 	public CourseEntity(){

@@ -10,21 +10,15 @@ import static org.sg.test.util.EntityUtils.createTopic;
 import static org.sg.test.util.EntityUtils.updateCourse;
 import static org.sg.test.util.EntityUtils.updateTopic;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.sg.dao.CourseDao;
+import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
-import org.sg.service.CourseService;
-import org.sg.service.impl.CourseServiceImpl;
 
 public class CourseDaoImplTest {
 
-	private static Logger logger = LogManager.getLogger(StudentDaoImplTest.class);
-	private CourseService courseDao = new CourseServiceImpl();
+	private CourseDao courseDao = new CourseDaoImpl();
 
 	@Test
 	public void test_get_withoutTopics() {
@@ -50,11 +44,11 @@ public class CourseDaoImplTest {
 
 		// Then
 		assertNotNull(courseEntity.getTopics());
-		assertEquals(courseEntity.getTopics().get(0).getId(), Integer.valueOf(301));
-		assertEquals(courseEntity.getTopics().get(1).getId(), Integer.valueOf(302));
-		assertEquals(courseEntity.getTopics().get(2).getId(), Integer.valueOf(303));
-		assertEquals(courseEntity.getTopics().get(3).getId(), Integer.valueOf(304));
-		assertEquals(courseEntity.getTopics().get(4).getId(), Integer.valueOf(306));
+		assertEquals(courseEntity.getTopics().get(0).getId(), Integer.valueOf(1));
+		assertEquals(courseEntity.getTopics().get(1).getId(), Integer.valueOf(2));
+		assertEquals(courseEntity.getTopics().get(2).getId(), Integer.valueOf(3));
+		assertEquals(courseEntity.getTopics().get(3).getId(), Integer.valueOf(4));
+		assertEquals(courseEntity.getTopics().get(4).getId(), Integer.valueOf(6));
 	}
 
 	@Test
@@ -75,7 +69,7 @@ public class CourseDaoImplTest {
 		CourseEntity courseEntity = createCourse();
 
 		// When
-		courseEntity = courseDao.insert(courseEntity);
+		courseDao.insert(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
 
 		// Then
@@ -90,9 +84,6 @@ public class CourseDaoImplTest {
 		TopicEntity topicEntity = createTopic(courseEntity);
 
 		// When
-		List<TopicEntity> topicsList = new ArrayList<TopicEntity>();
-		courseEntity.setTopics(topicsList);
-		courseEntity.addTopic(topicEntity);
 		courseDao.insert(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
 
@@ -151,12 +142,12 @@ public class CourseDaoImplTest {
 	public void test_update_topic_for_existingCourse() {
 		//Given
 		final Integer courseId = 203;
-		final Integer topicId = 310;
+		final Integer topicId = 10;
 		
 		//When
 		CourseEntity courseEntity = courseDao.get(courseId);
 		TopicEntity topicEntity	= courseEntity.getTopicById(topicId);
-		topicEntity = updateTopic(topicEntity);
+		updateTopic(topicEntity);
 		courseDao.update(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 		
@@ -208,7 +199,7 @@ public class CourseDaoImplTest {
 	public void test_delete_topic() {
 		// Given
 		final Integer courseId = 206;
-		final Integer topicId = 315;
+		final Integer topicId = 15;
 
 		// When
 		CourseEntity courseEntity = courseDao.get(courseId);

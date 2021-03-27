@@ -1,42 +1,35 @@
 package org.sg.service.impl;
 
-import org.sg.dao.GenericDao;
+import org.sg.dao.CourseDao;
+import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.service.CourseService;
 
-public class CourseServiceImpl extends GenericDao implements CourseService{
+public class CourseServiceImpl implements CourseService {
+
+	private CourseDao courseDao;
+
+	public CourseServiceImpl() {
+		courseDao = new CourseDaoImpl();
+	}
 
 	@Override
 	public CourseEntity insert(CourseEntity courseEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(courseEntity);
-		entityManager.getTransaction().commit();
-		return courseEntity;
+		return courseDao.insert(courseEntity);
 	}
 
 	@Override
 	public CourseEntity get(Integer id) {
-		CourseEntity courseEntity = entityManager.find(CourseEntity.class, id);
-		return courseEntity;
+		return courseDao.get(id);
 	}
 
 	@Override
 	public CourseEntity update(CourseEntity courseEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(courseEntity);
-		entityManager.getTransaction().commit();
-		return courseEntity;
+		return courseDao.update(courseEntity);
 	}
 
 	@Override
 	public boolean delete(Integer id) {
-		CourseEntity courseEntity = entityManager.find(CourseEntity.class, id);
-		if (courseEntity != null) {
-			entityManager.getTransaction().begin();
-			entityManager.remove(courseEntity);
-			entityManager.getTransaction().commit();
-			return true;
-		}
-		return false;
+		return courseDao.delete(id);
 	}
 }

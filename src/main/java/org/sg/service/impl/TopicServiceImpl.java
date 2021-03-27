@@ -1,42 +1,35 @@
 package org.sg.service.impl;
 
-import org.sg.dao.GenericDao;
+import org.sg.dao.TopicDao;
+import org.sg.dao.impl.TopicDaoImpl;
 import org.sg.entities.TopicEntity;
 import org.sg.service.TopicService;
 
-public class TopicServiceImpl extends GenericDao implements TopicService{
+public class TopicServiceImpl implements TopicService{
+	
+	private TopicDao topicDao;
+	
+	public TopicServiceImpl() {
+		topicDao = new TopicDaoImpl();
+	}
 
 	@Override
 	public TopicEntity insert(TopicEntity topicEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(topicEntity);
-		entityManager.getTransaction().commit();
-		return topicEntity;
+		return topicDao.insert(topicEntity);
 	}
 
 	@Override
 	public TopicEntity get(Integer id) {
-		TopicEntity topicEntity = entityManager.find(TopicEntity.class, id);
-		return topicEntity;
+		return topicDao.get(id);
 	}
 
 	@Override
 	public TopicEntity update(TopicEntity topicEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(topicEntity);
-		entityManager.getTransaction().commit();
-		return topicEntity;
+		return topicDao.update(topicEntity);
 	}
 
 	@Override
 	public boolean delete(Integer id) {
-		TopicEntity topicEntity = entityManager.find(TopicEntity.class, id);
-		if (topicEntity != null) {
-			entityManager.getTransaction().begin();
-			entityManager.remove(topicEntity);
-			entityManager.getTransaction().commit();
-			return true;
-		}
-		return false;
+		return topicDao.delete(id);
 	}
 }
