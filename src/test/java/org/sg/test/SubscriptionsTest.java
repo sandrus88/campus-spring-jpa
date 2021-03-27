@@ -80,6 +80,8 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.get(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.addCourse(courseEntity);
+		courseEntity.addStudent(studentEntity);
+		courseDao.update(courseEntity);
 		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
@@ -242,7 +244,7 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.get(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(studentEntity);
-		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.get(studentId);
 
 		// Then
@@ -278,7 +280,7 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.get(studentOneId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(studentEntity);
-		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		StudentEntity studentEntityDb = studentDao.get(studentOneId);
 		StudentEntity student2EntityDb = studentDao.get(studentTwoId);
 
@@ -336,7 +338,7 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.get(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.removeCourse(courseEntity);
-		studentDao.update(studentEntity);
+		courseDao.update(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
@@ -375,7 +377,7 @@ public class SubscriptionsTest {
 		StudentEntity studentEntity = studentDao.get(studentId);
 		CourseEntity courseEntity = courseDao.get(courseTwoId);
 		studentEntity.removeCourse(courseEntity);
-		studentDao.update(studentEntity);
+		courseDao.update(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseOneId);
 		CourseEntity course2EntityDb = courseDao.get(courseTwoId);
 

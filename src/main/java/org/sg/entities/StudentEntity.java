@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.ForeignKey;
 
 @Entity
 @Table(name = "STUDENT")
@@ -38,7 +39,7 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true)
+	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true, orphanRemoval = true)
 	private AddressEntity addressEntity;
 
 	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)

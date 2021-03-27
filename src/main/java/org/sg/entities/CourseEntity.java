@@ -2,6 +2,7 @@ package org.sg.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -135,7 +136,7 @@ public class CourseEntity {
 		}
 		CourseEntity other = (CourseEntity) o;
 		if (id != other.id) {
-			return false;
+			return Objects.equals(getId(), other.getId());
 		}
 		if (name != null && !name.equals(other.name)) {
 			return false;

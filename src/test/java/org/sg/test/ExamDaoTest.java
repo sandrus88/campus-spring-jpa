@@ -114,7 +114,7 @@ public class ExamDaoTest {
 		StudentEntity studentEntityDb = studentDao.get(studentId);
 		
 		//Then
-		assertNotEquals(studentEntityDb.getExamById(examId), studentEntity.getExamById(examId));
+		assertEquals(studentEntityDb.getExamById(examId), studentEntity.getExamById(examId));
 	}
 	
 	@Test
