@@ -1,5 +1,8 @@
 package org.sg.test.util;
 
+import static org.junit.Assert.assertNotNull;
+import static org.sg.test.util.EntityUtils.createExam;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,10 +67,12 @@ public class EntityUtils {
 		return courseEntity;
 	}
 	
-	public static TopicEntity createTopic() {
+	public static TopicEntity createTopic(CourseEntity courseEntity) {
 		TopicEntity topicEntity = new TopicEntity();
 		topicEntity.setName("newTopic");
 		topicEntity.setDescription("descriptionOfNewTopic");
+		topicEntity.setCourseEntity(courseEntity);
+		courseEntity.addTopic(topicEntity);
 		return topicEntity;
 	}
 	
@@ -77,13 +82,15 @@ public class EntityUtils {
 		return topicEntity;
 	}
 
-	public static AddressEntity createAddress() {
+	public static AddressEntity createAddress(StudentEntity studentEntity) {
 		AddressEntity addressEntity = new AddressEntity();
 		addressEntity.setStreet("newStreet");
 		addressEntity.setNr("newNumber");
 		addressEntity.setPostalCode(00000);
 		addressEntity.setCity("newCity");
 		addressEntity.setProvinceCode("NA");
+		addressEntity.setStudentEntity(studentEntity);
+		studentEntity.setAddressEntity(addressEntity);
 		return addressEntity;
 	}
 	
@@ -105,6 +112,7 @@ public class EntityUtils {
 		examEntity.setMark(18);
 		examEntity.setCourseEntity(courseEntity);
 		examEntity.setStudentEntity(studentEntity);
+		studentEntity.addExam(examEntity);
 		return examEntity;
 	}
 	

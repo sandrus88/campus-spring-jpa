@@ -96,7 +96,7 @@ public class AddressEntity {
 			return false;
 		}
 		AddressEntity other = (AddressEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (street != null && !street.equals(other.street)) {
@@ -131,6 +131,6 @@ public class AddressEntity {
 	@Override
 	public String toString() {
 		return "Address  [id: " + id + ", street: " + street + ", buildingNumber: " + nr + ", postalCode: " + postalCode
-				+ ", city: " + city + ", provinceCode: " + provinceCode + ", studentId: " + (studentEntity != null ? studentEntity.getId() : "null") + "]";
+				+ ", city: " + city + ", provinceCode: " + provinceCode + ", id studente: " + (studentEntity != null ? studentEntity.getId() : "null") + "]";
 	}
 }

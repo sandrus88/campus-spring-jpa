@@ -70,13 +70,16 @@ public class TopicEntity {
 			return false;
 		}
 		TopicEntity other = (TopicEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (name != null && !name.equals(other.name)) {
 			return false;
 		}
 		if (description != null && !description.equals(other.description)) {
+			return false;
+		}
+		if (courseEntity != null && !courseEntity.equals(other.courseEntity)) {
 			return false;
 		}
 		return true;
@@ -87,11 +90,12 @@ public class TopicEntity {
 		int result = id;
 		result = result + ((name == null) ? 0 : name.hashCode());
 		result = result + ((description == null) ? 0 : description.hashCode());
+		result = result + ((courseEntity == null) ? 0 : courseEntity.hashCode());
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + ", id course: " + courseEntity.getId() + "]";
+		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + ", id course: " + (courseEntity != null ? courseEntity.getId() : "null") + "]";
 	}
 }

@@ -2,6 +2,7 @@ package org.sg.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -84,7 +85,7 @@ public class ExamEntity {
 			return false;
 		}
 		ExamEntity other = (ExamEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (examDate != null && !examDate.equals(other.examDate)) {
@@ -114,6 +115,6 @@ public class ExamEntity {
 	
 	@Override
 	public String toString() {
-		return "Exam  [id: " + id + ", date of exam: " + examDate + ", mark: " + mark + ", id student: " + studentEntity.getId() + ", id course: " + courseEntity.getId() + "]";
+		return "Exam  [id: " + id + ", date of exam: " + examDate + ", mark: " + mark + ", id student: " + (studentEntity != null ? studentEntity.getId() : "null") + ", id course: " + (courseEntity != null ? courseEntity.getId() : "null") + "]";
 	}
 }

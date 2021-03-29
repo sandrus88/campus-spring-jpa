@@ -1,69 +1,38 @@
-2021-03-24 00:00:17,160 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:00:22,436 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(44) | [Exam  [id: 9, date of exam: 2020-11-15 00:00:00.0, mark: 16, id student: 1, id course: 203], Exam  [id: 10, date of exam: 2020-11-15 00:00:00.0, mark: 28, id student: 1, id course: 203], Exam  [id: 13, date of exam: 2020-05-03 00:00:00.0, mark: 15, id student: 1, id course: 201], Exam  [id: 14, date of exam: 2020-11-18 00:00:00.0, mark: 14, id student: 1, id course: 205]]
-2021-03-24 00:10:31,863 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:10:37,222 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(44) | [Exam  [id: 9, date of exam: 2020-11-15 00:00:00.0, mark: 16, id student: 1, id course: 203], Exam  [id: 10, date of exam: 2020-11-15 00:00:00.0, mark: 28, id student: 1, id course: 203], Exam  [id: 13, date of exam: 2020-05-03 00:00:00.0, mark: 15, id student: 1, id course: 201], Exam  [id: 14, date of exam: 2020-11-18 00:00:00.0, mark: 14, id student: 1, id course: 205]]
-2021-03-24 00:10:37,275 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(45) | Exam  [id: 10, date of exam: 2020-11-15 00:00:00.0, mark: 28, id student: 1, id course: 203]
-2021-03-24 00:11:20,741 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:11:26,048 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(44) | [Exam  [id: 9, date of exam: 2020-11-15 00:00:00.0, mark: 16, id student: 1, id course: 203], Exam  [id: 10, date of exam: 2020-11-15 00:00:00.0, mark: 28, id student: 1, id course: 203], Exam  [id: 13, date of exam: 2020-05-03 00:00:00.0, mark: 15, id student: 1, id course: 201], Exam  [id: 14, date of exam: 2020-11-18 00:00:00.0, mark: 14, id student: 1, id course: 205]]
-2021-03-24 00:11:26,116 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(45) | Exam  [id: 9, date of exam: 2020-11-15 00:00:00.0, mark: 16, id student: 1, id course: 203]
-2021-03-24 00:11:40,528 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:11:45,735 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(44) | [Exam  [id: 9, date of exam: 2020-11-15 00:00:00.0, mark: 16, id student: 1, id course: 203], Exam  [id: 10, date of exam: 2020-11-15 00:00:00.0, mark: 28, id student: 1, id course: 203], Exam  [id: 13, date of exam: 2020-05-03 00:00:00.0, mark: 15, id student: 1, id course: 201], Exam  [id: 14, date of exam: 2020-11-18 00:00:00.0, mark: 14, id student: 1, id course: 205]]
-2021-03-24 00:11:45,787 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(45) | 
-2021-03-24 00:12:01,036 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:12:06,481 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(44) | [Exam  [id: 9, date of exam: 2020-11-15 00:00:00.0, mark: 16, id student: 1, id course: 203], Exam  [id: 10, date of exam: 2020-11-15 00:00:00.0, mark: 28, id student: 1, id course: 203], Exam  [id: 13, date of exam: 2020-05-03 00:00:00.0, mark: 15, id student: 1, id course: 201], Exam  [id: 14, date of exam: 2020-11-18 00:00:00.0, mark: 14, id student: 1, id course: 205]]
-2021-03-24 00:12:06,542 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(45) | Exam  [id: 13, date of exam: 2020-05-03 00:00:00.0, mark: 15, id student: 1, id course: 201]
-2021-03-24 00:24:11,878 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:27:30,100 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:27:35,629 [INFO] [main] [org.sg.test.ExamDaoTest] .test_insert_exam_toStudent_forNewCourse(87) | [Exam  [id: 200, date of exam: Fri Jan 01 00:00:00 CET 2021, mark: 18, id student: 6, id course: 200]]
-2021-03-24 00:31:18,480 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:31:23,823 [INFO] [main] [org.sg.test.ExamDaoTest] .test_insert_exam_toStudent_forExistingCourse(106) | [Exam  [id: 200, date of exam: Fri Jan 01 00:00:00 CET 2021, mark: 18, id student: 7, id course: 206]]
-2021-03-24 00:35:38,025 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:35:43,344 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(46) | [Exam  [id: 1, date of exam: 2020-10-14 00:00:00.0, mark: 25, id student: 2, id course: 201], Exam  [id: 2, date of exam: 2020-12-17 00:00:00.0, mark: 24, id student: 2, id course: 201], Exam  [id: 3, date of exam: 2021-02-01 00:00:00.0, mark: 20, id student: 2, id course: 205]]
-2021-03-24 00:41:40,811 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:42:37,772 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:43:21,470 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:43:26,838 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(125) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 00:49:01,597 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:49:06,885 [INFO] [main] [org.sg.test.ExamDaoTest] .test_get_exams_fromStudent(47) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 00:51:01,743 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:54:21,028 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:54:26,530 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(141) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 00:57:35,812 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:59:03,753 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 00:59:09,335 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(125) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 00:59:09,341 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(126) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:00:04,236 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:00:10,377 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(125) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:00:10,385 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(126) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:02:17,942 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:02:23,369 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(125) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:02:23,375 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(126) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:02:59,871 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:03:05,880 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(125) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:03:05,886 [INFO] [main] [org.sg.test.ExamDaoTest] .test_update_exam(126) | Exam  [id: 2, date of exam: Fri Dec 31 00:00:00 CET 2021, mark: 30, id student: 2, id course: 201]
-2021-03-24 01:05:59,492 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:06:04,845 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(141) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:07:29,626 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:07:35,086 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(141) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:09:37,299 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:09:42,716 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(141) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:10:08,764 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:10:14,395 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(141) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:10:38,963 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:10:44,413 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(141) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:14:42,351 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:14:47,786 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_all_exams(157) | []
-2021-03-24 01:16:11,606 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:26:17,237 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:26:33,584 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:26:38,855 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(134) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:27:39,089 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:27:44,462 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(134) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:29:14,243 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:30:54,796 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:32:13,135 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:34:32,998 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(134) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:37:25,131 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:37:30,623 [INFO] [main] [org.sg.test.ExamDaoTest] .test_delete_only_one_exam(134) | [Exam  [id: 4, date of exam: 2020-09-12 00:00:00.0, mark: 30, id student: 3, id course: 201], Exam  [id: 5, date of exam: 2020-12-13 00:00:00.0, mark: 30, id student: 3, id course: 205]]
-2021-03-24 01:39:33,479 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
-2021-03-24 01:54:33,211 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:01:31,307 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:02:25,321 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:02:50,503 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:03:19,029 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:03:38,549 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:04:18,441 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:07:43,249 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:08:13,553 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:08:28,940 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:09:42,297 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:10:04,269 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:13:55,683 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:14:17,285 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:14:57,854 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:15:35,920 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:16:12,749 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:16:37,585 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:17:13,807 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:17:39,612 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:18:22,160 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:18:37,331 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:18:55,571 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:19:17,222 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:19:33,836 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:19:48,124 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:20:04,020 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 15:20:27,211 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:02:22,915 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:03:52,823 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:07:28,689 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:27:06,937 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:27:35,552 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:31:40,963 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:35:46,613 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:40:00,809 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:40:26,085 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:41:39,435 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-29 16:42:20,457 [DEBUG] [main] [org.jboss.logging] .<clinit>(38) | Logging Provider: org.jboss.logging.Log4jLoggerProvider

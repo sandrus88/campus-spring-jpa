@@ -1,5 +1,6 @@
 package org.sg.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,10 +10,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.ForeignKey;
 
 @Entity
 @Table(name = "STUDENT")
@@ -34,19 +39,30 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true)
+	@OneToOne(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true, orphanRemoval = true)
 	private AddressEntity addressEntity;
 
 	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
-//	
-//	@ManyToMany
-//	@JoIntegerable(
-//			name = "subscriptions", 
-//			joinColumns = {@JoinColumn(name = "STUDENT_ID")}, 
-//			inverseJoinColumns = {@JoinColumn(name = "COURSE_ID")}
-//			)
-//    private List<CourseEntity> courses;
+
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "SUBSCRIPTIONS",
+			joinColumns = @JoinColumn(name = "STUDENT_ID"),
+			inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+	private List<CourseEntity> courses;
+	
+	public StudentEntity(){
+		courses = new ArrayList<>();
+		exams = new ArrayList<>();
+	}
+	
+	public void addCourse(CourseEntity course) {
+		courses.add(course);
+	}
+
+	public void removeCourse(CourseEntity course) {
+		courses.remove(course);
+	}
 
 	public void addExam(ExamEntity exam) {
 		exams.add(exam);
@@ -64,6 +80,10 @@ public class StudentEntity {
 
 	public void removeExamById(Integer examId) {
 		ExamEntity examEntity = getExamById(examId);
+		exams.remove(examEntity);
+	}
+
+	public void removeExam(ExamEntity examEntity) {
 		exams.remove(examEntity);
 	}
 
@@ -120,8 +140,6 @@ public class StudentEntity {
 	}
 
 	public void setExams(List<ExamEntity> exams) {
-//		this.exams.clear();
-//		this.exams.addAll(exams);
 		this.exams = exams;
 	}
 
@@ -132,10 +150,14 @@ public class StudentEntity {
 	public void setAddressEntity(AddressEntity addressEntity) {
 		this.addressEntity = addressEntity;
 	}
-//
-//	public List<CourseEntity> getCourses() {
-//		return courses;
-//	}
+	
+	public void setCourses(List<CourseEntity> courses) {
+		this.courses = courses;
+	}
+
+	public List<CourseEntity> getCourses() {
+		return courses;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -146,7 +168,7 @@ public class StudentEntity {
 			return false;
 		}
 		StudentEntity other = (StudentEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (name != null && !name.equals(other.name)) {
@@ -164,12 +186,15 @@ public class StudentEntity {
 		if (sex != null && !sex.equals(other.sex)) {
 			return false;
 		}
-		if (exams != null && !exams.equals(other.exams)) {
-			return false;
-		}
-		if (addressEntity != null && !addressEntity.equals(other.addressEntity)) {
-			return false;
-		}
+//		if (addressEntity != null && !addressEntity.equals(other.addressEntity)) {
+//			return false;
+//		}
+//		if (exams != null && !exams.equals(other.exams)) {
+//			return false;
+//		}
+//		if (courses != null && !courses.equals(other.courses)) {
+//			return false;
+//		}
 		return true;
 	}
 
@@ -181,8 +206,9 @@ public class StudentEntity {
 		result = result + ((jobTitle == null) ? 0 : jobTitle.hashCode());
 		result = result + ((paymentType == null) ? 0 : paymentType.hashCode());
 		result = result + ((sex == null) ? 0 : sex.hashCode());
-		result = result + ((exams == null) ? 0 : exams.hashCode());
-		result = result + ((addressEntity == null) ? 0 : addressEntity.hashCode());
+//		result = result + ((exams == null) ? 0 : exams.hashCode());
+//		result = result + ((addressEntity == null) ? 0 : addressEntity.hashCode());
+//		result = result + ((courses == null) ? 0 : courses.hashCode());
 		return result;
 	}
 
