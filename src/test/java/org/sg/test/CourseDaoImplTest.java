@@ -21,7 +21,7 @@ public class CourseDaoImplTest {
 	private CourseDao courseDao = new CourseDaoImpl();
 
 	@Test
-	public void test_get_withoutTopics() {
+	public void test_getCourse_withoutTopics() {
 		// Given
 		final Integer courseId = 205;
 
@@ -35,7 +35,7 @@ public class CourseDaoImplTest {
 	}
 
 	@Test
-	public void test_get_withTopics() {
+	public void test_getCourse_withTopics() {
 		// Given
 		final Integer courseId = 201;
 
@@ -52,7 +52,7 @@ public class CourseDaoImplTest {
 	}
 
 	@Test
-	public void test_get_notPresent() {
+	public void test_getCourse_notPresent() {
 		// Given
 		final Integer courseId = -1;
 
@@ -64,7 +64,7 @@ public class CourseDaoImplTest {
 	}
 
 	@Test
-	public void test_insert() {
+	public void test_insertCourse_withoutTopics() {
 		// Given
 		CourseEntity courseEntity = createCourse();
 
@@ -78,7 +78,7 @@ public class CourseDaoImplTest {
 	}
 
 	@Test
-	public void test_insert_withTopics() {
+	public void test_insertCourse_withTopics() {
 		// Given
 		CourseEntity courseEntity = createCourse();
 		TopicEntity topicEntity = createTopic(courseEntity);
@@ -94,21 +94,7 @@ public class CourseDaoImplTest {
 	}
 	
 	@Test
-	public void test_update_withoutTopics() {
-		//Given
-		final Integer courseId = 207;
-		
-		//When
-		CourseEntity courseEntity = updateCourse(courseDao.get(courseId));
-		courseDao.insert(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
-		
-		//Then
-		assertEquals(courseEntityDb, courseEntity);
-	}
-	
-	@Test
-	public void test_add_topic_for_existingCourse() {
+	public void test_addTopic_forCourse() {
 		//Given
 		final Integer courseId = 208;
 		
@@ -125,21 +111,23 @@ public class CourseDaoImplTest {
 	}
 	
 	@Test
-	public void test_update_student_withTopic_topicShouldNotChange() {
-		//Given
-		final Integer courseId = 202;
+	public void test_deleteTopic_forCourse() {
+		// Given
+		final Integer courseId = 206;
+		final Integer topicId = 15;
 		
-		//When
-		CourseEntity courseEntity = updateCourse(courseDao.get(courseId));
+		// When
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity.removeTopicById(topicId);
 		courseDao.update(courseEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 		
-		//Then
-		assertEquals(courseEntityDb, courseEntity);
+		// Then
+		assertNull(courseEntityDb.getTopicById(topicId));
 	}
-
+	
 	@Test
-	public void test_update_topic_for_existingCourse() {
+	public void test_updateTopic_forCourse() {
 		//Given
 		final Integer courseId = 203;
 		final Integer topicId = 10;
@@ -154,9 +142,45 @@ public class CourseDaoImplTest {
 		//Then
 		assertEquals(courseEntityDb.getTopicById(topicId), topicEntity);
 	}
-
+	
 	@Test
-	public void test_delete() {
+	public void test_updateCourse_withoutTopics() {
+		//Given
+		final Integer courseId = 207;
+		
+		//When
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity = updateCourse(courseEntity);
+		courseDao.update(courseEntity);
+		CourseEntity courseEntityDb = courseDao.get(courseId);
+		
+		//Then
+		assertEquals(courseEntityDb, courseEntity);
+		assertEquals(0, courseEntity.getTopics().size());
+		assertEquals(0, courseEntityDb.getTopics().size());
+	}
+	
+	@Test
+	public void test_updateCourse_withTopics() {
+		//Given
+		final Integer courseId = 202;
+		
+		//When
+		CourseEntity courseEntity = courseDao.get(courseId);
+		courseEntity = updateCourse(courseEntity);
+		courseDao.update(courseEntity);
+		CourseEntity courseEntityDb = courseDao.get(courseId);
+		
+		//Then
+		assertEquals(2, courseEntity.getTopics().size());
+		assertEquals(courseEntityDb, courseEntity);
+		assertEquals(2, courseEntityDb.getTopics().size());
+		assertEquals(courseEntityDb.getTopics().get(0), courseEntityDb.getTopics().get(0));
+		assertEquals(courseEntityDb.getTopics().get(1), courseEntityDb.getTopics().get(1));
+	}
+	
+	@Test
+	public void test_deleteCourse() {
 		// Given
 		final Integer courseId = 209;
 
@@ -170,7 +194,7 @@ public class CourseDaoImplTest {
 	}
 
 	@Test
-	public void test_delete_notPresent() {
+	public void test_deleteCourse_notPresent() {
 		// Given
 		final Integer courseId = -1;
 
@@ -182,7 +206,7 @@ public class CourseDaoImplTest {
 	}
 
 	@Test
-	public void test_delete_WithTopics() {
+	public void test_deleteCourse_WithTopics() {
 		// Given
 		final Integer courseId = 204;
 
@@ -194,20 +218,59 @@ public class CourseDaoImplTest {
 		assertTrue(deleting);
 		assertNull(courseEntity);
 	}
-
+	
 	@Test
-	public void test_delete_topic() {
-		// Given
-		final Integer courseId = 206;
-		final Integer topicId = 15;
-
-		// When
-		CourseEntity courseEntity = courseDao.get(courseId);
-		courseEntity.removeTopicById(topicId);
+	public void test_course_integrationTest_CRUD() {
+		// 1. insert a new course
+		CourseEntity courseEntity = createCourse();
+		courseDao.insert(courseEntity);
+		assertNotNull(courseEntity.getId());
+		
+		// 2. get the course from DB
+		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		assertNotNull(courseEntityDb);
+		assertEquals(courseEntityDb, courseEntity);
+		
+		// 3. Update the course in DB, and Get to check if updated correctly
+		updateCourse(courseEntity);
 		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
-
-		// Then
-		assertNull(courseEntityDb.getTopicById(topicId));
+		courseEntityDb = courseDao.get(courseEntity.getId());
+		assertEquals(courseEntityDb, courseEntity);
+		
+		// 4. Delete the course from DB, and Get to check if deleted correctly
+		boolean isRemoved = courseDao.delete(courseEntity.getId());
+		assertTrue(isRemoved);
+		courseEntityDb = courseDao.get(courseEntity.getId());
+		assertNull(courseEntityDb);
+	}
+	
+	@Test
+	public void test_topic_integrationTest_CRUD() {
+		// 1. insert a new course
+		CourseEntity courseEntity = createCourse();
+		courseDao.insert(courseEntity);
+		assertNotNull(courseEntity.getId());
+		
+		// 2. insert a new topic
+		TopicEntity topicEntity = createTopic(courseEntity);
+		courseDao.update(courseEntity);
+		assertNotNull(topicEntity.getId());
+		
+		// 3. get the topic from DB
+		TopicEntity topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
+		assertNotNull(topicEntityDb);
+		assertEquals(topicEntityDb, topicEntity);
+		
+		// 4. Update the topic in DB, and Get to check if updated correctly
+		updateTopic(topicEntity);
+		courseDao.update(courseEntity);
+		topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
+		assertEquals(topicEntityDb, topicEntity);
+		
+		// 5. Delete the topic from DB, and Get to check if deleted correctly
+		courseEntity.removeTopicById(topicEntity.getId());
+		courseDao.update(courseEntity);
+		topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
+		assertNull(topicEntityDb);
 	}
 }
