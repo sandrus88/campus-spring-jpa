@@ -39,7 +39,7 @@ public class StudentEntity {
 	@Column(name = "SEX")
 	private Character sex;
 
-	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.ALL, optional = true, orphanRemoval = true)
+	@OneToOne(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true, orphanRemoval = true)
 	private AddressEntity addressEntity;
 
 	@OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -168,7 +168,7 @@ public class StudentEntity {
 			return false;
 		}
 		StudentEntity other = (StudentEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (name != null && !name.equals(other.name)) {

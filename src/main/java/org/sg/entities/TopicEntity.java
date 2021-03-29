@@ -70,7 +70,7 @@ public class TopicEntity {
 			return false;
 		}
 		TopicEntity other = (TopicEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (name != null && !name.equals(other.name)) {

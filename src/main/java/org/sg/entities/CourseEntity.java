@@ -35,7 +35,7 @@ public class CourseEntity {
 	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<TopicEntity> topics;
 	
-	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
 	
 //	@ManyToMany(mappedBy = "courses")
@@ -135,8 +135,8 @@ public class CourseEntity {
 			return false;
 		}
 		CourseEntity other = (CourseEntity) o;
-		if (id != other.id) {
-			return Objects.equals(getId(), other.getId());
+		if (id != null && !id.equals(other.id)) {
+			return false;
 		}
 		if (name != null && !name.equals(other.name)) {
 			return false;

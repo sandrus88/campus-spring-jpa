@@ -85,7 +85,7 @@ public class ExamEntity {
 			return false;
 		}
 		ExamEntity other = (ExamEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (examDate != null && !examDate.equals(other.examDate)) {

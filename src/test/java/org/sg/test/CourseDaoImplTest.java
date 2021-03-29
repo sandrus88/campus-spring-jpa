@@ -11,14 +11,14 @@ import static org.sg.test.util.EntityUtils.updateCourse;
 import static org.sg.test.util.EntityUtils.updateTopic;
 
 import org.junit.Test;
-import org.sg.dao.CourseDao;
-import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
+import org.sg.service.CourseService;
+import org.sg.service.impl.CourseServiceImpl;
 
 public class CourseDaoImplTest {
 
-	private CourseDao courseDao = new CourseDaoImpl();
+	private CourseService courseDao = new CourseServiceImpl();
 
 	@Test
 	public void test_getCourse_withoutTopics() {

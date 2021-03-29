@@ -6,17 +6,17 @@ import static org.junit.Assert.assertNotNull;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.sg.dao.CourseDao;
-import org.sg.dao.StudentDao;
-import org.sg.dao.impl.CourseDaoImpl;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.StudentEntity;
+import org.sg.service.CourseService;
+import org.sg.service.StudentService;
+import org.sg.service.impl.CourseServiceImpl;
+import org.sg.service.impl.StudentServiceImpl;
 
 public class SubscriptionsTest {
 	private static Logger logger = LogManager.getLogger(SubscriptionsTest.class);
-	private StudentDao studentDao = new StudentDaoImpl();
-	private CourseDao courseDao = new CourseDaoImpl();
+	private StudentService studentDao = new StudentServiceImpl();
+	private CourseService courseDao = new CourseServiceImpl();
 
 	@Test
 	public void test_getCourses_fromStudent() {
@@ -24,7 +24,7 @@ public class SubscriptionsTest {
 		final Integer studentId = 2;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 
 		// Then
 		assertNotNull(studentEntity);
@@ -57,11 +57,11 @@ public class SubscriptionsTest {
 		final Integer courseId = 205;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.addCourse(courseEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
@@ -77,11 +77,9 @@ public class SubscriptionsTest {
 		final Integer courseId = 205;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.addCourse(courseEntity);
-		courseEntity.addStudent(studentEntity);
-		courseDao.update(courseEntity);
 		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
@@ -100,14 +98,13 @@ public class SubscriptionsTest {
 		final Integer courseTwoId = 204;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseOneId);
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.addCourse(courseEntity);
 		studentEntity.addCourse(course2Entity);
-		courseDao.update(courseEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
@@ -124,12 +121,11 @@ public class SubscriptionsTest {
 		final Integer courseTwoId = 204;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseOneId);
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.addCourse(courseEntity);
 		studentEntity.addCourse(course2Entity);
-		courseDao.update(courseEntity);
 		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseTwoId);
 
@@ -146,13 +142,11 @@ public class SubscriptionsTest {
 		final Integer courseId = 206;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
-		studentEntity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
-		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
@@ -168,12 +162,10 @@ public class SubscriptionsTest {
 		final Integer courseId = 206;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
-		studentEntity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
-		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
@@ -191,16 +183,13 @@ public class SubscriptionsTest {
 		final Integer courseId = 208;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentOneId);
-		StudentEntity student2Entity = studentDao.get(studentTwoId);
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		StudentEntity student2Entity = studentDao.getStudent(studentTwoId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
 		courseEntity.addStudent(student2Entity);
-		studentEntity.addCourse(courseEntity);
-		student2Entity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
-		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentOneId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentOneId);
 
 		// Then
 		assertNotNull(studentEntityDb.getCourses());
@@ -216,15 +205,12 @@ public class SubscriptionsTest {
 		final Integer courseId = 208;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentOneId);
-		StudentEntity student2Entity = studentDao.get(studentTwoId);
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		StudentEntity student2Entity = studentDao.getStudent(studentTwoId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.addStudent(studentEntity);
 		courseEntity.addStudent(student2Entity);
-		studentEntity.addCourse(courseEntity);
-		student2Entity.addCourse(courseEntity);
 		courseDao.update(courseEntity);
-		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
@@ -241,11 +227,11 @@ public class SubscriptionsTest {
 		final Integer courseId = 209;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(studentEntity);
-		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		courseDao.update(courseEntity);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
 		assertEquals(1, studentEntityDb.getCourses().size());
@@ -259,7 +245,7 @@ public class SubscriptionsTest {
 		final Integer courseId = 209;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(studentEntity);
 		courseDao.update(courseEntity);
@@ -277,12 +263,12 @@ public class SubscriptionsTest {
 		final Integer courseId = 210;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentOneId);
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(studentEntity);
-		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentOneId);
-		StudentEntity student2EntityDb = studentDao.get(studentTwoId);
+		courseDao.update(courseEntity);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentOneId);
+		StudentEntity student2EntityDb = studentDao.getStudent(studentTwoId);
 
 		// Then
 		assertEquals(1, studentEntityDb.getCourses().size());
@@ -299,8 +285,8 @@ public class SubscriptionsTest {
 		final Integer courseId = 210;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentOneId);
-		StudentEntity student2Entity = studentDao.get(studentTwoId);
+		StudentEntity studentEntity = studentDao.getStudent(studentOneId);
+		StudentEntity student2Entity = studentDao.getStudent(studentTwoId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		courseEntity.removeStudent(student2Entity);
 		courseDao.update(courseEntity);
@@ -318,11 +304,11 @@ public class SubscriptionsTest {
 		final Integer courseId = 211;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.removeCourse(courseEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
 		assertEquals(0, studentEntityDb.getCourses().size());
@@ -335,10 +321,10 @@ public class SubscriptionsTest {
 		final Integer courseId = 211;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseId);
 		studentEntity.removeCourse(courseEntity);
-		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseId);
 
 		// Then
@@ -354,12 +340,12 @@ public class SubscriptionsTest {
 		final Integer courseTwoId = 213;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseOneId);
 		CourseEntity course2Entity = courseDao.get(courseTwoId);
 		studentEntity.removeCourse(courseEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 
 		// Then
 		assertEquals(1, studentEntityDb.getCourses().size());
@@ -374,10 +360,10 @@ public class SubscriptionsTest {
 		final Integer courseTwoId = 213;
 
 		// When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		CourseEntity courseEntity = courseDao.get(courseTwoId);
 		studentEntity.removeCourse(courseEntity);
-		courseDao.update(courseEntity);
+		studentDao.update(studentEntity);
 		CourseEntity courseEntityDb = courseDao.get(courseOneId);
 		CourseEntity course2EntityDb = courseDao.get(courseTwoId);
 

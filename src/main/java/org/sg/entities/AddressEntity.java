@@ -96,7 +96,7 @@ public class AddressEntity {
 			return false;
 		}
 		AddressEntity other = (AddressEntity) o;
-		if (id != other.id) {
+		if (id != null && !id.equals(other.id)) {
 			return false;
 		}
 		if (street != null && !street.equals(other.street)) {

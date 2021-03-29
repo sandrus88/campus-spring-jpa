@@ -14,15 +14,15 @@ import static org.sg.test.util.EntityUtils.updateStudent;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.sg.dao.StudentDao;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.AddressEntity;
 import org.sg.entities.StudentEntity;
+import org.sg.service.StudentService;
+import org.sg.service.impl.StudentServiceImpl;
 
 public class StudentDaoImplTest {
 	
 	private static Logger logger = LogManager.getLogger(StudentDaoImplTest.class);
-	private StudentDao studentDao = new StudentDaoImpl();
+	private StudentService studentDao = new StudentServiceImpl();
 	
 	@Test
 	public void test_getStudent_withoutAddress() {
@@ -30,7 +30,7 @@ public class StudentDaoImplTest {
 		final Integer studentId = 21;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		
 		//Then
 		assertNotNull(studentEntity);
@@ -48,7 +48,7 @@ public class StudentDaoImplTest {
 		final Integer addressId = 1;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		
 		//Then
 		assertEquals(studentEntity.getName(), "Sandro");
@@ -66,7 +66,7 @@ public class StudentDaoImplTest {
 		final Integer studentId = -1;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		
 		//Then
 		assertNull(studentEntity);
@@ -79,7 +79,7 @@ public class StudentDaoImplTest {
 		
 		//When
 		studentDao.insert(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		StudentEntity studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		
 		//Then
 		assertEquals(studentEntityDb, studentEntity);
@@ -93,7 +93,7 @@ public class StudentDaoImplTest {
 		
 		//When
 		studentDao.insert(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		StudentEntity studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		
 		//Then
 		assertEquals(studentEntityDb, studentEntity);
@@ -106,10 +106,10 @@ public class StudentDaoImplTest {
 		final Integer studentId = 22;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		studentEntity = updateStudent(studentEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 		
 		//Then
 		assertEquals(studentEntityDb, studentEntity);
@@ -121,10 +121,10 @@ public class StudentDaoImplTest {
 		final Integer studentId = 2;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		studentEntity = updateStudent(studentEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 		
 		//Then
 		assertEquals(studentEntityDb, studentEntity);
@@ -136,8 +136,8 @@ public class StudentDaoImplTest {
 		final Integer studentId = 24;
 		
 		//When
-		boolean deleting = studentDao.delete(studentId);
-		StudentEntity studentEntity = studentDao.get(studentId);
+		boolean deleting = studentDao.deleteStudent(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		
 		//Then
 		assertTrue(deleting);
@@ -150,8 +150,8 @@ public class StudentDaoImplTest {
 		final Integer studentId = 4;
 		
 		//When
-		boolean deleting = studentDao.delete(studentId);
-		StudentEntity studentEntity = studentDao.get(studentId);
+		boolean deleting = studentDao.deleteStudent(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		
 		//Then
 		assertTrue(deleting);
@@ -164,7 +164,7 @@ public class StudentDaoImplTest {
 		final Integer studentId = -1;
 		
 		//When
-		boolean deleting = studentDao.delete(studentId);
+		boolean deleting = studentDao.deleteStudent(studentId);
 		
 		//Then
 		assertFalse(deleting);
@@ -176,10 +176,10 @@ public class StudentDaoImplTest {
 		final Integer studentId = 23;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		AddressEntity addressEntity = createAddress(studentEntity);
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 		
 		//Then
 		assertNotNull(studentEntityDb.getAddressEntity());
@@ -192,11 +192,11 @@ public class StudentDaoImplTest {
 		final Integer studentId = 5;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		studentEntity.getAddressEntity().setStudentEntity(null);
 		studentEntity.setAddressEntity(null);
 		studentDao.update(studentEntity);
-		StudentEntity db = studentDao.get(studentEntity.getId());
+		StudentEntity db = studentDao.getStudent(studentEntity.getId());
 		
 		//Then
 		assertNull(db.getAddressEntity());
@@ -208,10 +208,10 @@ public class StudentDaoImplTest {
 		final Integer studentId = 3;
 		
 		//When
-		StudentEntity studentEntity = studentDao.get(studentId);
+		StudentEntity studentEntity = studentDao.getStudent(studentId);
 		AddressEntity addressEntity = updateAddress(studentEntity.getAddressEntity());
 		studentDao.update(studentEntity);
-		StudentEntity studentEntityDb = studentDao.get(studentId);
+		StudentEntity studentEntityDb = studentDao.getStudent(studentId);
 		
 		//Then
 		assertEquals(studentEntityDb.getAddressEntity(), addressEntity);
@@ -225,20 +225,20 @@ public class StudentDaoImplTest {
 		assertNotNull(studentEntity.getId());
 		
 		// 2. get the student from DB
-		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		StudentEntity studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertNotNull(studentEntityDb);
 		assertEquals(studentEntityDb, studentEntity);
 		
 		// 3. Update the student in DB, and Get to check if updated correctly
 		updateStudent(studentEntity);
 		studentDao.update(studentEntity);
-		studentEntityDb = studentDao.get(studentEntity.getId());
+		studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertEquals(studentEntityDb, studentEntity);
 		
 		// 4. Delete the student from DB, and Get to check if deleted correctly
-		boolean isRemoved = studentDao.delete(studentEntity.getId());
+		boolean isRemoved = studentDao.deleteStudent(studentEntity.getId());
 		assertTrue(isRemoved);
-		studentEntityDb = studentDao.get(studentEntity.getId());
+		studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertNull(studentEntityDb);
 	}
 	
@@ -255,7 +255,7 @@ public class StudentDaoImplTest {
 		studentDao.update(studentEntity);
 		
 		// 3. Get and check if the student and the address has correctly been fetched
-		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		StudentEntity studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertNotNull(studentEntityDb);
 		assertNotNull(studentEntityDb.getAddressEntity());
 		assertEquals(studentEntityDb, studentEntity);
@@ -264,7 +264,7 @@ public class StudentDaoImplTest {
 		// 4. Update the address, and Get to check if is updated correctly
 		updateAddress(addressEntity);
 		studentDao.update(studentEntity);
-		studentEntityDb = studentDao.get(studentEntity.getId());
+		studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertEquals(studentEntityDb.getAddressEntity(), studentEntity.getAddressEntity());
 		
 		// 5. Delete the address of the student, and Get to check if is deleted
@@ -272,7 +272,7 @@ public class StudentDaoImplTest {
 		studentEntity.getAddressEntity().setStudentEntity(null);
 		studentEntity.setAddressEntity(null);
 		studentDao.update(studentEntity);
-		studentEntityDb = studentDao.get(studentEntity.getId());
+		studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertNull(studentEntityDb.getAddressEntity());
 	}
 	
@@ -285,16 +285,16 @@ public class StudentDaoImplTest {
 		assertNotNull(studentEntity.getAddressEntity());
 		
 		// 2. Get and check if the student and the address has correctly been fetched
-		StudentEntity studentEntityDb = studentDao.get(studentEntity.getId());
+		StudentEntity studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertNotNull(studentEntityDb);
 		assertNotNull(studentEntityDb.getAddressEntity());
 		assertEquals(studentEntityDb, studentEntity);
 		assertEquals(studentEntityDb.getAddressEntity(), studentEntity.getAddressEntity());
 		
 		// 3. Delete the student, and Get to check if is deleted correctly
-		boolean isRemoved = studentDao.delete(studentEntity.getId());
+		boolean isRemoved = studentDao.deleteStudent(studentEntity.getId());
 		assertTrue(isRemoved);
-		studentEntityDb = studentDao.get(studentEntity.getId());
+		studentEntityDb = studentDao.getStudent(studentEntity.getId());
 		assertNull(studentEntityDb);
 	}
 	
