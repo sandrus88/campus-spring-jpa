@@ -8,12 +8,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "ADDRESS")
 public class AddressEntity {
 
 	@Id
+	@GeneratedValue
+	@Column(name = "STUDENT_ID")
 	private Integer id;
 	@Column(name = "STREET")
 	private String street;
