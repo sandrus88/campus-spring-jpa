@@ -3,7 +3,9 @@ package org.sg.dao.impl;
 import org.sg.dao.GenericDao;
 import org.sg.dao.TopicDao;
 import org.sg.entities.TopicEntity;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class TopicDaoImpl extends GenericDao implements TopicDao{
 
 	@Override

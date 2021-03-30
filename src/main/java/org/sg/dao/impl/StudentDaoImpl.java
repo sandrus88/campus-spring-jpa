@@ -3,7 +3,9 @@ package org.sg.dao.impl;
 import org.sg.dao.GenericDao;
 import org.sg.dao.StudentDao;
 import org.sg.entities.StudentEntity;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class StudentDaoImpl extends GenericDao implements StudentDao {
 
 	public StudentEntity insert(StudentEntity studentEntity) {

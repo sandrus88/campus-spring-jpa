@@ -10,13 +10,15 @@ import org.sg.entities.CourseEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.CourseService;
 import org.sg.service.StudentService;
-import org.sg.service.impl.CourseServiceImpl;
-import org.sg.service.impl.StudentServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class SubscriptionsTest {
 	private static Logger logger = LogManager.getLogger(SubscriptionsTest.class);
-	private StudentService studentDao = new StudentServiceImpl();
-	private CourseService courseDao = new CourseServiceImpl();
+	
+	@Autowired
+	private StudentService studentDao;
+	@Autowired
+	private CourseService courseDao;
 
 	@Test
 	public void test_getCourses_fromStudent() {

@@ -18,11 +18,13 @@ import org.sg.entities.CourseEntity;
 import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.ExamService;
-import org.sg.service.impl.ExamServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ExamDaoTest {
 	private static Logger logger = LogManager.getLogger(ExamDaoTest.class);
-	private ExamService examDao = new ExamServiceImpl();
+	
+	@Autowired
+	private ExamService examDao;
 
 	@Test
 	public void test_getExam_fromStudent() {
@@ -47,7 +49,7 @@ public class ExamDaoTest {
 		final Integer courseId = 201;
 		
 		//When
-		CourseEntity courseEntity = examDao.get(courseId);;
+		CourseEntity courseEntity = examDao.getCourse(courseId);;
 		
 		//Then
 		assertNotNull(courseEntity);
@@ -67,10 +69,10 @@ public class ExamDaoTest {
 		//When
 		StudentEntity studentEntity = examDao.getStudent(studentId);
 		CourseEntity courseEntity = createCourse();
-		examDao.insert(courseEntity);
+		examDao.insertCourse(courseEntity);
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		studentEntity.addExam(examEntity);
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		StudentEntity studentEntityDb = examDao.getStudent(studentId);
 		
 		//Then
@@ -86,10 +88,10 @@ public class ExamDaoTest {
 		
 		//When
 		StudentEntity studentEntity = examDao.getStudent(studentId);
-		CourseEntity courseEntity = examDao.get(courseId);;
+		CourseEntity courseEntity = examDao.getCourse(courseId);;
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		studentEntity.addExam(examEntity);
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		StudentEntity studentEntityDb = examDao.getStudent(studentId);
 		
 		//Then
@@ -106,7 +108,7 @@ public class ExamDaoTest {
 		StudentEntity studentEntity = examDao.getStudent(studentId);
 		ExamEntity examEntity = studentEntity.getExamById(examId);
 		examEntity = updateExam(examEntity);
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		StudentEntity studentEntityDb = examDao.getStudent(studentId);
 		
 		//Then
@@ -122,7 +124,7 @@ public class ExamDaoTest {
 		//When
 		StudentEntity studentEntity = examDao.getStudent(studentId);
 		studentEntity.removeExamById(examId);
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		StudentEntity studentEntityDb = examDao.getStudent(studentId);
 		
 		//Then
@@ -137,7 +139,7 @@ public class ExamDaoTest {
 		//When
 		StudentEntity studentEntity = examDao.getStudent(studentId);
 		studentEntity.getExams().clear();
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		StudentEntity studentEntityDb = examDao.getStudent(studentId);
 		
 		//Then
@@ -163,18 +165,18 @@ public class ExamDaoTest {
 	public void test_CRUD_exam() throws ParseException {
 		// 1. insert a new student
 		StudentEntity studentEntity = createStudent();
-		examDao.insert(studentEntity);
+		examDao.insertStudent(studentEntity);
 		assertNotNull(studentEntity.getId());
 		
 		// 2. insert a new course
 		CourseEntity courseEntity = createCourse();
-		examDao.insert(courseEntity);
+		examDao.insertCourse(courseEntity);
 		assertNotNull(courseEntity.getId());
 		
 		// 3. insert an exam for the student
 		ExamEntity examEntity = createExam(studentEntity, courseEntity);
 		assertNotNull(examEntity);
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		
 		// 4. Get and check if the student and the exam has correctly been fetched
 		StudentEntity studentEntityDb = examDao.getStudent(studentEntity.getId());
@@ -185,13 +187,13 @@ public class ExamDaoTest {
 		
 		// 5. Update the exam, and Get to check if updated correctly
 		examEntity = updateExam(examEntity);
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		studentEntityDb = examDao.getStudent(studentEntity.getId());
 		assertEquals(studentEntityDb.getExams(), studentEntity.getExams());
 		
 		// 6. Delete the exam, and Get to check if is deleted correctly
 		studentEntity.removeExamById(examEntity.getId());
-		examDao.update(studentEntity);
+		examDao.updateStudent(studentEntity);
 		studentEntityDb = examDao.getStudent(studentEntity.getId());
 		assertNull(studentEntityDb.getExamById(examEntity.getId()));
 	}

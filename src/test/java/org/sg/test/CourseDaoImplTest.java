@@ -14,11 +14,17 @@ import org.junit.Test;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
 import org.sg.service.CourseService;
-import org.sg.service.impl.CourseServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class CourseDaoImplTest {
-
-	private CourseService courseDao = new CourseServiceImpl();
+	
+//	ApplicationContext appContext = new ClassPathXmlApplicationContext("spring/config/BeanLocations.xml");
+//	
+//	CourseService courseService = (CourseService)appContext.getBean("courseServiceImpl");
+	@Autowired
+	private CourseService courseService;
 
 	@Test
 	public void test_getCourse_withoutTopics() {
@@ -26,7 +32,7 @@ public class CourseDaoImplTest {
 		final Integer courseId = 205;
 
 		// When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 
 		// Then
 		assertNotNull(courseEntity);
@@ -40,7 +46,7 @@ public class CourseDaoImplTest {
 		final Integer courseId = 201;
 
 		// When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 
 		// Then
 		assertNotNull(courseEntity.getTopics());
@@ -57,7 +63,7 @@ public class CourseDaoImplTest {
 		final Integer courseId = -1;
 
 		// When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 
 		// Then
 		assertNull(courseEntity);
@@ -69,8 +75,8 @@ public class CourseDaoImplTest {
 		CourseEntity courseEntity = createCourse();
 
 		// When
-		courseDao.insert(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		courseService.insert(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseEntity.getId());
 
 		// Then
 		assertEquals(courseEntityDb, courseEntity);
@@ -84,8 +90,8 @@ public class CourseDaoImplTest {
 		TopicEntity topicEntity = createTopic(courseEntity);
 
 		// When
-		courseDao.insert(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		courseService.insert(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseEntity.getId());
 
 		// Then
 		assertNotNull(courseEntity.getTopicById(topicEntity.getId()));
@@ -99,11 +105,11 @@ public class CourseDaoImplTest {
 		final Integer courseId = 208;
 		
 		//When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 		TopicEntity topicEntity = createTopic(courseEntity);
 		courseEntity.addTopic(topicEntity);
-		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
+		courseService.update(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseId);
 		
 		//Then
 		assertNotNull(courseEntityDb.getTopicById(topicEntity.getId()));
@@ -117,10 +123,10 @@ public class CourseDaoImplTest {
 		final Integer topicId = 15;
 		
 		// When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 		courseEntity.removeTopicById(topicId);
-		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
+		courseService.update(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseId);
 		
 		// Then
 		assertNull(courseEntityDb.getTopicById(topicId));
@@ -133,11 +139,11 @@ public class CourseDaoImplTest {
 		final Integer topicId = 10;
 		
 		//When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 		TopicEntity topicEntity	= courseEntity.getTopicById(topicId);
 		updateTopic(topicEntity);
-		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
+		courseService.update(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseId);
 		
 		//Then
 		assertEquals(courseEntityDb.getTopicById(topicId), topicEntity);
@@ -149,10 +155,10 @@ public class CourseDaoImplTest {
 		final Integer courseId = 207;
 		
 		//When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 		courseEntity = updateCourse(courseEntity);
-		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
+		courseService.update(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseId);
 		
 		//Then
 		assertEquals(courseEntityDb, courseEntity);
@@ -166,10 +172,10 @@ public class CourseDaoImplTest {
 		final Integer courseId = 202;
 		
 		//When
-		CourseEntity courseEntity = courseDao.get(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 		courseEntity = updateCourse(courseEntity);
-		courseDao.update(courseEntity);
-		CourseEntity courseEntityDb = courseDao.get(courseId);
+		courseService.update(courseEntity);
+		CourseEntity courseEntityDb = courseService.get(courseId);
 		
 		//Then
 		assertEquals(2, courseEntity.getTopics().size());
@@ -185,8 +191,8 @@ public class CourseDaoImplTest {
 		final Integer courseId = 209;
 
 		// When
-		boolean deleting = courseDao.delete(courseId);
-		CourseEntity courseEntity = courseDao.get(courseId);
+		boolean deleting = courseService.delete(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 
 		// Then
 		assertTrue(deleting);
@@ -199,7 +205,7 @@ public class CourseDaoImplTest {
 		final Integer courseId = -1;
 
 		// When
-		boolean deleting = courseDao.delete(courseId);
+		boolean deleting = courseService.delete(courseId);
 
 		// Then
 		assertFalse(deleting);
@@ -211,8 +217,8 @@ public class CourseDaoImplTest {
 		final Integer courseId = 204;
 
 		// When
-		boolean deleting = courseDao.delete(courseId);
-		CourseEntity courseEntity = courseDao.get(courseId);
+		boolean deleting = courseService.delete(courseId);
+		CourseEntity courseEntity = courseService.get(courseId);
 
 		// Then
 		assertTrue(deleting);
@@ -223,24 +229,24 @@ public class CourseDaoImplTest {
 	public void test_course_integrationTest_CRUD() {
 		// 1. insert a new course
 		CourseEntity courseEntity = createCourse();
-		courseDao.insert(courseEntity);
+		courseService.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 		
 		// 2. get the course from DB
-		CourseEntity courseEntityDb = courseDao.get(courseEntity.getId());
+		CourseEntity courseEntityDb = courseService.get(courseEntity.getId());
 		assertNotNull(courseEntityDb);
 		assertEquals(courseEntityDb, courseEntity);
 		
 		// 3. Update the course in DB, and Get to check if updated correctly
 		updateCourse(courseEntity);
-		courseDao.update(courseEntity);
-		courseEntityDb = courseDao.get(courseEntity.getId());
+		courseService.update(courseEntity);
+		courseEntityDb = courseService.get(courseEntity.getId());
 		assertEquals(courseEntityDb, courseEntity);
 		
 		// 4. Delete the course from DB, and Get to check if deleted correctly
-		boolean isRemoved = courseDao.delete(courseEntity.getId());
+		boolean isRemoved = courseService.delete(courseEntity.getId());
 		assertTrue(isRemoved);
-		courseEntityDb = courseDao.get(courseEntity.getId());
+		courseEntityDb = courseService.get(courseEntity.getId());
 		assertNull(courseEntityDb);
 	}
 	
@@ -248,12 +254,12 @@ public class CourseDaoImplTest {
 	public void test_topic_integrationTest_CRUD() {
 		// 1. insert a new course
 		CourseEntity courseEntity = createCourse();
-		courseDao.insert(courseEntity);
+		courseService.insert(courseEntity);
 		assertNotNull(courseEntity.getId());
 		
 		// 2. insert a new topic
 		TopicEntity topicEntity = createTopic(courseEntity);
-		courseDao.update(courseEntity);
+		courseService.update(courseEntity);
 		assertNotNull(topicEntity.getId());
 		
 		// 3. get the topic from DB
@@ -263,13 +269,13 @@ public class CourseDaoImplTest {
 		
 		// 4. Update the topic in DB, and Get to check if updated correctly
 		updateTopic(topicEntity);
-		courseDao.update(courseEntity);
+		courseService.update(courseEntity);
 		topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
 		assertEquals(topicEntityDb, topicEntity);
 		
 		// 5. Delete the topic from DB, and Get to check if deleted correctly
 		courseEntity.removeTopicById(topicEntity.getId());
-		courseDao.update(courseEntity);
+		courseService.update(courseEntity);
 		topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
 		assertNull(topicEntityDb);
 	}

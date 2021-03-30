@@ -2,20 +2,22 @@ package org.sg.service.impl;
 
 import org.sg.dao.AddressDao;
 import org.sg.dao.StudentDao;
-import org.sg.dao.impl.AddressDaoImpl;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.AddressEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class StudentServiceImpl implements StudentService{
+@Service
+public class StudentServiceImpl implements StudentService {
 	
-private StudentDao studentDao;
-private AddressDao addressDao;
+	private StudentDao studentDao;
+	private AddressDao addressDao;
 	
-	public StudentServiceImpl() {
-		studentDao = new StudentDaoImpl();
-		addressDao = new AddressDaoImpl();
+	@Autowired
+	public StudentServiceImpl(StudentDao studentDao, AddressDao addressDao) {
+		this.studentDao = studentDao;
+		this.addressDao = addressDao;
 	}
 
 	public StudentEntity insert(StudentEntity studentEntity) {
@@ -48,7 +50,7 @@ private AddressDao addressDao;
 	public AddressEntity update(AddressEntity addressEntity) {
 		return addressDao.update(addressEntity);
 	}
-	
+
 	public void delete(AddressEntity addressEntity) {
 		addressDao.delete(addressEntity);
 	}

@@ -3,7 +3,9 @@ package org.sg.dao.impl;
 import org.sg.dao.ExamDao;
 import org.sg.dao.GenericDao;
 import org.sg.entities.ExamEntity;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ExamDaoImpl extends GenericDao implements ExamDao{
 	
 	public ExamEntity insert(ExamEntity examEntity) {

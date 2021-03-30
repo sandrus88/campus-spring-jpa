@@ -2,23 +2,25 @@ package org.sg.service.impl;
 
 import org.sg.dao.CourseDao;
 import org.sg.dao.StudentDao;
-import org.sg.dao.impl.CourseDaoImpl;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.ExamService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class ExamServiceImpl implements ExamService{
+@Service
+public class ExamServiceImpl implements ExamService {
 	
 	private StudentDao studentDao;
 	private CourseDao courseDao;
-		
-		public ExamServiceImpl() {
-			studentDao = new StudentDaoImpl();
-			courseDao = new CourseDaoImpl();
-		}
+	
+	@Autowired
+	public ExamServiceImpl(StudentDao studentDao, CourseDao courseDao) {
+		this.studentDao = studentDao;
+		this.courseDao = courseDao;
+	}
 
-	public StudentEntity insert(StudentEntity studentEntity) {
+	public StudentEntity insertStudent(StudentEntity studentEntity) {
 		return studentDao.insert(studentEntity);
 	}
 
@@ -26,7 +28,7 @@ public class ExamServiceImpl implements ExamService{
 		return studentDao.get(id);
 	}
 
-	public StudentEntity update(StudentEntity studentEntity) {
+	public StudentEntity updateStudent(StudentEntity studentEntity) {
 		return studentDao.update(studentEntity);
 	}
 
@@ -35,22 +37,22 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public CourseEntity insert(CourseEntity courseEntity) {
+	public CourseEntity insertCourse(CourseEntity courseEntity) {
 		return courseDao.insert(courseEntity);
 	}
 
 	@Override
-	public CourseEntity get(Integer id) {
+	public CourseEntity getCourse(Integer id) {
 		return courseDao.get(id);
 	}
 
 	@Override
-	public CourseEntity update(CourseEntity courseEntity) {
+	public CourseEntity updateCourse(CourseEntity courseEntity) {
 		return courseDao.update(courseEntity);
 	}
 
 	@Override
-	public boolean delete(Integer id) {
+	public boolean deleteCourse(Integer id) {
 		return courseDao.delete(id);
 	}
 }

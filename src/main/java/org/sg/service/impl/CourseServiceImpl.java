@@ -1,17 +1,21 @@
 package org.sg.service.impl;
 
 import org.sg.dao.CourseDao;
-import org.sg.dao.impl.CourseDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CourseServiceImpl implements CourseService {
-
+	
+	@Autowired
 	private CourseDao courseDao;
-
-	public CourseServiceImpl() {
-		courseDao = new CourseDaoImpl();
-	}
+	
+//	@Autowired
+//	public CourseServiceImpl(CourseDao courseDao) {
+//		this.courseDao = courseDao;
+//	}
 
 	@Override
 	public CourseEntity insert(CourseEntity courseEntity) {

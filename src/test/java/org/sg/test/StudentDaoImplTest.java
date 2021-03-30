@@ -17,12 +17,14 @@ import org.junit.Test;
 import org.sg.entities.AddressEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.StudentService;
-import org.sg.service.impl.StudentServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class StudentDaoImplTest {
 	
 	private static Logger logger = LogManager.getLogger(StudentDaoImplTest.class);
-	private StudentService studentDao = new StudentServiceImpl();
+	
+	@Autowired
+	private StudentService studentDao;
 	
 	@Test
 	public void test_getStudent_withoutAddress() {
