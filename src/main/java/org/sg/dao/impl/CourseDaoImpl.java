@@ -10,9 +10,7 @@ public class CourseDaoImpl extends GenericDao implements CourseDao{
 
 	@Override
 	public CourseEntity insert(CourseEntity courseEntity) {
-		entityManager.getTransaction().begin();
 		entityManager.persist(courseEntity);
-		entityManager.getTransaction().commit();
 		return courseEntity;
 	}
 
@@ -24,9 +22,7 @@ public class CourseDaoImpl extends GenericDao implements CourseDao{
 
 	@Override
 	public CourseEntity update(CourseEntity courseEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(courseEntity);
-		entityManager.getTransaction().commit();
+		entityManager.merge(courseEntity);
 		return courseEntity;
 	}
 
@@ -34,9 +30,7 @@ public class CourseDaoImpl extends GenericDao implements CourseDao{
 	public boolean delete(Integer id) {
 		CourseEntity courseEntity = entityManager.find(CourseEntity.class, id);
 		if (courseEntity != null) {
-			entityManager.getTransaction().begin();
 			entityManager.remove(courseEntity);
-			entityManager.getTransaction().commit();
 			return true;
 		}
 		return false;

@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
 public class ExamDaoImpl extends GenericDao implements ExamDao{
 	
 	public ExamEntity insert(ExamEntity examEntity) {
-		entityManager.getTransaction().begin();
 		entityManager.persist(examEntity);
-		entityManager.getTransaction().commit();
 		return examEntity;
 	}
 
@@ -21,18 +19,14 @@ public class ExamDaoImpl extends GenericDao implements ExamDao{
 	}
 
 	public ExamEntity update(ExamEntity examEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(examEntity);
-		entityManager.getTransaction().commit();
+		entityManager.merge(examEntity);
 		return examEntity;
 	}
 
 	public boolean delete(Integer id) {
 		ExamEntity examEntity = entityManager.find(ExamEntity.class, id);
 		if (examEntity != null) {
-			entityManager.getTransaction().begin();
 			entityManager.remove(examEntity);
-			entityManager.getTransaction().commit();
 			return true;
 		}
 		return false;

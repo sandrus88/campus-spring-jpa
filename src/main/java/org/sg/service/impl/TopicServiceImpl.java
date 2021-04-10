@@ -5,11 +5,13 @@ import org.sg.entities.TopicEntity;
 import org.sg.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class TopicServiceImpl implements TopicService {
-	
-	private TopicDao topicDao;
+
+	final private TopicDao topicDao;
 	
 	@Autowired
 	public TopicServiceImpl(TopicDao topicDao) {

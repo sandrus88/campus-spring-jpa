@@ -10,9 +10,7 @@ public class AddressDaoImpl extends GenericDao implements AddressDao {
 
 	@Override
 	public AddressEntity insert(AddressEntity addressEntity) {
-		entityManager.getTransaction().begin();
 		entityManager.persist(addressEntity);
-		entityManager.getTransaction().commit();
 		return addressEntity;
 	}
 
@@ -23,15 +21,11 @@ public class AddressDaoImpl extends GenericDao implements AddressDao {
 
 	@Override
 	public AddressEntity update(AddressEntity addressEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(addressEntity);
-		entityManager.getTransaction().commit();
+		entityManager.merge(addressEntity);
 		return addressEntity;
 	}
 	
 	public void delete(AddressEntity addressEntity) {
-		entityManager.getTransaction().begin();
 		entityManager.remove(entityManager.merge(addressEntity));
-		entityManager.getTransaction().commit();
 	}
 }

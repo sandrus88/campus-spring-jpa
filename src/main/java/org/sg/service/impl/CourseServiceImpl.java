@@ -5,17 +5,18 @@ import org.sg.entities.CourseEntity;
 import org.sg.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class CourseServiceImpl implements CourseService {
+
+	final private CourseDao courseDao;
 	
 	@Autowired
-	private CourseDao courseDao;
-	
-//	@Autowired
-//	public CourseServiceImpl(CourseDao courseDao) {
-//		this.courseDao = courseDao;
-//	}
+	public CourseServiceImpl(CourseDao courseDao) {
+		this.courseDao = courseDao;
+	}
 
 	@Override
 	public CourseEntity insert(CourseEntity courseEntity) {

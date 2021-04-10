@@ -7,12 +7,14 @@ import org.sg.entities.StudentEntity;
 import org.sg.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class StudentServiceImpl implements StudentService {
 	
-	private StudentDao studentDao;
-	private AddressDao addressDao;
+	final private StudentDao studentDao;
+	final private AddressDao addressDao;
 	
 	@Autowired
 	public StudentServiceImpl(StudentDao studentDao, AddressDao addressDao) {

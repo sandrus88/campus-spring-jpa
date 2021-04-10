@@ -32,6 +32,19 @@
 		<level value="ERROR" />
 	</logger>
 
+	<logger name="org.springframework.beans">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.core">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.test">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.aop">
+		<level value="WARN" />
+	</logger>
+
 
 	<root>
 		<level value="DEBUG" />

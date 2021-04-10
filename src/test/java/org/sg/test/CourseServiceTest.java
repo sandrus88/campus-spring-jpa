@@ -1,24 +1,16 @@
 package org.sg.test;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
 import org.sg.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 import static org.sg.test.util.EntityUtils.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-context.xml")
-public class CourseDaoImplTest {
-    
-    //	ApplicationContext appContext = new ClassPathXmlApplicationContext("spring/config/BeanLocations.xml");
-//	
-//	CourseService courseService = (CourseService)appContext.getBean("courseServiceImpl");
+public class CourseServiceTest extends AbstractSpringTest{
+
     @Autowired
     private CourseService courseService;
     
