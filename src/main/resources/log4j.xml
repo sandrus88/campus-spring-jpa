@@ -44,6 +44,9 @@
 	<logger name="org.springframework.aop">
 		<level value="WARN" />
 	</logger>
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
 
 
 	<root>
