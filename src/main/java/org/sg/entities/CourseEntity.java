@@ -32,13 +32,12 @@ public class CourseEntity {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<TopicEntity> topics;
 	
 	@OneToMany(mappedBy = "courseEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExamEntity> exams;
 	
-//	@ManyToMany(mappedBy = "courses")
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "SUBSCRIPTIONS",
 			joinColumns = @JoinColumn(name = "COURSE_ID"),

@@ -84,7 +84,8 @@ public class CourseServiceTest extends AbstractSpringTest{
         // Then
         assertNotNull(courseEntity.getTopicById(topicEntity.getId()));
         assertEquals(courseEntityDb, courseEntity);
-        assertEquals(courseEntityDb.getTopics(), courseEntity.getTopics());
+        assertNotNull(courseEntityDb.getTopics());
+        assertEquals(courseEntityDb.getTopics().size(), courseEntity.getTopics().size());
     }
     
     @Test

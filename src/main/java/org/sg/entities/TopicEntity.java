@@ -96,6 +96,6 @@ public class TopicEntity {
 
 	@Override
 	public String toString() {
-		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + ", id course: " + (courseEntity != null ? courseEntity.getId() : "null") + "]";
+		return "Topic  [id: " + id + ", name: " + name + ", description: " + description + ", courseId: " + (courseEntity != null ? courseEntity.getId() : "null") + "]";
 	}
 }
