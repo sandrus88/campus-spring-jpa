@@ -10,7 +10,7 @@ public interface ExamService {
 
 	StudentEntity insertStudent(StudentEntity studentEntity);
 	StudentEntity getStudent(Integer id);
-	StudentEntity update(StudentEntity studentEntity);
+	StudentEntity updateStudent(StudentEntity studentEntity);
 	List<StudentEntity> getAllStudents();
 	boolean deleteStudent(Integer id);
 

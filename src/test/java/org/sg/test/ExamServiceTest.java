@@ -10,6 +10,7 @@ import org.sg.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.sg.test.util.EntityUtils.*;
@@ -191,5 +192,32 @@ public class ExamServiceTest extends AbstractSpringTest {
 		examService.updateStudent(studentEntity);
 		studentEntityDb = examService.getStudent(studentEntity.getId());
 		assertNull(studentEntityDb.getExamById(examEntity.getId()));
+	}
+
+	@Test
+	public void test_getAllExams() {
+		// Given
+		final Integer[] examsId = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+
+		// When
+		List<ExamEntity> exams = examService.getAllExams();
+
+		// Then
+		assertNotNull(exams);
+		assertEquals(exams.size(), 14);
+		assertEquals(exams.get(0).getId(), examsId[0]);
+		assertEquals(exams.get(1).getId(), examsId[1]);
+		assertEquals(exams.get(2).getId(), examsId[2]);
+		assertEquals(exams.get(3).getId(), examsId[3]);
+		assertEquals(exams.get(4).getId(), examsId[4]);
+		assertEquals(exams.get(5).getId(), examsId[5]);
+		assertEquals(exams.get(6).getId(), examsId[6]);
+		assertEquals(exams.get(7).getId(), examsId[7]);
+		assertEquals(exams.get(8).getId(), examsId[8]);
+		assertEquals(exams.get(9).getId(), examsId[9]);
+		assertEquals(exams.get(10).getId(), examsId[10]);
+		assertEquals(exams.get(11).getId(), examsId[11]);
+		assertEquals(exams.get(12).getId(), examsId[12]);
+		assertEquals(exams.get(13).getId(), examsId[13]);
 	}
 }

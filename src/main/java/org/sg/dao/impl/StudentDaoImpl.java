@@ -37,9 +37,7 @@ public class StudentDaoImpl extends GenericDao implements StudentDao {
 
 	@Override
 	public List<StudentEntity> getAll() {
-		entityManager.getTransaction().begin();
 		List<StudentEntity> students = entityManager.createQuery("from StudentEntity", StudentEntity.class).getResultList();
-		entityManager.getTransaction().commit();
 		return students;
 	}
 }

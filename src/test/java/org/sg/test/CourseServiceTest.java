@@ -6,6 +6,8 @@ import org.sg.entities.TopicEntity;
 import org.sg.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.sg.test.util.EntityUtils.*;
 
@@ -267,5 +269,66 @@ public class CourseServiceTest extends AbstractSpringTest{
         courseService.update(courseEntity);
         topicEntityDb = courseEntity.getTopicById(topicEntity.getId());
         assertNull(topicEntityDb);
+    }
+
+    @Test
+    public void test_getAllCourses() {
+        // Given
+        final Integer[] topicsId = { 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213 };
+
+        // When
+        List<CourseEntity> courses = courseService.getAllCourses();
+
+        // Then
+        assertNotNull(courses);
+        assertEquals(courses.size(), 13);
+        assertEquals(courses.get(0).getId(), topicsId[0]);
+        assertEquals(courses.get(1).getId(), topicsId[1]);
+        assertEquals(courses.get(2).getId(), topicsId[2]);
+        assertEquals(courses.get(3).getId(), topicsId[3]);
+        assertEquals(courses.get(4).getId(), topicsId[4]);
+        assertEquals(courses.get(5).getId(), topicsId[5]);
+        assertEquals(courses.get(6).getId(), topicsId[6]);
+        assertEquals(courses.get(7).getId(), topicsId[7]);
+        assertEquals(courses.get(8).getId(), topicsId[8]);
+        assertEquals(courses.get(9).getId(), topicsId[9]);
+        assertEquals(courses.get(10).getId(), topicsId[10]);
+        assertEquals(courses.get(11).getId(), topicsId[11]);
+        assertEquals(courses.get(12).getId(), topicsId[12]);
+    }
+
+    @Test
+    public void test_getAllTopics() {
+        // Given
+        final Integer[] topicsId = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
+
+        // When
+        List<TopicEntity> topics = courseService.getAllTopics();
+
+        // Then
+        assertNotNull(topics);
+        assertEquals(topics.size(), 22);
+        assertEquals(topics.get(0).getId(), topicsId[0]);
+        assertEquals(topics.get(1).getId(), topicsId[1]);
+        assertEquals(topics.get(2).getId(), topicsId[2]);
+        assertEquals(topics.get(3).getId(), topicsId[3]);
+        assertEquals(topics.get(4).getId(), topicsId[4]);
+        assertEquals(topics.get(5).getId(), topicsId[5]);
+        assertEquals(topics.get(6).getId(), topicsId[6]);
+        assertEquals(topics.get(7).getId(), topicsId[7]);
+        assertEquals(topics.get(8).getId(), topicsId[8]);
+        assertEquals(topics.get(9).getId(), topicsId[9]);
+        assertEquals(topics.get(10).getId(), topicsId[10]);
+        assertEquals(topics.get(11).getId(), topicsId[11]);
+        assertEquals(topics.get(12).getId(), topicsId[12]);
+        assertEquals(topics.get(13).getId(), topicsId[13]);
+        assertEquals(topics.get(14).getId(), topicsId[14]);
+        assertEquals(topics.get(15).getId(), topicsId[15]);
+        assertEquals(topics.get(16).getId(), topicsId[16]);
+        assertEquals(topics.get(17).getId(), topicsId[17]);
+        assertEquals(topics.get(18).getId(), topicsId[18]);
+        assertEquals(topics.get(19).getId(), topicsId[19]);
+        assertEquals(topics.get(20).getId(), topicsId[20]);
+        assertEquals(topics.get(21).getId(), topicsId[21]);
     }
 }

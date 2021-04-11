@@ -70,8 +70,7 @@ public class StudentServiceTest extends AbstractSpringTest {
 		final Integer[] studentsId = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
 
 		// When
-		List<StudentEntity> students = studentDao.getAllStudents();
-		System.out.println("List of students " + students);
+		List<StudentEntity> students = studentService.getAllStudents();
 
 		// Then
 		assertNotNull(students);
@@ -104,8 +103,7 @@ public class StudentServiceTest extends AbstractSpringTest {
 		final Integer[] addressesId = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 		// When
-		List<AddressEntity> addresses = studentDao.getAllAddresses();
-		System.out.println("List of students " + addresses);
+		List<AddressEntity> addresses = studentService.getAllAddresses();
 
 		// Then
 		assertNotNull(addresses);
