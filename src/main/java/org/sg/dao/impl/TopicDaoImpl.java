@@ -1,7 +1,10 @@
 package org.sg.dao.impl;
 
+import java.util.List;
+
 import org.sg.dao.GenericDao;
 import org.sg.dao.TopicDao;
+import org.sg.entities.AddressEntity;
 import org.sg.entities.TopicEntity;
 
 public class TopicDaoImpl extends GenericDao implements TopicDao{
@@ -38,6 +41,14 @@ public class TopicDaoImpl extends GenericDao implements TopicDao{
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<TopicEntity> getAll() {
+		entityManager.getTransaction().begin();
+		List<TopicEntity> topics = entityManager.createQuery("from TopicEntity", TopicEntity.class).getResultList();
+		entityManager.getTransaction().commit();
+		return topics;
 	}
 
 }

@@ -1,5 +1,7 @@
 package org.sg.service.impl;
 
+import java.util.List;
+
 import org.sg.dao.TopicDao;
 import org.sg.dao.impl.TopicDaoImpl;
 import org.sg.entities.TopicEntity;
@@ -31,5 +33,10 @@ public class TopicServiceImpl implements TopicService{
 	@Override
 	public boolean delete(Integer id) {
 		return topicDao.delete(id);
+	}
+
+	@Override
+	public List<TopicEntity> getAll() {
+		return topicDao.getAll();
 	}
 }
