@@ -11,4 +11,13 @@
 	<context:component-scan base-package="org.sg" />
     <!--<context:annotation-config />-->
     <!--<aop:aspectj-autoproxy/>-->
+
+	<!--<bean id="baseDAO" abstract="true" class=" org.sg.dao.GenericDao"/>-->
+
+	<!--<bean id="courseDao" class=" org.sg.dao.impl.CourseDaoImpl"/>-->
+	<!---->
+	<!--<bean id="courseService" class="org.sg.service.impl.CourseServiceImpl">-->
+		<!--<property name="courseDao" ref="courseDao" />-->
+	<!--</bean>-->
+	<!---->
 </beans>

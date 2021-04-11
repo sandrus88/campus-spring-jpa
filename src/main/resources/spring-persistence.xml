@@ -34,18 +34,4 @@
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<!-- <aop:spring-configured/>
-	<aop:config>
-		<aop:advisor id="managerTx"
-	  		advice-ref="txAdvice"
-	  		pointcut="execution(* *..service.*Service.*(..))" order="1"/>
-	</aop:config>
-
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="get* select*" read-only="true" />
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>	 -->
-
 </beans>
