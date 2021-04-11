@@ -1,5 +1,7 @@
 package org.sg.dao.impl;
 
+import java.util.List;
+
 import org.sg.dao.CourseDao;
 import org.sg.dao.GenericDao;
 import org.sg.entities.CourseEntity;
@@ -38,6 +40,14 @@ public class CourseDaoImpl extends GenericDao implements CourseDao{
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public List<CourseEntity> getAll() {
+		entityManager.getTransaction().begin();
+		List<CourseEntity> courses = entityManager.createQuery("from CourseEntity", CourseEntity.class).getResultList();
+		entityManager.getTransaction().commit();
+		return courses;
 	}
 
 }

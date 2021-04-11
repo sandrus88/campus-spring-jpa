@@ -11,6 +11,8 @@ import static org.sg.test.util.EntityUtils.createStudentWithAddress;
 import static org.sg.test.util.EntityUtils.updateAddress;
 import static org.sg.test.util.EntityUtils.updateStudent;
 
+import java.util.List;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -59,6 +61,65 @@ public class StudentDaoImplTest {
 		assertNotNull(studentEntity.getAddressEntity());
 		assertEquals(studentEntity.getAddressEntity().getId(), addressId);
 	}
+	
+	@Test
+	public void test_getAllStudents() {
+		// Given
+		final Integer[] studentsId = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
+
+		// When
+		List<StudentEntity> students = studentDao.getAllStudents();
+		System.out.println("List of students " + students);
+
+		// Then
+		assertNotNull(students);
+		assertEquals(students.size(), 20);
+		assertEquals(students.get(0).getId(), studentsId[0]);
+		assertEquals(students.get(1).getId(), studentsId[1]);
+		assertEquals(students.get(2).getId(), studentsId[2]);
+		assertEquals(students.get(3).getId(), studentsId[3]);
+		assertEquals(students.get(4).getId(), studentsId[4]);
+		assertEquals(students.get(5).getId(), studentsId[5]);
+		assertEquals(students.get(6).getId(), studentsId[6]);
+		assertEquals(students.get(7).getId(), studentsId[7]);
+		assertEquals(students.get(8).getId(), studentsId[8]);
+		assertEquals(students.get(9).getId(), studentsId[9]);
+		assertEquals(students.get(10).getId(), studentsId[10]);
+		assertEquals(students.get(11).getId(), studentsId[11]);
+		assertEquals(students.get(12).getId(), studentsId[12]);
+		assertEquals(students.get(13).getId(), studentsId[13]);
+		assertEquals(students.get(14).getId(), studentsId[14]);
+		assertEquals(students.get(15).getId(), studentsId[15]);
+		assertEquals(students.get(16).getId(), studentsId[16]);
+		assertEquals(students.get(17).getId(), studentsId[17]);
+		assertEquals(students.get(18).getId(), studentsId[18]);
+		assertEquals(students.get(19).getId(), studentsId[19]);
+	}
+	
+	@Test
+	public void test_getAllAddresses() {
+		// Given
+		final Integer[] addressesId = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+		// When
+		List<AddressEntity> addresses = studentDao.getAllAddresses();
+		System.out.println("List of students " + addresses);
+
+		// Then
+		assertNotNull(addresses);
+		assertEquals(addresses.size(), 10);
+		assertEquals(addresses.get(0).getId(), addressesId[0]);
+		assertEquals(addresses.get(1).getId(), addressesId[1]);
+		assertEquals(addresses.get(2).getId(), addressesId[2]);
+		assertEquals(addresses.get(3).getId(), addressesId[3]);
+		assertEquals(addresses.get(4).getId(), addressesId[4]);
+		assertEquals(addresses.get(5).getId(), addressesId[5]);
+		assertEquals(addresses.get(6).getId(), addressesId[6]);
+		assertEquals(addresses.get(7).getId(), addressesId[7]);
+		assertEquals(addresses.get(8).getId(), addressesId[8]);
+		assertEquals(addresses.get(9).getId(), addressesId[9]);
+	}
+	
 
 	@Test
 	public void test_getStudent_notPresent() {
