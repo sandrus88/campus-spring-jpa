@@ -1,5 +1,7 @@
 package org.sg.dao.impl;
 
+import java.util.List;
+
 import org.sg.dao.AddressDao;
 import org.sg.dao.GenericDao;
 import org.sg.entities.AddressEntity;
@@ -27,5 +29,11 @@ public class AddressDaoImpl extends GenericDao implements AddressDao {
 	
 	public void delete(AddressEntity addressEntity) {
 		entityManager.remove(entityManager.merge(addressEntity));
+	}
+
+	@Override
+	public List<AddressEntity> getAll() {
+		List<AddressEntity> addresses = entityManager.createQuery("from AddressEntity", AddressEntity.class).getResultList();
+		return addresses;
 	}
 }

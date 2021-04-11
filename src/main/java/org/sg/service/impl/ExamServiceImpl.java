@@ -1,8 +1,12 @@
 package org.sg.service.impl;
 
+import java.util.List;
+
 import org.sg.dao.CourseDao;
+import org.sg.dao.ExamDao;
 import org.sg.dao.StudentDao;
 import org.sg.entities.CourseEntity;
+import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ExamServiceImpl implements ExamService {
 	
-	private StudentDao studentDao;
-	private CourseDao courseDao;
-	
+	final private StudentDao studentDao;
+    final private CourseDao courseDao;
+    final private ExamDao examDao;
+
 	@Autowired
-	public ExamServiceImpl(StudentDao studentDao, CourseDao courseDao) {
+	public ExamServiceImpl(StudentDao studentDao, CourseDao courseDao,  ExamDao examDao) {
 		this.studentDao = studentDao;
 		this.courseDao = courseDao;
+		this.examDao = examDao;
 	}
 
 	public StudentEntity insertStudent(StudentEntity studentEntity) {
@@ -56,5 +62,20 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public boolean deleteCourse(Integer id) {
 		return courseDao.delete(id);
+	}
+
+	@Override
+	public List<StudentEntity> getAllStudents() {
+		return studentDao.getAll();
+	}
+
+	@Override
+	public List<CourseEntity> getAllCourses() {
+		return courseDao.getAll();
+	}
+
+	@Override
+	public List<ExamEntity> getAllExams() {
+		return examDao.getAll();
 	}
 }

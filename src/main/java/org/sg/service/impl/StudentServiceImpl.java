@@ -1,5 +1,7 @@
 package org.sg.service.impl;
 
+import java.util.List;
+
 import org.sg.dao.AddressDao;
 import org.sg.dao.StudentDao;
 import org.sg.entities.AddressEntity;
@@ -57,4 +59,13 @@ public class StudentServiceImpl implements StudentService {
 		addressDao.delete(addressEntity);
 	}
 
+	@Override
+	public List<StudentEntity> getAllStudents() {
+		return studentDao.getAll();
+	}
+
+	@Override
+	public List<AddressEntity> getAllAddresses() {
+		return addressDao.getAll();
+	}
 }
