@@ -3,16 +3,21 @@ package org.sg.service.impl;
 import java.util.List;
 
 import org.sg.dao.TopicDao;
-import org.sg.dao.impl.TopicDaoImpl;
 import org.sg.entities.TopicEntity;
 import org.sg.service.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public class TopicServiceImpl implements TopicService{
+@Service
+@Transactional
+public class TopicServiceImpl implements TopicService {
+
+	final private TopicDao topicDao;
 	
-	private TopicDao topicDao;
-	
-	public TopicServiceImpl() {
-		topicDao = new TopicDaoImpl();
+	@Autowired
+	public TopicServiceImpl(TopicDao topicDao) {
+		this.topicDao = topicDao;
 	}
 
 	@Override

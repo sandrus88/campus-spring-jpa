@@ -32,6 +32,24 @@
 		<level value="ERROR" />
 	</logger>
 
+	<logger name="org.springframework.beans">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.core">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.test">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.aop">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework.jdbc">
+		<level value="DEBUG" /> <!-- DEBUG if you want to see sql inserts of DBInitializer -->
+	</logger>
+	<logger name="org.springframework">
+		<level value="WARN" />
+	</logger>
 
 	<root>
 		<level value="DEBUG" />

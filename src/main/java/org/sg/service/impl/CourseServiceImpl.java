@@ -4,20 +4,24 @@ import java.util.List;
 
 import org.sg.dao.CourseDao;
 import org.sg.dao.TopicDao;
-import org.sg.dao.impl.CourseDaoImpl;
-import org.sg.dao.impl.TopicDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.TopicEntity;
 import org.sg.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+@Transactional
 public class CourseServiceImpl implements CourseService {
 
-	private CourseDao courseDao;
-	private TopicDao topicDao;
+	final private CourseDao courseDao;
+	final private TopicDao topicDao;
 
-	public CourseServiceImpl() {
-		courseDao = new CourseDaoImpl();
-		topicDao = new TopicDaoImpl();
+	@Autowired
+	public CourseServiceImpl(CourseDao courseDao, TopicDao topicDao) {
+		this.courseDao = courseDao;
+		this.topicDao = topicDao;
 	}
 
 	@Override

@@ -4,17 +4,11 @@
 			 version="2.2">
 
 	<persistence-unit name="campus-pu" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:alm;MODE=Oracle;DB_CLOSE_DELAY=-1;INIT=runscript from 'classpath:ddl_create_db_h2.sql'" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.id.new_generator_mappings" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+			<property name="hibernate.show_sql" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>

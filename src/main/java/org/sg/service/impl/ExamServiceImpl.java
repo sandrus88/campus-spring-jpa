@@ -5,27 +5,30 @@ import java.util.List;
 import org.sg.dao.CourseDao;
 import org.sg.dao.ExamDao;
 import org.sg.dao.StudentDao;
-import org.sg.dao.impl.CourseDaoImpl;
-import org.sg.dao.impl.ExamDaoImpl;
-import org.sg.dao.impl.StudentDaoImpl;
 import org.sg.entities.CourseEntity;
 import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
 import org.sg.service.ExamService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public class ExamServiceImpl implements ExamService{
+@Service
+@Transactional
+public class ExamServiceImpl implements ExamService {
 	
-	private StudentDao studentDao;
-	private CourseDao courseDao;
-	private ExamDao examDao;
-		
-		public ExamServiceImpl() {
-			studentDao = new StudentDaoImpl();
-			courseDao = new CourseDaoImpl();
-			examDao = new ExamDaoImpl();
-		}
+	final private StudentDao studentDao;
+    final private CourseDao courseDao;
+    final private ExamDao examDao;
 
-	public StudentEntity insert(StudentEntity studentEntity) {
+	@Autowired
+	public ExamServiceImpl(StudentDao studentDao, CourseDao courseDao,  ExamDao examDao) {
+		this.studentDao = studentDao;
+		this.courseDao = courseDao;
+		this.examDao = examDao;
+	}
+
+	public StudentEntity insertStudent(StudentEntity studentEntity) {
 		return studentDao.insert(studentEntity);
 	}
 
@@ -33,7 +36,7 @@ public class ExamServiceImpl implements ExamService{
 		return studentDao.get(id);
 	}
 
-	public StudentEntity update(StudentEntity studentEntity) {
+	public StudentEntity updateStudent(StudentEntity studentEntity) {
 		return studentDao.update(studentEntity);
 	}
 
@@ -42,22 +45,22 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public CourseEntity insert(CourseEntity courseEntity) {
+	public CourseEntity insertCourse(CourseEntity courseEntity) {
 		return courseDao.insert(courseEntity);
 	}
 
 	@Override
-	public CourseEntity get(Integer id) {
+	public CourseEntity getCourse(Integer id) {
 		return courseDao.get(id);
 	}
 
 	@Override
-	public CourseEntity update(CourseEntity courseEntity) {
+	public CourseEntity updateCourse(CourseEntity courseEntity) {
 		return courseDao.update(courseEntity);
 	}
 
 	@Override
-	public boolean delete(Integer id) {
+	public boolean deleteCourse(Integer id) {
 		return courseDao.delete(id);
 	}
 

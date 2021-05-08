@@ -7,15 +7,19 @@ import org.sg.entities.ExamEntity;
 import org.sg.entities.StudentEntity;
 
 public interface ExamService {
-	StudentEntity insert(StudentEntity studentEntity);
+
+	StudentEntity insertStudent(StudentEntity studentEntity);
 	StudentEntity getStudent(Integer id);
-	StudentEntity update(StudentEntity studentEntity);
+	StudentEntity updateStudent(StudentEntity studentEntity);
 	List<StudentEntity> getAllStudents();
 	boolean deleteStudent(Integer id);
-	CourseEntity insert(CourseEntity courseEntity);
-	CourseEntity get(Integer id);
-	CourseEntity update(CourseEntity courseEntity);
+
+    CourseEntity insertCourse(CourseEntity courseEntity);
+    CourseEntity getCourse(Integer id);
+    CourseEntity updateCourse(CourseEntity courseEntity);
+    boolean deleteCourse(Integer id);
 	List<CourseEntity> getAllCourses();
-	boolean delete(Integer id);
+
 	List<ExamEntity> getAllExams();
+
 }

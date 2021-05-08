@@ -6,14 +6,14 @@ import org.sg.dao.GenericDao;
 import org.sg.dao.TopicDao;
 import org.sg.entities.AddressEntity;
 import org.sg.entities.TopicEntity;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class TopicDaoImpl extends GenericDao implements TopicDao{
 
 	@Override
 	public TopicEntity insert(TopicEntity topicEntity) {
-		entityManager.getTransaction().begin();
 		entityManager.persist(topicEntity);
-		entityManager.getTransaction().commit();
 		return topicEntity;
 	}
 
@@ -25,9 +25,7 @@ public class TopicDaoImpl extends GenericDao implements TopicDao{
 
 	@Override
 	public TopicEntity update(TopicEntity topicEntity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(topicEntity);
-		entityManager.getTransaction().commit();
+		entityManager.merge(topicEntity);
 		return topicEntity;
 	}
 
@@ -35,9 +33,7 @@ public class TopicDaoImpl extends GenericDao implements TopicDao{
 	public boolean delete(Integer id) {
 		TopicEntity topicEntity = entityManager.find(TopicEntity.class, id);
 		if (topicEntity != null) {
-			entityManager.getTransaction().begin();
 			entityManager.remove(topicEntity);
-			entityManager.getTransaction().commit();
 			return true;
 		}
 		return false;
