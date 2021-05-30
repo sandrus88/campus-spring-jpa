@@ -126,7 +126,7 @@ Dopodiche' bisogna creare un file `persistence.xml`, dove all'interno verrano in
 # Spring
 Un altro framework molto utilizzato dai programmatori Java e' `Spring`. Il cuore del framework e' costituito da un `Inversion of Control container` che si occupa di gestire l’intero ciclo di vita degli oggetti presenti nel contesto applicativo, dalla configurazione, al reperimento delle dipendenze e creazione delle singole istanze — il tutto, tramite `Dependency Injection`.
 
-###Configurazione di Spring in un progetto Maven
+### Configurazione di Spring in un progetto Maven
 La configurazione che utilizzero' e' quella tramite `@Annotation`.
 Per fare cio' occorre inserire, nelle `dependencies` del `pom`, le seguenti:
 
