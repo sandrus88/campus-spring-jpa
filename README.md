@@ -1,15 +1,15 @@
 # campus-spring-jpa
 
-#JPA
+# JPA
 `JPA` (Java Persistence API) e' un framework che utilizza la tecnica dell'`ORM` (Object-Relational Mapping) per poter mettere in relazione oggetti Java con le tabelle di un database. 
 
-###Mappatura e persistenza di un oggetto Java
+### Mappatura e persistenza di un oggetto Java
 Per `mappare` e quindi rendere `persistenti` degli oggetti, JPA utilizza delle annotazioni, che si identificano tramite la `@`. 
 Tra i programmi in esecuzione e il database, si trova uno stato intermedio (`cache`), in cui i dati rimangono in "attesa" di essere persistiti prima di propagarsi nel database (`PersistenceContext`).
 Per persistere un oggetto, JPA fa uso di `@EntityManager`, appartenenti al package `javax.persistence`, che sono delle entita' che permettono di poter creare, leggere, modificare, eliminare (`CRUD`) a runtime, i dati del database.
 Ogni dato viene mappato in "entity" (`@Entity`), che rapparesenta la mappatura di ogni singola tabella del database.
 
-###Lifecycle di una entity
+### Lifecycle di una entity
 1) Quando una nuova entity viene creata nella memoria Java, nulla cambia dal punto di vista degli oggetti persistenti. L'oggetto e' detto in stato `New` o `Transient`.
 
 2) Invocando il metodo `persist()` dell'EnityManager l'oggetto e' reso persistente ed entra nello stato `Managed`.
@@ -20,7 +20,7 @@ E' possibile risincronizzare questi oggetti con il database, per far cio' occorr
 
 4) Ultimo stato e' chiamato `Removed`, in cui gli oggetti vengono rimossi dal database ma restano a disposizione nella memoria Java.
 
-###Principali annotazioni
+### Principali annotazioni
 Altre annotazioni per poter creare il database:
 * `@Id`, specifica che il campo annotato e' una primary key.
 * `@Column`, specifica che questo campo mappa una colonna.
@@ -29,7 +29,7 @@ Altre annotazioni per poter creare il database:
 * `@OneToMany`, definisce una relazion 1-m.
 * `@OneToOne`, definisce una relazion 1-1.
 
-###Tipi di relazioni
+### Tipi di relazioni
 Le relazioni possono essere di tre tipi:
 * `relazioni uno a molti` ( one to many )
 * `relazioni uno a uno` ( one to one )
@@ -57,7 +57,7 @@ e un'altra con tutti i corsi, poi ci sara' una terza tabella dove verranno inser
 
 Tra i vari provider che utilizzano JPA, sicuramente il piu' utilizzato e' `Hibernate`.
 
-#Hibernate
+# Hibernate
 Hibernate e' un framework open source che semplifica l’uso dei database relazionali nelle applicazioni Java presentando i dati relazionali come oggetti ordinari di Java.
 Hibernate svolge le seguenti operazioni:
 * Si occupa della mappatura e della configurazione necessarie per accedere al database;
@@ -69,7 +69,7 @@ Hibernate svolge le seguenti operazioni:
   sono più  semplici da capire e utilizzare all’interno dell’applicazione;
 * Effettua la mappatura tra gli oggetti Java e le entità relazionali del database.
 
-###Configurazione di Hibernate in un progetto Maven
+### Configurazione di Hibernate in un progetto Maven
 Per fare cio' occorre inserire, nelle `dependencies` del `pom`, le seguenti:
 
 ```
@@ -123,7 +123,7 @@ Dopodiche' bisogna creare un file `persistence.xml`, dove all'interno verrano in
 </persistence>
 ```
 
-#Spring
+# Spring
 Un altro framework molto utilizzato dai programmatori Java e' `Spring`. Il cuore del framework e' costituito da un `Inversion of Control container` che si occupa di gestire l’intero ciclo di vita degli oggetti presenti nel contesto applicativo, dalla configurazione, al reperimento delle dipendenze e creazione delle singole istanze — il tutto, tramite `Dependency Injection`.
 
 ###Configurazione di Spring in un progetto Maven
@@ -170,7 +170,7 @@ Fatto cio' si crea un file `context.xml` in cui si indica il contesto in cui dev
 	<context:component-scan base-package="nome_package" />
 </beans>
 ```
-###Dependency Injection
+### Dependency Injection
 La `Dependency Injection`, avviene tramite l'annotazione `@Autowired` e puo' essere di 3 modi:
 * `Constructor Injection`, dove la dipendenza viene iniettata tramite l’argomento del costruttore
 
@@ -209,7 +209,7 @@ Sicuramente la piu' stabile e utilizzata dagli sviluppatori Java e' tramite cost
 L'annotazione `@Service`, viene utilizzata su una classe contrassegnandola come classe che esegue alcuni servizi, come eseguire la logica di business, eseguire calcoli e chiamare API esterne.
 L'annotazione `@Repository` viene utilizzata sulle classi Java che accedono direttamente al database e funziona come marker per qualsiasi classe che svolge il ruolo di repository o `DAO (Data Access Object)`.
 
-###JUnit Spring Test
+### JUnit Spring Test
 Per poter fare i test con spring bisogna utilizzare l'annotazione `@RunWith` e utilizzare la classe di junit per spring, ed inoltre bisogna configurare il contesto tramite l'annotazione `@ContextConfiguration`
 
 ```
@@ -217,5 +217,5 @@ Per poter fare i test con spring bisogna utilizzare l'annotazione `@RunWith` e u
 @ContextConfiguration(locations = "classpath:nome_file_context.xml")
 ```
 
-#See
+# See
 [H2 Database] https://www.h2database.com/html/grammar.html
